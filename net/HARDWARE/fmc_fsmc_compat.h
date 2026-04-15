@@ -1,0 +1,91 @@
+#ifndef FMC_FSMC_COMPAT_H
+#define FMC_FSMC_COMPAT_H
+
+#if defined(STM32F429_439xx)
+
+#define FSMC_NORSRAMInitTypeDef FMC_NORSRAMInitTypeDef
+#define FSMC_NORSRAMTimingInitTypeDef FMC_NORSRAMTimingInitTypeDef
+
+#define FSMC_NORSRAMInit FMC_NORSRAMInit
+#define FSMC_NORSRAMCmd FMC_NORSRAMCmd
+
+#define FSMC_Bank1_NORSRAM1 FMC_Bank1_NORSRAM1
+#define FSMC_Bank1_NORSRAM2 FMC_Bank1_NORSRAM2
+#define FSMC_Bank1_NORSRAM3 FMC_Bank1_NORSRAM3
+#define FSMC_Bank1_NORSRAM4 FMC_Bank1_NORSRAM4
+
+#define FSMC_DataAddressMux_Disable FMC_DataAddressMux_Disable
+#define FSMC_DataAddressMux_Enable FMC_DataAddressMux_Enable
+
+#define FSMC_MemoryType_SRAM FMC_MemoryType_SRAM
+#define FSMC_MemoryType_PSRAM FMC_MemoryType_PSRAM
+#define FSMC_MemoryType_NOR FMC_MemoryType_NOR
+
+#define FSMC_MemoryDataWidth_8b FMC_NORSRAM_MemoryDataWidth_8b
+#define FSMC_MemoryDataWidth_16b FMC_NORSRAM_MemoryDataWidth_16b
+#define FSMC_MemoryDataWidth_32b FMC_NORSRAM_MemoryDataWidth_32b
+
+#define FSMC_BurstAccessMode_Disable FMC_BurstAccessMode_Disable
+#define FSMC_BurstAccessMode_Enable FMC_BurstAccessMode_Enable
+
+#define FSMC_WaitSignalPolarity_Low FMC_WaitSignalPolarity_Low
+#define FSMC_WaitSignalPolarity_High FMC_WaitSignalPolarity_High
+
+#define FSMC_AsynchronousWait_Disable FMC_AsynchronousWait_Disable
+#define FSMC_AsynchronousWait_Enable FMC_AsynchronousWait_Enable
+
+#define FSMC_WrapMode_Disable FMC_WrapMode_Disable
+#define FSMC_WrapMode_Enable FMC_WrapMode_Enable
+
+#define FSMC_WaitSignalActive_BeforeWaitState FMC_WaitSignalActive_BeforeWaitState
+#define FSMC_WaitSignalActive_DuringWaitState FMC_WaitSignalActive_DuringWaitState
+
+#define FSMC_WriteOperation_Disable FMC_WriteOperation_Disable
+#define FSMC_WriteOperation_Enable FMC_WriteOperation_Enable
+
+#define FSMC_WaitSignal_Disable FMC_WaitSignal_Disable
+#define FSMC_WaitSignal_Enable FMC_WaitSignal_Enable
+
+#define FSMC_ExtendedMode_Disable FMC_ExtendedMode_Disable
+#define FSMC_ExtendedMode_Enable FMC_ExtendedMode_Enable
+
+#define FSMC_WriteBurst_Disable FMC_WriteBurst_Disable
+#define FSMC_WriteBurst_Enable FMC_WriteBurst_Enable
+
+#define FSMC_AccessMode_A FMC_AccessMode_A
+#define FSMC_AccessMode_B FMC_AccessMode_B
+#define FSMC_AccessMode_C FMC_AccessMode_C
+#define FSMC_AccessMode_D FMC_AccessMode_D
+
+#define FSMC_Bank1E FMC_Bank1E
+
+#define FSMC_Bank FMC_Bank
+#define FSMC_DataAddressMux FMC_DataAddressMux
+#define FSMC_MemoryType FMC_MemoryType
+#define FSMC_MemoryDataWidth FMC_MemoryDataWidth
+#define FSMC_BurstAccessMode FMC_BurstAccessMode
+#define FSMC_WaitSignalPolarity FMC_WaitSignalPolarity
+#define FSMC_WrapMode FMC_WrapMode
+#define FSMC_WaitSignalActive FMC_WaitSignalActive
+#define FSMC_WriteOperation FMC_WriteOperation
+#define FSMC_WaitSignal FMC_WaitSignal
+#define FSMC_ExtendedMode FMC_ExtendedMode
+#define FSMC_AsynchronousWait FMC_AsynchronousWait
+#define FSMC_WriteBurst FMC_WriteBurst
+#define FSMC_ReadWriteTimingStruct FMC_ReadWriteTimingStruct
+#define FSMC_WriteTimingStruct FMC_WriteTimingStruct
+
+#define FSMC_AddressSetupTime FMC_AddressSetupTime
+#define FSMC_AddressHoldTime FMC_AddressHoldTime
+#define FSMC_DataSetupTime FMC_DataSetupTime
+#define FSMC_BusTurnAroundDuration FMC_BusTurnAroundDuration
+#define FSMC_CLKDivision FMC_CLKDivision
+#define FSMC_DataLatency FMC_DataLatency
+#define FSMC_AccessMode FMC_AccessMode
+
+#define RCC_AHB3Periph_FSMC RCC_AHB3Periph_FMC
+#define GPIO_AF_FSMC GPIO_AF_FMC
+
+#endif
+
+#endif

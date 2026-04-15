@@ -1,0 +1,88 @@
+{
+    "cmake.ignoreCMakeListsMissing": true,
+    "files.encoding": "utf8",
+    "files.autoGuessEncoding": false,
+    "commands.workspaceCommands": {
+        "Network Build": {
+            "command": "workbench.action.tasks.runTask",
+            "args": "Keil: Build",
+            "icon": "tools",
+            "statusBar": {
+                "alignment": "left",
+                "text": " Build",
+                "name": "Network Build",
+                "priority": 400,
+                "tooltip": "Run the Keil build task in the integrated terminal."
+            }
+        },
+        "Network Flash": {
+            "command": "workbench.action.tasks.runTask",
+            "args": "J-Link: Flash",
+            "icon": "plug",
+            "statusBar": {
+                "alignment": "left",
+                "text": " Flash",
+                "name": "Network Flash",
+                "priority": 399,
+                "tooltip": "Build and flash the target with the J-Link task."
+            }
+        },
+        "Network RTT IO": {
+            "icon": "terminal",
+            "sequence": [
+                {
+                    "command": "workbench.action.tasks.runTask",
+                    "args": "J-Link: RTT Server"
+                },
+                {
+                    "command": "workbench.action.tasks.runTask",
+                    "args": "J-Link: RTT Terminal",
+                    "delay": 800
+                }
+            ],
+            "statusBar": {
+                "alignment": "left",
+                "text": " RTT",
+                "name": "Network RTT IO",
+                "priority": 398,
+                "tooltip": "Start the J-Link RTT server, then open the RTT terminal for read and write I/O."
+            }
+        },
+        "Network Rebuild": {
+            "command": "workbench.action.tasks.runTask",
+            "args": "Keil: Rebuild",
+            "icon": "refresh",
+            "statusBar": {
+                "alignment": "left",
+                "text": " Rebuild",
+                "name": "Network Rebuild",
+                "priority": 397,
+                "tooltip": "Run the Keil rebuild task in the integrated terminal."
+            }
+        },
+        "Network Reset": {
+            "command": "workbench.action.tasks.runTask",
+            "args": "J-Link: Reset",
+            "icon": "debug-restart",
+            "statusBar": {
+                "alignment": "left",
+                "text": " Reset",
+                "name": "Network Reset",
+                "priority": 396,
+                "tooltip": "Reset the target with J-Link."
+            }
+        },
+        "Network Serial Monitor": {
+            "command": "workbench.action.tasks.runTask",
+            "args": "Serial: Monitor",
+            "icon": "device-mobile",
+            "statusBar": {
+                "alignment": "left",
+                "text": " Serial",
+                "name": "Network Serial Monitor",
+                "priority": 395,
+                "tooltip": "Open the UART serial monitor. If needed, VS Code will prompt for the COM port."
+            }
+        }
+    }
+}

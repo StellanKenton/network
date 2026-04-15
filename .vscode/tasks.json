@@ -1,0 +1,236 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Keil: Build",
+      "type": "shell",
+      "command": "powershell",
+      "args": [
+        "-NoProfile",
+        "-ExecutionPolicy",
+        "Bypass",
+        "-File",
+        "${workspaceFolder}/scripts/vscode/keil-build.ps1",
+        "-Mode",
+        "Build"
+      ],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "problemMatcher": [
+        "$keil-armcc"
+      ],
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared",
+        "clear": true
+      },
+      "options": {
+        "cwd": "${workspaceFolder}"
+      }
+    },
+    {
+      "label": "Keil: Rebuild",
+      "type": "shell",
+      "command": "powershell",
+      "args": [
+        "-NoProfile",
+        "-ExecutionPolicy",
+        "Bypass",
+        "-File",
+        "${workspaceFolder}/scripts/vscode/keil-build.ps1",
+        "-Mode",
+        "Rebuild"
+      ],
+      "problemMatcher": [
+        "$keil-armcc"
+      ],
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared",
+        "clear": true
+      },
+      "options": {
+        "cwd": "${workspaceFolder}"
+      }
+    },
+    {
+      "label": "J-Link: Flash",
+      "type": "shell",
+      "command": "powershell",
+      "args": [
+        "-NoProfile",
+        "-ExecutionPolicy",
+        "Bypass",
+        "-File",
+        "${workspaceFolder}/scripts/vscode/jlink.ps1",
+        "-Action",
+        "Flash"
+      ],
+      "dependsOn": [
+        "Keil: Build"
+      ],
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared",
+        "clear": true
+      },
+      "options": {
+        "cwd": "${workspaceFolder}"
+      }
+    },
+    {
+      "label": "J-Link: Reset",
+      "type": "shell",
+      "command": "powershell",
+      "args": [
+        "-NoProfile",
+        "-ExecutionPolicy",
+        "Bypass",
+        "-File",
+        "${workspaceFolder}/scripts/vscode/jlink.ps1",
+        "-Action",
+        "Reset"
+      ],
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared",
+        "clear": true
+      },
+      "options": {
+        "cwd": "${workspaceFolder}"
+      }
+    },
+    {
+      "label": "J-Link: RTT Server",
+      "type": "shell",
+      "command": "powershell",
+      "args": [
+        "-NoProfile",
+        "-ExecutionPolicy",
+        "Bypass",
+        "-File",
+        "${workspaceFolder}/scripts/vscode/jlink.ps1",
+        "-Action",
+        "RttServer"
+      ],
+      "isBackground": true,
+      "problemMatcher": [
+        "$jlink-rtt-server"
+      ],
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated",
+        "clear": true
+      },
+      "options": {
+        "cwd": "${workspaceFolder}"
+      }
+    },
+    {
+      "label": "J-Link: RTT Terminal",
+      "type": "shell",
+      "command": "powershell",
+      "args": [
+        "-NoProfile",
+        "-ExecutionPolicy",
+        "Bypass",
+        "-File",
+        "${workspaceFolder}/scripts/vscode/jlink.ps1",
+        "-Action",
+        "RttClient"
+      ],
+      "presentation": {
+        "reveal": "always",
+        "focus": true,
+        "panel": "dedicated",
+        "clear": true
+      },
+      "options": {
+        "cwd": "${workspaceFolder}"
+      }
+    },
+    {
+      "label": "J-Link: RTT Open",
+      "dependsOrder": "sequence",
+      "dependsOn": [
+        "J-Link: RTT Server",
+        "J-Link: RTT Terminal"
+      ],
+      "problemMatcher": []
+    },
+    {
+      "label": "Serial: Monitor",
+      "type": "shell",
+      "command": "powershell",
+      "args": [
+        "-NoProfile",
+        "-ExecutionPolicy",
+        "Bypass",
+        "-File",
+        "${workspaceFolder}/scripts/vscode/serial-monitor.ps1",
+        "-PortName",
+        "${input:serialPortName}"
+      ],
+      "presentation": {
+        "reveal": "always",
+        "focus": true,
+        "panel": "dedicated",
+        "clear": true
+      },
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": []
+    }
+  ],
+  "inputs": [
+    {
+      "id": "serialPortName",
+      "type": "promptString",
+      "description": "Optional COM port for Serial: Monitor. Leave blank to use SERIAL_PORT, config, or auto-detect when only one port exists.",
+      "default": ""
+    }
+  ],
+  "problemMatchers": [
+    {
+      "name": "keil-armcc",
+      "owner": "cpp",
+      "fileLocation": [
+        "relative",
+        "${workspaceFolder}/net/USER"
+      ],
+      "pattern": [
+        {
+          "regexp": "^(.*)\\((\\d+)\\):\\s+(warning|error):\\s+(.*)$",
+          "file": 1,
+          "line": 2,
+          "severity": 3,
+          "message": 4
+        },
+        {
+          "regexp": "^(.*)\\((\\d+)\\):\\s+(warning|error):\\s+#\\d+:\\s+(.*)$",
+          "file": 1,
+          "line": 2,
+          "severity": 3,
+          "message": 4
+        }
+      ]
+    },
+    {
+      "name": "jlink-rtt-server",
+      "owner": "external",
+      "pattern": {
+        "regexp": "^(ERROR|Exception):\\s+(.*)$",
+        "severity": 1,
+        "message": 2
+      },
+      "background": {
+        "activeOnStart": true,
+        "beginsPattern": "^Starting J-Link RTT server$",
+        "endsPattern": "^RTT server ready on localhost:"
+      }
+    }
+  ]
+}

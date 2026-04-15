@@ -1,0 +1,299 @@
+<html>
+<body>
+<pre>
+<h1>µVision Build Log</h1>
+<h2>Tool Versions:</h2>
+IDE-Version: ¦ÌVision V5.41.0.0
+Copyright (C) 2024 ARM Ltd and ARM Germany GmbH. All rights reserved.
+License Information: senkin senkin7853@Gmail.com, Astroceta, LIC=CZLZX-HSU7Z-Z9GG9-4H358-4IUF9-VG5GD
+ 
+Tool Versions:
+Toolchain:       MDK-ARM Plus  Version: 5.41.0.0
+Toolchain Path:  C:\Users\senki\AppData\Local\Keil_v5\ARM\ACC5\Bin
+C Compiler:      Armcc.exe V5.06 update 7 (build 960)
+Assembler:       Armasm.exe V5.06 update 7 (build 960)
+Linker/Locator:  ArmLink.exe V5.06 update 7 (build 960)
+Library Manager: ArmAr.exe V5.06 update 7 (build 960)
+Hex Converter:   FromElf.exe V5.06 update 7 (build 960)
+CPU DLL:         SARMCM3.DLL V5.41.0.0
+Dialog DLL:      DCM.DLL V1.17.5.0
+Target DLL:      UL2CM3.DLL V1.164.14.0
+Dialog DLL:      TCM.DLL V1.56.4.0
+ 
+<h2>Project:</h2>
+D:\Space\Work\network\net\USER\network.uvprojx
+Project File Date:  04/15/2026
+
+<h2>Output:</h2>
+*** Using Compiler 'V5.06 update 7 (build 960)', folder: 'C:\Users\senki\AppData\Local\Keil_v5\ARM\ACC5\Bin'
+Build target 'Template'
+compiling U2GBK.c...
+..\HARDWARE\U2GBK\U2GBK.c(55): error:  #29: expected an expression
+         for (int k = 0; k < len; k++)
+..\HARDWARE\U2GBK\U2GBK.c(55): error:  #20: identifier "k" is undefined
+         for (int k = 0; k < len; k++)
+..\HARDWARE\U2GBK\U2GBK.c(61): error:  #268: declaration may not appear after executable statement in block
+         int byteCount = 0;
+..\HARDWARE\U2GBK\U2GBK.c(62): error:  #268: declaration may not appear after executable statement in block
+         int i = 0;
+..\HARDWARE\U2GBK\U2GBK.c(63): error:  #268: declaration may not appear after executable statement in block
+         int j = 0;
+..\HARDWARE\U2GBK\U2GBK.c(65): error:  #268: declaration may not appear after executable statement in block
+  	   int k=0;
+..\HARDWARE\U2GBK\U2GBK.c(67): error:  #268: declaration may not appear after executable statement in block
+         u16 unicodeKey = 0;
+..\HARDWARE\U2GBK\U2GBK.c(68): error:  #268: declaration may not appear after executable statement in block
+         u16 gbKey = 0;
+..\HARDWARE\U2GBK\U2GBK.c: 0 warnings, 8 errors
+compiling main.c...
+..\UCOSII\CONFIG\os.h(4): error:  #5: cannot open source input file "../../uCOS-III-STM32F4/uCOS-III/Source/os.h": No such file or directory
+  #include "../../uCOS-III-STM32F4/uCOS-III/Source/os.h"
+main.c: 0 warnings, 1 error
+compiling memp.c...
+..\UCOSII\CONFIG\os.h(4): error:  #5: cannot open source input file "../../uCOS-III-STM32F4/uCOS-III/Source/os.h": No such file or directory
+  #include "../../uCOS-III-STM32F4/uCOS-III/Source/os.h"
+..\LWIP\lwip-1.4.1\src\core\memp.c: 0 warnings, 1 error
+compiling ip_frag.c...
+..\UCOSII\CONFIG\os.h(4): error:  #5: cannot open source input file "../../uCOS-III-STM32F4/uCOS-III/Source/os.h": No such file or directory
+  #include "../../uCOS-III-STM32F4/uCOS-III/Source/os.h"
+..\LWIP\lwip-1.4.1\src\core\ipv4\ip_frag.c: 0 warnings, 1 error
+compiling mem.c...
+..\UCOSII\CONFIG\os.h(4): error:  #5: cannot open source input file "../../uCOS-III-STM32F4/uCOS-III/Source/os.h": No such file or directory
+  #include "../../uCOS-III-STM32F4/uCOS-III/Source/os.h"
+..\LWIP\lwip-1.4.1\src\core\mem.c: 0 warnings, 1 error
+compiling autoip.c...
+..\UCOSII\CONFIG\os.h(4): error:  #5: cannot open source input file "../../uCOS-III-STM32F4/uCOS-III/Source/os.h": No such file or directory
+  #include "../../uCOS-III-STM32F4/uCOS-III/Source/os.h"
+..\LWIP\lwip-1.4.1\src\core\ipv4\autoip.c: 0 warnings, 1 error
+compiling usart.c...
+..\UCOSII\CONFIG\os.h(4): error:  #5: cannot open source input file "../../uCOS-III-STM32F4/uCOS-III/Source/os.h": No such file or directory
+  #include "../../uCOS-III-STM32F4/uCOS-III/Source/os.h"
+..\SYSTEM\usart\usart.c: 0 warnings, 1 error
+compiling stats.c...
+..\UCOSII\CONFIG\os.h(4): error:  #5: cannot open source input file "../../uCOS-III-STM32F4/uCOS-III/Source/os.h": No such file or directory
+  #include "../../uCOS-III-STM32F4/uCOS-III/Source/os.h"
+..\LWIP\lwip-1.4.1\src\core\stats.c: 0 warnings, 1 error
+compiling icmp.c...
+..\UCOSII\CONFIG\os.h(4): error:  #5: cannot open source input file "../../uCOS-III-STM32F4/uCOS-III/Source/os.h": No such file or directory
+  #include "../../uCOS-III-STM32F4/uCOS-III/Source/os.h"
+..\LWIP\lwip-1.4.1\src\core\ipv4\icmp.c: 0 warnings, 1 error
+compiling dns.c...
+..\UCOSII\CONFIG\os.h(4): error:  #5: cannot open source input file "../../uCOS-III-STM32F4/uCOS-III/Source/os.h": No such file or directory
+  #include "../../uCOS-III-STM32F4/uCOS-III/Source/os.h"
+..\LWIP\lwip-1.4.1\src\core\dns.c: 0 warnings, 1 error
+compiling tcp_in.c...
+..\UCOSII\CONFIG\os.h(4): error:  #5: cannot open source input file "../../uCOS-III-STM32F4/uCOS-III/Source/os.h": No such file or directory
+  #include "../../uCOS-III-STM32F4/uCOS-III/Source/os.h"
+..\LWIP\lwip-1.4.1\src\core\tcp_in.c: 0 warnings, 1 error
+compiling igmp.c...
+..\UCOSII\CONFIG\os.h(4): error:  #5: cannot open source input file "../../uCOS-III-STM32F4/uCOS-III/Source/os.h": No such file or directory
+  #include "../../uCOS-III-STM32F4/uCOS-III/Source/os.h"
+..\LWIP\lwip-1.4.1\src\core\ipv4\igmp.c: 0 warnings, 1 error
+compiling ip_addr.c...
+..\UCOSII\CONFIG\os.h(4): error:  #5: cannot open source input file "../../uCOS-III-STM32F4/uCOS-III/Source/os.h": No such file or directory
+  #include "../../uCOS-III-STM32F4/uCOS-III/Source/os.h"
+..\LWIP\lwip-1.4.1\src\core\ipv4\ip_addr.c: 0 warnings, 1 error
+compiling sys_arch.c...
+..\UCOSII\CONFIG\os.h(4): error:  #5: cannot open source input file "../../uCOS-III-STM32F4/uCOS-III/Source/os.h": No such file or directory
+  #include "../../uCOS-III-STM32F4/uCOS-III/Source/os.h"
+..\LWIP\arch\sys_arch.c: 0 warnings, 1 error
+compiling tcp.c...
+..\UCOSII\CONFIG\os.h(4): error:  #5: cannot open source input file "../../uCOS-III-STM32F4/uCOS-III/Source/os.h": No such file or directory
+  #include "../../uCOS-III-STM32F4/uCOS-III/Source/os.h"
+..\LWIP\lwip-1.4.1\src\core\tcp.c: 0 warnings, 1 error
+compiling lwip_comm.c...
+..\UCOSII\CONFIG\os.h(4): error:  #5: cannot open source input file "../../uCOS-III-STM32F4/uCOS-III/Source/os.h": No such file or directory
+  #include "../../uCOS-III-STM32F4/uCOS-III/Source/os.h"
+..\LWIP\lwip_app\lwip_comm\lwip_comm.c: 0 warnings, 1 error
+compiling dhcp.c...
+..\UCOSII\CONFIG\os.h(4): error:  #5: cannot open source input file "../../uCOS-III-STM32F4/uCOS-III/Source/os.h": No such file or directory
+  #include "../../uCOS-III-STM32F4/uCOS-III/Source/os.h"
+..\LWIP\lwip-1.4.1\src\core\dhcp.c: 0 warnings, 1 error
+compiling ip.c...
+..\UCOSII\CONFIG\os.h(4): error:  #5: cannot open source input file "../../uCOS-III-STM32F4/uCOS-III/Source/os.h": No such file or directory
+  #include "../../uCOS-III-STM32F4/uCOS-III/Source/os.h"
+..\LWIP\lwip-1.4.1\src\core\ipv4\ip.c: 0 warnings, 1 error
+compiling netif.c...
+..\UCOSII\CONFIG\os.h(4): error:  #5: cannot open source input file "../../uCOS-III-STM32F4/uCOS-III/Source/os.h": No such file or directory
+  #include "../../uCOS-III-STM32F4/uCOS-III/Source/os.h"
+..\LWIP\lwip-1.4.1\src\core\netif.c: 0 warnings, 1 error
+compiling init.c...
+..\UCOSII\CONFIG\os.h(4): error:  #5: cannot open source input file "../../uCOS-III-STM32F4/uCOS-III/Source/os.h": No such file or directory
+  #include "../../uCOS-III-STM32F4/uCOS-III/Source/os.h"
+..\LWIP\lwip-1.4.1\src\core\init.c: 0 warnings, 1 error
+compiling timers.c...
+..\UCOSII\CONFIG\os.h(4): error:  #5: cannot open source input file "../../uCOS-III-STM32F4/uCOS-III/Source/os.h": No such file or directory
+  #include "../../uCOS-III-STM32F4/uCOS-III/Source/os.h"
+..\LWIP\lwip-1.4.1\src\core\timers.c: 0 warnings, 1 error
+compiling etharp.c...
+..\UCOSII\CONFIG\os.h(4): error:  #5: cannot open source input file "../../uCOS-III-STM32F4/uCOS-III/Source/os.h": No such file or directory
+  #include "../../uCOS-III-STM32F4/uCOS-III/Source/os.h"
+..\LWIP\lwip-1.4.1\src\netif\etharp.c: 0 warnings, 1 error
+compiling udp.c...
+..\UCOSII\CONFIG\os.h(4): error:  #5: cannot open source input file "../../uCOS-III-STM32F4/uCOS-III/Source/os.h": No such file or directory
+  #include "../../uCOS-III-STM32F4/uCOS-III/Source/os.h"
+..\LWIP\lwip-1.4.1\src\core\udp.c: 0 warnings, 1 error
+compiling inet_chksum.c...
+..\UCOSII\CONFIG\os.h(4): error:  #5: cannot open source input file "../../uCOS-III-STM32F4/uCOS-III/Source/os.h": No such file or directory
+  #include "../../uCOS-III-STM32F4/uCOS-III/Source/os.h"
+..\LWIP\lwip-1.4.1\src\core\ipv4\inet_chksum.c: 0 warnings, 1 error
+compiling tcp_out.c...
+..\UCOSII\CONFIG\os.h(4): error:  #5: cannot open source input file "../../uCOS-III-STM32F4/uCOS-III/Source/os.h": No such file or directory
+  #include "../../uCOS-III-STM32F4/uCOS-III/Source/os.h"
+..\LWIP\lwip-1.4.1\src\core\tcp_out.c: 0 warnings, 1 error
+compiling inet.c...
+..\UCOSII\CONFIG\os.h(4): error:  #5: cannot open source input file "../../uCOS-III-STM32F4/uCOS-III/Source/os.h": No such file or directory
+  #include "../../uCOS-III-STM32F4/uCOS-III/Source/os.h"
+..\LWIP\lwip-1.4.1\src\core\ipv4\inet.c: 0 warnings, 1 error
+compiling def.c...
+..\UCOSII\CONFIG\os.h(4): error:  #5: cannot open source input file "../../uCOS-III-STM32F4/uCOS-III/Source/os.h": No such file or directory
+  #include "../../uCOS-III-STM32F4/uCOS-III/Source/os.h"
+..\LWIP\lwip-1.4.1\src\core\def.c: 0 warnings, 1 error
+compiling pbuf.c...
+..\UCOSII\CONFIG\os.h(4): error:  #5: cannot open source input file "../../uCOS-III-STM32F4/uCOS-III/Source/os.h": No such file or directory
+  #include "../../uCOS-III-STM32F4/uCOS-III/Source/os.h"
+..\LWIP\lwip-1.4.1\src\core\pbuf.c: 0 warnings, 1 error
+compiling raw.c...
+..\UCOSII\CONFIG\os.h(4): error:  #5: cannot open source input file "../../uCOS-III-STM32F4/uCOS-III/Source/os.h": No such file or directory
+  #include "../../uCOS-III-STM32F4/uCOS-III/Source/os.h"
+..\LWIP\lwip-1.4.1\src\core\raw.c: 0 warnings, 1 error
+compiling ethernetif.c...
+..\UCOSII\CONFIG\os.h(4): error:  #5: cannot open source input file "../../uCOS-III-STM32F4/uCOS-III/Source/os.h": No such file or directory
+  #include "../../uCOS-III-STM32F4/uCOS-III/Source/os.h"
+..\LWIP\lwip-1.4.1\src\netif\ethernetif.c: 0 warnings, 1 error
+compiling api_msg.c...
+..\UCOSII\CONFIG\os.h(4): error:  #5: cannot open source input file "../../uCOS-III-STM32F4/uCOS-III/Source/os.h": No such file or directory
+  #include "../../uCOS-III-STM32F4/uCOS-III/Source/os.h"
+..\LWIP\lwip-1.4.1\src\api\api_msg.c: 0 warnings, 1 error
+compiling api_lib.c...
+..\UCOSII\CONFIG\os.h(4): error:  #5: cannot open source input file "../../uCOS-III-STM32F4/uCOS-III/Source/os.h": No such file or directory
+  #include "../../uCOS-III-STM32F4/uCOS-III/Source/os.h"
+..\LWIP\lwip-1.4.1\src\api\api_lib.c: 0 warnings, 1 error
+compiling netbuf.c...
+..\UCOSII\CONFIG\os.h(4): error:  #5: cannot open source input file "../../uCOS-III-STM32F4/uCOS-III/Source/os.h": No such file or directory
+  #include "../../uCOS-III-STM32F4/uCOS-III/Source/os.h"
+..\LWIP\lwip-1.4.1\src\api\netbuf.c: 0 warnings, 1 error
+compiling err.c...
+..\UCOSII\CONFIG\os.h(4): error:  #5: cannot open source input file "../../uCOS-III-STM32F4/uCOS-III/Source/os.h": No such file or directory
+  #include "../../uCOS-III-STM32F4/uCOS-III/Source/os.h"
+..\LWIP\lwip-1.4.1\src\api\err.c: 0 warnings, 1 error
+compiling netdb.c...
+..\UCOSII\CONFIG\os.h(4): error:  #5: cannot open source input file "../../uCOS-III-STM32F4/uCOS-III/Source/os.h": No such file or directory
+  #include "../../uCOS-III-STM32F4/uCOS-III/Source/os.h"
+..\LWIP\lwip-1.4.1\src\api\netdb.c: 0 warnings, 1 error
+compiling netifapi.c...
+..\UCOSII\CONFIG\os.h(4): error:  #5: cannot open source input file "../../uCOS-III-STM32F4/uCOS-III/Source/os.h": No such file or directory
+  #include "../../uCOS-III-STM32F4/uCOS-III/Source/os.h"
+..\LWIP\lwip-1.4.1\src\api\netifapi.c: 0 warnings, 1 error
+compiling sockets.c...
+..\UCOSII\CONFIG\os.h(4): error:  #5: cannot open source input file "../../uCOS-III-STM32F4/uCOS-III/Source/os.h": No such file or directory
+  #include "../../uCOS-III-STM32F4/uCOS-III/Source/os.h"
+..\LWIP\lwip-1.4.1\src\api\sockets.c: 0 warnings, 1 error
+compiling delay.c...
+..\UCOSII\CONFIG\os.h(4): error:  #5: cannot open source input file "../../uCOS-III-STM32F4/uCOS-III/Source/os.h": No such file or directory
+  #include "../../uCOS-III-STM32F4/uCOS-III/Source/os.h"
+..\SYSTEM\delay\delay.c: 0 warnings, 1 error
+compiling tcpip.c...
+..\UCOSII\CONFIG\os.h(4): error:  #5: cannot open source input file "../../uCOS-III-STM32F4/uCOS-III/Source/os.h": No such file or directory
+  #include "../../uCOS-III-STM32F4/uCOS-III/Source/os.h"
+..\LWIP\lwip-1.4.1\src\api\tcpip.c: 0 warnings, 1 error
+compiling os_cfg_app.c...
+"no source": Error:  #5: cannot open source input file "..\..\uCOS-III-STM32F4\uCOS-III\Source\os_cfg_app.c": No such file or directory
+..\..\uCOS-III-STM32F4\uCOS-III\Source\os_cfg_app.c: 0 warnings, 1 error
+compiling os_core.c...
+"no source": Error:  #5: cannot open source input file "..\..\uCOS-III-STM32F4\uCOS-III\Source\os_core.c": No such file or directory
+..\..\uCOS-III-STM32F4\uCOS-III\Source\os_core.c: 0 warnings, 1 error
+compiling os_dbg.c...
+"no source": Error:  #5: cannot open source input file "..\..\uCOS-III-STM32F4\uCOS-III\Source\os_dbg.c": No such file or directory
+..\..\uCOS-III-STM32F4\uCOS-III\Source\os_dbg.c: 0 warnings, 1 error
+compiling os_flag.c...
+"no source": Error:  #5: cannot open source input file "..\..\uCOS-III-STM32F4\uCOS-III\Source\os_flag.c": No such file or directory
+..\..\uCOS-III-STM32F4\uCOS-III\Source\os_flag.c: 0 warnings, 1 error
+compiling os_int.c...
+"no source": Error:  #5: cannot open source input file "..\..\uCOS-III-STM32F4\uCOS-III\Source\os_int.c": No such file or directory
+..\..\uCOS-III-STM32F4\uCOS-III\Source\os_int.c: 0 warnings, 1 error
+compiling os_mem.c...
+"no source": Error:  #5: cannot open source input file "..\..\uCOS-III-STM32F4\uCOS-III\Source\os_mem.c": No such file or directory
+..\..\uCOS-III-STM32F4\uCOS-III\Source\os_mem.c: 0 warnings, 1 error
+compiling os_msg.c...
+"no source": Error:  #5: cannot open source input file "..\..\uCOS-III-STM32F4\uCOS-III\Source\os_msg.c": No such file or directory
+..\..\uCOS-III-STM32F4\uCOS-III\Source\os_msg.c: 0 warnings, 1 error
+compiling os_mutex.c...
+"no source": Error:  #5: cannot open source input file "..\..\uCOS-III-STM32F4\uCOS-III\Source\os_mutex.c": No such file or directory
+..\..\uCOS-III-STM32F4\uCOS-III\Source\os_mutex.c: 0 warnings, 1 error
+compiling os_pend_multi.c...
+"no source": Error:  #5: cannot open source input file "..\..\uCOS-III-STM32F4\uCOS-III\Source\os_pend_multi.c": No such file or directory
+..\..\uCOS-III-STM32F4\uCOS-III\Source\os_pend_multi.c: 0 warnings, 1 error
+compiling os_prio.c...
+"no source": Error:  #5: cannot open source input file "..\..\uCOS-III-STM32F4\uCOS-III\Source\os_prio.c": No such file or directory
+..\..\uCOS-III-STM32F4\uCOS-III\Source\os_prio.c: 0 warnings, 1 error
+compiling os_q.c...
+"no source": Error:  #5: cannot open source input file "..\..\uCOS-III-STM32F4\uCOS-III\Source\os_q.c": No such file or directory
+..\..\uCOS-III-STM32F4\uCOS-III\Source\os_q.c: 0 warnings, 1 error
+compiling os_sem.c...
+"no source": Error:  #5: cannot open source input file "..\..\uCOS-III-STM32F4\uCOS-III\Source\os_sem.c": No such file or directory
+..\..\uCOS-III-STM32F4\uCOS-III\Source\os_sem.c: 0 warnings, 1 error
+compiling os_stat.c...
+"no source": Error:  #5: cannot open source input file "..\..\uCOS-III-STM32F4\uCOS-III\Source\os_stat.c": No such file or directory
+..\..\uCOS-III-STM32F4\uCOS-III\Source\os_stat.c: 0 warnings, 1 error
+compiling os_task.c...
+"no source": Error:  #5: cannot open source input file "..\..\uCOS-III-STM32F4\uCOS-III\Source\os_task.c": No such file or directory
+..\..\uCOS-III-STM32F4\uCOS-III\Source\os_task.c: 0 warnings, 1 error
+compiling os_tick.c...
+"no source": Error:  #5: cannot open source input file "..\..\uCOS-III-STM32F4\uCOS-III\Source\os_tick.c": No such file or directory
+..\..\uCOS-III-STM32F4\uCOS-III\Source\os_tick.c: 0 warnings, 1 error
+compiling os_time.c...
+"no source": Error:  #5: cannot open source input file "..\..\uCOS-III-STM32F4\uCOS-III\Source\os_time.c": No such file or directory
+..\..\uCOS-III-STM32F4\uCOS-III\Source\os_time.c: 0 warnings, 1 error
+compiling os_tmr.c...
+"no source": Error:  #5: cannot open source input file "..\..\uCOS-III-STM32F4\uCOS-III\Source\os_tmr.c": No such file or directory
+..\..\uCOS-III-STM32F4\uCOS-III\Source\os_tmr.c: 0 warnings, 1 error
+compiling os_var.c...
+"no source": Error:  #5: cannot open source input file "..\..\uCOS-III-STM32F4\uCOS-III\Source\os_var.c": No such file or directory
+..\..\uCOS-III-STM32F4\uCOS-III\Source\os_var.c: 0 warnings, 1 error
+compiling os_cpu_c.c...
+"no source": Error:  #5: cannot open source input file "..\..\uCOS-III-STM32F4\uCOS-III\Ports\ARM-Cortex-M4\Generic\RealView\os_cpu_c.c": No such file or directory
+..\..\uCOS-III-STM32F4\uCOS-III\Ports\ARM-Cortex-M4\Generic\RealView\os_cpu_c.c: 0 warnings, 1 error
+assembling os_cpu_a.asm...
+os_cpu_a.asm: error: A1023E: File "..\..\uCOS-III-STM32F4\uCOS-III\Ports\ARM-Cortex-M4\Generic\RealView\os_cpu_a.asm" could not be opened: No such file or directory
+compiling lib_ascii.c...
+"no source": Error:  #5: cannot open source input file "..\..\uCOS-III-STM32F4\uC-LIB\lib_ascii.c": No such file or directory
+..\..\uCOS-III-STM32F4\uC-LIB\lib_ascii.c: 0 warnings, 1 error
+compiling cpu_core.c...
+"no source": Error:  #5: cannot open source input file "..\..\uCOS-III-STM32F4\uC-CPU\cpu_core.c": No such file or directory
+..\..\uCOS-III-STM32F4\uC-CPU\cpu_core.c: 0 warnings, 1 error
+compiling lib_math.c...
+"no source": Error:  #5: cannot open source input file "..\..\uCOS-III-STM32F4\uC-LIB\lib_math.c": No such file or directory
+..\..\uCOS-III-STM32F4\uC-LIB\lib_math.c: 0 warnings, 1 error
+compiling lib_mem.c...
+"no source": Error:  #5: cannot open source input file "..\..\uCOS-III-STM32F4\uC-LIB\lib_mem.c": No such file or directory
+..\..\uCOS-III-STM32F4\uC-LIB\lib_mem.c: 0 warnings, 1 error
+compiling lib_str.c...
+"no source": Error:  #5: cannot open source input file "..\..\uCOS-III-STM32F4\uC-LIB\lib_str.c": No such file or directory
+..\..\uCOS-III-STM32F4\uC-LIB\lib_str.c: 0 warnings, 1 error
+compiling transport.c...
+..\UCOSII\CONFIG\os.h(4): error:  #5: cannot open source input file "../../uCOS-III-STM32F4/uCOS-III/Source/os.h": No such file or directory
+  #include "../../uCOS-III-STM32F4/uCOS-III/Source/os.h"
+..\mqtt\transport\transport.c: 0 warnings, 1 error
+compiling mqtt_app.c...
+..\UCOSII\CONFIG\os.h(4): error:  #5: cannot open source input file "../../uCOS-III-STM32F4/uCOS-III/Source/os.h": No such file or directory
+  #include "../../uCOS-III-STM32F4/uCOS-III/Source/os.h"
+..\mqtt\app\mqtt_app.c: 0 warnings, 1 error
+"..\OBJ\Template.axf" - 73 Error(s), 0 Warning(s).
+
+<h2>Software Packages used:</h2>
+
+Package Vendor: Keil
+                http://www.keil.com/pack/Keil.STM32F4xx_DFP.2.16.0.pack
+                Keil::STM32F4xx_DFP@2.16.0
+                STMicroelectronics STM32F4 Series Device Support, Drivers and Examples
+
+<h2>Collection of Component include folders:</h2>
+  C:/Users/senki/AppData/Local/Arm/Packs/Keil/STM32F4xx_DFP/2.16.0/Drivers/CMSIS/Device/ST/STM32F4xx/Include
+
+<h2>Collection of Component Files used:</h2>
+Target not created.
+Build Time Elapsed:  00:00:02
+</pre>
+</body>
+</html>

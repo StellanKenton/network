@@ -1,0 +1,1 @@
+/* Compatibility stub for legacy project layout. */
