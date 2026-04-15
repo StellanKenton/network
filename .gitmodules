@@ -1,0 +1,3 @@
+[submodule "net/rep"]
+	path = net/rep
+	url = https://github.com/StellanKenton/rep.git
