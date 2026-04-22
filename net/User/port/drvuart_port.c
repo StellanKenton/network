@@ -1,0 +1,75 @@
+/***********************************************************************************
+* @file     : drvuart_port.c
+* @brief    : Project-side UART driver binding.
+**********************************************************************************/
+#include "drvuart_port.h"
+
+#include <stddef.h>
+
+#include "../../rep/driver/drvuart/drvuart.h"
+
+#include "../bsp/bspuart.h"
+
+static stRingBuffer gDrvUartRingBuffer[DRVUART_MAX];
+static uint8_t gDrvUartRingStorageWifi[DRVUART_RECVLEN_WIFI];
+static uint8_t gDrvUartRingStorageCellular[DRVUART_RECVLEN_CELLULAR];
+
+static stDrvUartBspInterface gDrvUartBspInterface[DRVUART_MAX] = {
+	{
+		bspUartInit,
+		bspUartTransmit,
+		bspUartTransmitIt,
+		bspUartTransmitDma,
+		bspUartGetDataLen,
+		bspUartReceive,
+		gDrvUartRingStorageWifi,
+	},
+	{
+		bspUartInit,
+		bspUartTransmit,
+		bspUartTransmitIt,
+		bspUartTransmitDma,
+		bspUartGetDataLen,
+		bspUartReceive,
+		gDrvUartRingStorageCellular,
+	},
+};
+
+const stDrvUartBspInterface *drvUartGetPlatformBspInterfaces(void)
+{
+	return gDrvUartBspInterface;
+}
+
+stRingBuffer *drvUartGetPlatformRingBuffer(uint8_t uart)
+{
+	if (uart >= DRVUART_MAX) {
+		return NULL;
+	}
+
+	return &gDrvUartRingBuffer[uart];
+}
+
+eDrvStatus drvUartGetPlatformStorageConfig(uint8_t uart, uint8_t **storage, uint32_t *capacity)
+{
+	if ((storage == NULL) || (capacity == NULL) || (uart >= DRVUART_MAX)) {
+		return DRV_STATUS_INVALID_PARAM;
+	}
+
+	if (uart == DRVUART_WIFI) {
+		*storage = gDrvUartRingStorageWifi;
+		*capacity = sizeof(gDrvUartRingStorageWifi);
+		return DRV_STATUS_OK;
+	}
+
+	if (uart == DRVUART_CELLULAR) {
+		*storage = gDrvUartRingStorageCellular;
+		*capacity = sizeof(gDrvUartRingStorageCellular);
+		return DRV_STATUS_OK;
+	}
+
+	*storage = NULL;
+	*capacity = 0U;
+	return DRV_STATUS_UNSUPPORTED;
+}
+
+/**************************End of file********************************/

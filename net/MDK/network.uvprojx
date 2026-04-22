@@ -327,7 +327,7 @@
             <wLevel>0</wLevel>
             <uThumb>0</uThumb>
             <uSurpInc>0</uSurpInc>
-            <uC99>0</uC99>
+            <uC99>1</uC99>
             <uGnu>0</uGnu>
             <useXO>0</useXO>
             <v6Lang>3</v6Lang>
@@ -341,7 +341,7 @@
               <MiscControls></MiscControls>
               <Define>STM32F40_41xxx,USE_STDPERIPH_DRIVER,__FPU_USED=1</Define>
               <Undefine></Undefine>
-              <IncludePath>.;..\CORE;..\SYSTEM\delay;..\SYSTEM\sys;..\SYSTEM\usart;..\FWLIB\STM32F4xx_StdPeriph_Driver\inc;..\User;..\HARDWARE\LED;..\UCOSIII\uC-CPU;..\UCOSIII\uC-LIB;..\UCOSIII\uCOS-III;..\UCOSIII\UCOS_BSP;..\UCOSIII\uCOS_CONFIG;..\UCOSIII\uCOS-III\Source;..\UCOSIII\uC-CPU\ARM-Cortex-M4\RealView;..\UCOSIII\uC-LIB\Ports\ARM-Cortex-M4\RealView;..\UCOSIII\uCOS-III\Ports\ARM-Cortex-M4\Generic\RealView</IncludePath>
+              <IncludePath>.;..\CORE;..\SYSTEM\delay;..\SYSTEM\sys;..\SYSTEM\usart;..\FWLIB\STM32F4xx_StdPeriph_Driver\inc;..\User;..\User\port;..\HARDWARE\LED;..\rep\tools\ringbuffer;..\UCOSIII\uC-CPU;..\UCOSIII\uC-LIB;..\UCOSIII\uCOS-III;..\UCOSIII\UCOS_BSP;..\UCOSIII\uCOS_CONFIG;..\UCOSIII\uCOS-III\Source;..\UCOSIII\uC-CPU\ARM-Cortex-M4\RealView;..\UCOSIII\uC-LIB\Ports\ARM-Cortex-M4\RealView;..\UCOSIII\uCOS-III\Ports\ARM-Cortex-M4\Generic\RealView</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -400,11 +400,106 @@
               <FileType>1</FileType>
               <FilePath>.\system_stm32f4xx.c</FilePath>
             </File>
+            <File>
+              <FileName>system_rtt.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\User\system\system_rtt.c</FilePath>
+            </File>
+            <File>
+              <FileName>system.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\User\system\system.c</FilePath>
+            </File>
+            <File>
+              <FileName>sysmgr.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\User\system\sysmgr.c</FilePath>
+            </File>
+            <File>
+              <FileName>systask.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\User\system\systask.c</FilePath>
+            </File>
+            <File>
+              <FileName>iotmanager.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\User\manager\iotmanager\iotmanager.c</FilePath>
+            </File>
+            <File>
+              <FileName>wireless.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\User\manager\wireless\wireless.c</FilePath>
+            </File>
+            <File>
+              <FileName>cellular.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\User\manager\cellular\cellular.c</FilePath>
+            </File>
+            <File>
+              <FileName>ethernet.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\User\manager\ethernet\ethernet.c</FilePath>
+            </File>
+            <File>
+              <FileName>bsp_rtt.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\User\bsp\bsp_rtt.c</FilePath>
+            </File>
+            <File>
+              <FileName>log_port.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\User\port\log_port.c</FilePath>
+            </File>
+            <File>
+              <FileName>rtos_port.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\User\port\rtos_port.c</FilePath>
+            </File>
+            <File>
+              <FileName>ringbuffer.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\rep\tools\ringbuffer\ringbuffer.c</FilePath>
+            </File>
+            <File>
+              <FileName>rtos.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\rep\service\rtos\rtos.c</FilePath>
+            </File>
+            <File>
+              <FileName>log.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\rep\service\log\log.c</FilePath>
+            </File>
+            <File>
+              <FileName>console.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\rep\service\log\console.c</FilePath>
+            </File>
+            <File>
+              <FileName>SEGGER_RTT.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\rep\lib\SEGGER\SEGGER_RTT.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
           <GroupName>HARDWARE</GroupName>
           <Files>
+            <File>
+              <FileName>sdcard.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\rep\module\sdcard\sdcard.c</FilePath>
+            </File>
+            <File>
+              <FileName>sdcard_port.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\User\port\sdcard_port.c</FilePath>
+            </File>
+            <File>
+              <FileName>bsp_sdio.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\User\bsp\bsp_sdio.c</FilePath>
+            </File>
             <File>
               <FileName>led.c</FileName>
               <FileType>1</FileType>
@@ -474,6 +569,11 @@
               <FileName>stm32f4xx_spi.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\FWLIB\STM32F4xx_StdPeriph_Driver\src\stm32f4xx_spi.c</FilePath>
+            </File>
+            <File>
+              <FileName>stm32f4xx_sdio.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\FWLIB\STM32F4xx_StdPeriph_Driver\src\stm32f4xx_sdio.c</FilePath>
             </File>
           </Files>
         </Group>

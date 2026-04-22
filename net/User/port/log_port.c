@@ -3,7 +3,7 @@
 * @brief    : Project-side log transport binding.
 * @details  : Binds the reusable log layer to the board RTT transport.
 **********************************************************************************/
-#include "../../rep/service/console/log.h"
+#include "../../rep/service/log/log.h"
 
 #include "../bsp/bsp_rtt.h"
 

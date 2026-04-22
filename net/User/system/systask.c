@@ -1,6 +1,7 @@
 #include "systask.h"
 
 #include "includes.h"
+#include "../../rep/service/rtos/rtos.h"
 
 #include "../manager/cellular/cellular.h"
 #include "../manager/ethernet/ethernet.h"
@@ -8,109 +9,78 @@
 #include "../manager/wireless/wireless.h"
 #include "sysmgr.h"
 
-#define IOT_MANAGER_TASK_PRIO        9u
-#define IOT_MANAGER_TASK_STK_SIZE    256u
-#define IOT_MANAGER_TASK_INTERVAL_MS 20u
 
-#define WIRELESS_TASK_PRIO           10u
-#define WIRELESS_TASK_STK_SIZE       256u
-#define WIRELESS_TASK_INTERVAL_MS    20u
 
-#define CELLULAR_TASK_PRIO           11u
-#define CELLULAR_TASK_STK_SIZE       256u
-#define CELLULAR_TASK_INTERVAL_MS    20u
-
-#define ETHERNET_TASK_PRIO           12u
-#define ETHERNET_TASK_STK_SIZE       256u
-#define ETHERNET_TASK_INTERVAL_MS    20u
-
-static OS_TCB gIotManagerTaskTcb;
-static CPU_STK gIotManagerTaskStk[IOT_MANAGER_TASK_STK_SIZE];
-static OS_TCB gWirelessTaskTcb;
-static CPU_STK gWirelessTaskStk[WIRELESS_TASK_STK_SIZE];
-static OS_TCB gCellularTaskTcb;
-static CPU_STK gCellularTaskStk[CELLULAR_TASK_STK_SIZE];
-static OS_TCB gEthernetTaskTcb;
-static CPU_STK gEthernetTaskStk[ETHERNET_TASK_STK_SIZE];
+static repRtosStackType gIotManagerTaskStk[IOT_MANAGER_TASK_STK_SIZE];
+static repRtosStackType gWirelessTaskStk[WIRELESS_TASK_STK_SIZE];
+static repRtosStackType gCellularTaskStk[CELLULAR_TASK_STK_SIZE];
+static repRtosStackType gEthernetTaskStk[ETHERNET_TASK_STK_SIZE];
 
 static CPU_BOOLEAN gWorkerTasksCreated = DEF_FALSE;
 
-static void systaskCreateTask(OS_TCB *taskTcb,
-				  CPU_CHAR *name,
-				  OS_TASK_PTR task,
-				  void *argument,
-				  OS_PRIO prio,
-				  CPU_STK *stackBase,
-				  CPU_STK_SIZE stackSize)
+static void systaskAssertRtosStatus(eRepRtosStatus status)
 {
-	OS_ERR err;
-	CPU_STK *stackTop;
-
-	(void)taskTcb;
-	stackTop = &stackBase[stackSize - 1u];
-
-	err = OSTaskCreateExt(task,
-					  argument,
-					  stackTop,
-					  prio,
-					  prio,
-					  stackBase,
-					  stackSize,
-					  NULL,
-					  APP_TASK_OPT);
-	#if OS_TASK_NAME_EN > 0u
-	if (err == OS_ERR_NONE) {
-		OSTaskNameSet(prio, (INT8U *)name, &err);
+	if (status == REP_RTOS_STATUS_OK) {
+		return;
 	}
-	#endif
-	APP_RTOS_ASSERT(err);
+
+	for (;;) {
+	}
+}
+
+static void systaskCreateTask(const char *name,
+				  repRtosTaskEntry task,
+				  void *argument,
+				  uint32_t prio,
+				  repRtosStackType *stackBase,
+				  uint32_t stackSize)
+{
+	stRepRtosTaskConfig config;
+
+	config.name = name;
+	config.entry = task;
+	config.argument = argument;
+	config.stackBuffer = stackBase;
+	config.stackSize = stackSize;
+	config.priority = prio;
+	config.handle = NULL;
+
+	systaskAssertRtosStatus(repRtosTaskCreate(&config));
 }
 
 static void iotManagerTask(void *pdata)
 {
-	OS_ERR err;
-
 	(void)pdata;
 	for (;;) {
 		iotManagerProcess();
-		err = OSTimeDlyHMSM(0, 0, 0, IOT_MANAGER_TASK_INTERVAL_MS);
-		APP_RTOS_ASSERT(err);
+		systaskAssertRtosStatus(repRtosDelayMs(IOT_MANAGER_TASK_INTERVAL_MS));
 	}
 }
 
 static void wirelessTask(void *pdata)
 {
-	OS_ERR err;
-
 	(void)pdata;
 	for (;;) {
 		wirelessProcess();
-		err = OSTimeDlyHMSM(0, 0, 0, WIRELESS_TASK_INTERVAL_MS);
-		APP_RTOS_ASSERT(err);
+		systaskAssertRtosStatus(repRtosDelayMs(WIRELESS_TASK_INTERVAL_MS));
 	}
 }
 
 static void cellularTask(void *pdata)
 {
-	OS_ERR err;
-
 	(void)pdata;
 	for (;;) {
 		cellularProcess();
-		err = OSTimeDlyHMSM(0, 0, 0, CELLULAR_TASK_INTERVAL_MS);
-		APP_RTOS_ASSERT(err);
+		systaskAssertRtosStatus(repRtosDelayMs(CELLULAR_TASK_INTERVAL_MS));
 	}
 }
 
 static void ethernetTask(void *pdata)
 {
-	OS_ERR err;
-
 	(void)pdata;
 	for (;;) {
 		ethernetProcess();
-		err = OSTimeDlyHMSM(0, 0, 0, ETHERNET_TASK_INTERVAL_MS);
-		APP_RTOS_ASSERT(err);
+		systaskAssertRtosStatus(repRtosDelayMs(ETHERNET_TASK_INTERVAL_MS));
 	}
 }
 
@@ -120,29 +90,25 @@ static void systaskCreateWorkerTasks(void)
 		return;
 	}
 
-	systaskCreateTask(&gIotManagerTaskTcb,
-				  (CPU_CHAR *)"IotManager",
+	systaskCreateTask("IotManager",
 				  iotManagerTask,
 				  NULL,
 				  IOT_MANAGER_TASK_PRIO,
 				  &gIotManagerTaskStk[0],
 				  IOT_MANAGER_TASK_STK_SIZE);
-	systaskCreateTask(&gWirelessTaskTcb,
-				  (CPU_CHAR *)"Wireless",
+	systaskCreateTask("Wireless",
 				  wirelessTask,
 				  NULL,
 				  WIRELESS_TASK_PRIO,
 				  &gWirelessTaskStk[0],
 				  WIRELESS_TASK_STK_SIZE);
-	systaskCreateTask(&gCellularTaskTcb,
-				  (CPU_CHAR *)"Cellular",
+	systaskCreateTask("Cellular",
 				  cellularTask,
 				  NULL,
 				  CELLULAR_TASK_PRIO,
 				  &gCellularTaskStk[0],
 				  CELLULAR_TASK_STK_SIZE);
-	systaskCreateTask(&gEthernetTaskTcb,
-				  (CPU_CHAR *)"Ethernet",
+	systaskCreateTask("Ethernet",
 				  ethernetTask,
 				  NULL,
 				  ETHERNET_TASK_PRIO,
@@ -154,14 +120,11 @@ static void systaskCreateWorkerTasks(void)
 
 void system_task(void *pdata)
 {
-	OS_ERR err;
-
 	(void)pdata;
 	systaskCreateWorkerTasks();
 	for (;;) {
 		systemManagerRun();
-		err = OSTimeDlyHMSM(0, 0, 0, 10);
-		APP_RTOS_ASSERT(err);
+		systaskAssertRtosStatus(repRtosDelayMs(SYSTEM_TASK_INTERVAL_MS));
 	}
 }
 

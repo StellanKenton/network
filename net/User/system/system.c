@@ -22,8 +22,6 @@ const char *systemGetModeString(eSystemMode mode)
 	switch (mode) {
 	case SYSTEM_MODE_INIT:
 		return "INIT";
-	case SYSTEM_MODE_DHCP_WAIT:
-		return "DHCP_WAIT";
 	case SYSTEM_MODE_NORMAL:
 		return "NORMAL";
 	default:

@@ -8,7 +8,7 @@
 #include <stdbool.h>
 #include <stddef.h>
 
-#include "../SEGGER/SEGGER_RTT.h"
+#include "../../rep/lib/SEGGER/SEGGER_RTT.h"
 
 #define BSP_RTT_INPUT_READ_CHUNK_SIZE  32U
 

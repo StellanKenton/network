@@ -8,7 +8,6 @@ extern "C" {
 
 typedef enum {
 	SYSTEM_MODE_INIT = 0,
-	SYSTEM_MODE_DHCP_WAIT,
 	SYSTEM_MODE_NORMAL,
 	SYSTEM_MODE_MAX
 } eSystemMode;
