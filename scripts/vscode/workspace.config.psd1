@@ -1,10 +1,10 @@
 @{
-    ProjectPath = 'net/USER/network.uvprojx'
-    KeilTarget = 'NetWork'
-    HexFilePath = 'net/OBJ/Template.hex'
+    ProjectPath = 'net/MDK/network.uvprojx'
+    KeilTarget = 'Network'
+    HexFilePath = 'net/OBJ/network.hex'
 
     JLink = @{
-        Device = 'STM32F429ZI'
+        Device = 'GD32F407VG'
         Interface = 'SWD'
         SpeedKHz = 4000
         GdbPort = 3331
