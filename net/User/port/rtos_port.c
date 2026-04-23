@@ -26,6 +26,9 @@ typedef struct stRtosPortTaskSlot {
 
 static CPU_SR gRtosPortCriticalState = 0u;
 static uint32_t gRtosPortCriticalDepth = 0u;
+static volatile OS_ERR gRtosPortLastDelayError = OS_ERR_NONE;
+static volatile uint32_t gRtosPortLastDelayMs = 0u;
+static const CPU_CHAR *gRtosPortLastDelayTaskName = "<none>";
 static stRtosPortMutexSlot gRtosPortMutexPool[RTOS_PORT_MUTEX_POOL_SIZE];
 static stRtosPortTaskSlot gRtosPortTaskPool[RTOS_PORT_TASK_POOL_SIZE];
 
@@ -117,16 +120,23 @@ static eRepRtosSchedulerState rtosPortGetSchedulerStateImpl(void)
 static eRepRtosStatus rtosPortDelayMsImpl(uint32_t delayMs)
 {
 	OS_ERR err = OS_ERR_NONE;
+	OS_TCB *currentTask;
+
+	currentTask = OSTCBCurPtr;
+	gRtosPortLastDelayMs = delayMs;
+	gRtosPortLastDelayTaskName = ((currentTask != NULL) && (currentTask->NamePtr != NULL)) ? currentTask->NamePtr : "<none>";
 
 	if (rtosPortGetSchedulerStateImpl() == REP_RTOS_SCHEDULER_RUNNING) {
 		OSTimeDly((OS_TICK)rtosPortDelayMsToTicks(delayMs),
 			 OS_OPT_TIME_DLY,
 			 &err);
+		gRtosPortLastDelayError = err;
 		if (err != OS_ERR_NONE) {
 			return REP_RTOS_STATUS_ERROR;
 		}
 	} else {
 		delay_ms((u16)delayMs);
+		gRtosPortLastDelayError = OS_ERR_NONE;
 	}
 
 	return REP_RTOS_STATUS_OK;
@@ -386,6 +396,30 @@ const char *rtosPortGetName(void)
 uint32_t rtosPortGetSystem(void)
 {
 	return REP_RTOS_SYSTEM;
+}
+
+const char *rtosPortGetCurrentTaskName(void)
+{
+	if ((OSTCBCurPtr != NULL) && (OSTCBCurPtr->NamePtr != NULL)) {
+		return (const char *)OSTCBCurPtr->NamePtr;
+	}
+
+	return "<none>";
+}
+
+uint32_t rtosPortGetLastDelayError(void)
+{
+	return (uint32_t)gRtosPortLastDelayError;
+}
+
+uint32_t rtosPortGetLastDelayMs(void)
+{
+	return gRtosPortLastDelayMs;
+}
+
+const char *rtosPortGetLastDelayTaskName(void)
+{
+	return (const char *)gRtosPortLastDelayTaskName;
 }
 
 /**************************End of file********************************/

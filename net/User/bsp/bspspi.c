@@ -46,12 +46,12 @@ eDrvStatus bspSpiInit(uint8_t spi)
 	RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOB, ENABLE);
 	RCC_APB1PeriphClockCmd(RCC_APB1Periph_SPI2, ENABLE);
 
-	GPIO_PinAFConfig(GPIOB, GPIO_PinSource13, GPIO_AF_SPI2);
+	GPIO_PinAFConfig(GPIOB, GPIO_PinSource10, GPIO_AF_SPI2);
 	GPIO_PinAFConfig(GPIOB, GPIO_PinSource14, GPIO_AF_SPI2);
 	GPIO_PinAFConfig(GPIOB, GPIO_PinSource15, GPIO_AF_SPI2);
 
 	GPIO_StructInit(&lGpioInit);
-	lGpioInit.GPIO_Pin = GPIO_Pin_13 | GPIO_Pin_14 | GPIO_Pin_15;
+	lGpioInit.GPIO_Pin = GPIO_Pin_10 | GPIO_Pin_14 | GPIO_Pin_15;
 	lGpioInit.GPIO_Mode = GPIO_Mode_AF;
 	lGpioInit.GPIO_OType = GPIO_OType_PP;
 	lGpioInit.GPIO_PuPd = GPIO_PuPd_UP;

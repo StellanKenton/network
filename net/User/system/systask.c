@@ -1,13 +1,16 @@
 #include "systask.h"
 
 #include "includes.h"
+#include "../../rep/service/log/log.h"
 #include "../../rep/service/rtos/rtos.h"
 
+#include "../port/rtos_port.h"
 #include "../manager/cellular/cellular.h"
 #include "../manager/ethernet/ethernet.h"
 #include "../manager/iotmanager/iotmanager.h"
 #include "../manager/wireless/wireless.h"
 #include "sysmgr.h"
+#include "system_storage.h"
 
 
 
@@ -15,14 +18,24 @@ static repRtosStackType gIotManagerTaskStk[IOT_MANAGER_TASK_STK_SIZE];
 static repRtosStackType gWirelessTaskStk[WIRELESS_TASK_STK_SIZE];
 static repRtosStackType gCellularTaskStk[CELLULAR_TASK_STK_SIZE];
 static repRtosStackType gEthernetTaskStk[ETHERNET_TASK_STK_SIZE];
+static repRtosStackType gVfsTaskStk[VFS_TASK_STK_SIZE];
 
 static CPU_BOOLEAN gWorkerTasksCreated = DEF_FALSE;
+static CPU_BOOLEAN gVfsTaskCreated = DEF_FALSE;
 
 static void systaskAssertRtosStatus(eRepRtosStatus status)
 {
 	if (status == REP_RTOS_STATUS_OK) {
 		return;
 	}
+
+	LOG_E("systask",
+	      "rtos assert status=%u task=%s lastDelayTask=%s lastDelayMs=%lu lastDelayErr=%lu",
+	      (unsigned)status,
+	      rtosPortGetCurrentTaskName(),
+	      rtosPortGetLastDelayTaskName(),
+	      (unsigned long)rtosPortGetLastDelayMs(),
+	      (unsigned long)rtosPortGetLastDelayError());
 
 	for (;;) {
 	}
@@ -61,7 +74,11 @@ static void wirelessTask(void *pdata)
 {
 	(void)pdata;
 	for (;;) {
-		wirelessProcess();
+		if (!wirelessIsReady()) {
+			(void)wirelessInit();
+		} else {
+			wirelessProcess();
+		}
 		systaskAssertRtosStatus(repRtosDelayMs(WIRELESS_TASK_INTERVAL_MS));
 	}
 }
@@ -84,7 +101,31 @@ static void ethernetTask(void *pdata)
 	}
 }
 
-static void systaskCreateWorkerTasks(void)
+static void vfsTask(void *pdata)
+{
+	(void)pdata;
+	for (;;) {
+		systemStorageProcess();
+		systaskAssertRtosStatus(repRtosDelayMs(VFS_TASK_INTERVAL_MS));
+	}
+}
+
+static void systaskCreateVfsTask(void)
+{
+	if (gVfsTaskCreated != DEF_FALSE) {
+		return;
+	}
+
+	systaskCreateTask("Vfs",
+				  vfsTask,
+				  NULL,
+				  VFS_TASK_PRIO,
+				  &gVfsTaskStk[0],
+				  VFS_TASK_STK_SIZE);
+	gVfsTaskCreated = DEF_TRUE;
+}
+
+void systaskCreateWorkerTasks(void)
 {
 	if (gWorkerTasksCreated != DEF_FALSE) {
 		return;
@@ -121,7 +162,7 @@ static void systaskCreateWorkerTasks(void)
 void system_task(void *pdata)
 {
 	(void)pdata;
-	systaskCreateWorkerTasks();
+	systaskCreateVfsTask();
 	for (;;) {
 		systemManagerRun();
 		systaskAssertRtosStatus(repRtosDelayMs(SYSTEM_TASK_INTERVAL_MS));

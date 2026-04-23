@@ -416,6 +416,11 @@
               <FilePath>..\User\system\sysmgr.c</FilePath>
             </File>
             <File>
+              <FileName>system_storage.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\User\system\system_storage.c</FilePath>
+            </File>
+            <File>
               <FileName>systask.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\User\system\systask.c</FilePath>
@@ -429,6 +434,11 @@
               <FileName>wireless.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\User\manager\wireless\wireless.c</FilePath>
+            </File>
+            <File>
+              <FileName>esp32c5_port.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\User\port\esp32c5_port.c</FilePath>
             </File>
             <File>
               <FileName>cellular.c</FileName>
@@ -446,9 +456,34 @@
               <FilePath>..\User\bsp\bsp_rtt.c</FilePath>
             </File>
             <File>
+              <FileName>bspgpio.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\User\bsp\bspgpio.c</FilePath>
+            </File>
+            <File>
+              <FileName>bspuart.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\User\bsp\bspuart.c</FilePath>
+            </File>
+            <File>
+              <FileName>bspspi.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\User\bsp\bspspi.c</FilePath>
+            </File>
+            <File>
               <FileName>log_port.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\User\port\log_port.c</FilePath>
+            </File>
+            <File>
+              <FileName>drvgpio_port.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\User\port\drvgpio_port.c</FilePath>
+            </File>
+            <File>
+              <FileName>drvuart_port.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\User\port\drvuart_port.c</FilePath>
             </File>
             <File>
               <FileName>rtos_port.c</FileName>
@@ -456,9 +491,54 @@
               <FilePath>..\User\port\rtos_port.c</FilePath>
             </File>
             <File>
+              <FileName>drvspi_port.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\User\port\drvspi_port.c</FilePath>
+            </File>
+            <File>
+              <FileName>w25qxxx_port.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\User\port\w25qxxx_port.c</FilePath>
+            </File>
+            <File>
+              <FileName>fatfs_diskio.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\User\port\fatfs_diskio.c</FilePath>
+            </File>
+            <File>
+              <FileName>drvgpio.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\rep\driver\drvgpio\drvgpio.c</FilePath>
+            </File>
+            <File>
+              <FileName>drvuart.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\rep\driver\drvuart\drvuart.c</FilePath>
+            </File>
+            <File>
+              <FileName>drvspi.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\rep\driver\drvspi\drvspi.c</FilePath>
+            </File>
+            <File>
+              <FileName>flowparser.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\rep\comm\flowparser\flowparser.c</FilePath>
+            </File>
+            <File>
+              <FileName>flowparser_stream.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\rep\comm\flowparser\flowparser_stream.c</FilePath>
+            </File>
+            <File>
               <FileName>ringbuffer.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\rep\tools\ringbuffer\ringbuffer.c</FilePath>
+            </File>
+            <File>
+              <FileName>md5.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\rep\tools\md5\md5.c</FilePath>
             </File>
             <File>
               <FileName>rtos.c</FileName>
@@ -476,9 +556,69 @@
               <FilePath>..\rep\service\log\console.c</FilePath>
             </File>
             <File>
+              <FileName>vfs.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\rep\service\vfs\vfs.c</FilePath>
+            </File>
+            <File>
+              <FileName>vfs_littlefs.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\rep\service\vfs\vfs_littlefs.c</FilePath>
+            </File>
+            <File>
+              <FileName>vfs_fatfs.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\rep\service\vfs\vfs_fatfs.c</FilePath>
+            </File>
+            <File>
+              <FileName>vfs_debug.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\rep\service\vfs\vfs_debug.c</FilePath>
+            </File>
+            <File>
+              <FileName>w25qxxx.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\rep\module\w25qxxx\w25qxxx.c</FilePath>
+            </File>
+            <File>
+              <FileName>esp32c5.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\rep\module\esp32c5\esp32c5.c</FilePath>
+            </File>
+            <File>
+              <FileName>esp32c5_ctrl.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\rep\module\esp32c5\esp32c5_ctrl.c</FilePath>
+            </File>
+            <File>
+              <FileName>esp32c5_data.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\rep\module\esp32c5\esp32c5_data.c</FilePath>
+            </File>
+            <File>
               <FileName>SEGGER_RTT.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\rep\lib\SEGGER\SEGGER_RTT.c</FilePath>
+            </File>
+            <File>
+              <FileName>ff.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\rep\lib\fatfs\ff.c</FilePath>
+            </File>
+            <File>
+              <FileName>cc936.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\rep\lib\fatfs\option\cc936.c</FilePath>
+            </File>
+            <File>
+              <FileName>lfs.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\rep\lib\littlefs\lfs.c</FilePath>
+            </File>
+            <File>
+              <FileName>lfs_util.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\rep\lib\littlefs\lfs_util.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -541,6 +681,11 @@
               <FilePath>..\FWLIB\STM32F4xx_StdPeriph_Driver\src\stm32f4xx_gpio.c</FilePath>
             </File>
             <File>
+              <FileName>stm32f4xx_dma.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\FWLIB\STM32F4xx_StdPeriph_Driver\src\stm32f4xx_dma.c</FilePath>
+            </File>
+            <File>
               <FileName>stm32f4xx_rcc.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\FWLIB\STM32F4xx_StdPeriph_Driver\src\stm32f4xx_rcc.c</FilePath>
@@ -574,6 +719,16 @@
               <FileName>stm32f4xx_sdio.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\FWLIB\STM32F4xx_StdPeriph_Driver\src\stm32f4xx_sdio.c</FilePath>
+            </File>
+            <File>
+              <FileName>stm32f4xx_cryp.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\FWLIB\STM32F4xx_StdPeriph_Driver\src\stm32f4xx_cryp.c</FilePath>
+            </File>
+            <File>
+              <FileName>stm32f4xx_cryp_aes.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\FWLIB\STM32F4xx_StdPeriph_Driver\src\stm32f4xx_cryp_aes.c</FilePath>
             </File>
           </Files>
         </Group>

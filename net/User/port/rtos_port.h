@@ -16,6 +16,10 @@ extern "C" {
 const stRepRtosOps *rtosPortGetOps(void);
 const char *rtosPortGetName(void);
 uint32_t rtosPortGetSystem(void);
+const char *rtosPortGetCurrentTaskName(void);
+uint32_t rtosPortGetLastDelayError(void);
+uint32_t rtosPortGetLastDelayMs(void);
+const char *rtosPortGetLastDelayTaskName(void);
 
 #ifdef __cplusplus
 }

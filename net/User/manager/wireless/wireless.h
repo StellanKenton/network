@@ -10,17 +10,19 @@
 #ifndef NETWORK_APP_MANAGER_WIRELESS_WIRELESS_H
 #define NETWORK_APP_MANAGER_WIRELESS_WIRELESS_H
 
+#include <stdbool.h>
+
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-enum wirlessMode {
+typedef enum wirlessMode {
     WIRELESS_MODE_NONE = 0,
     WIRELESS_MODE_WIFI,
     WIRELESS_MODE_BLE,
 } eWirelessMode;
 
-enum bleState {
+typedef enum bleState {
     BLE_STATE_IDLE = 0,
     BLE_STATE_INITIALIZING,
     BLE_STATE_READY,
@@ -31,7 +33,7 @@ enum bleState {
     BLE_STATE_MAX,
 } eBleState;
 
-enum wifiState {
+typedef enum wifiState {
     WIFI_STATE_IDLE = 0,
     WIFI_STATE_INITIALIZING,
     WIFI_STATE_READY,
@@ -42,6 +44,10 @@ enum wifiState {
     WIFI_STATE_ERROR,
     WIFI_STATE_MAX,
 } eWifiState;
+
+enum bleState wirelessGetBleState(void);
+bool wirelessIsReady(void);
+bool wirelessInit(void);
 
 void wirelessProcess(void);
 

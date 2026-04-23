@@ -28,4 +28,9 @@ uint32_t logGetPlatformInterfaceCount(void)
 	return (uint32_t)(sizeof(gLogInterfaces) / sizeof(gLogInterfaces[0]));
 }
 
+void logPlatformConsolePoll(void)
+{
+	(void)bspRttLogGetInputBuffer();
+}
+
 /**************************End of file********************************/

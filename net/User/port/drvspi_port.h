@@ -11,7 +11,7 @@ extern "C" {
 
 typedef enum eDrvSpiPortMap {
 	DRVSPI_FLASH = 0,
-	DRVSPI_MAX,
+	DRVSPI_PORT_MAX,
 } eDrvSpiPortMap;
 
 #define DRVSPI_DEFAULT_TIMEOUT_MS  100U

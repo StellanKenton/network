@@ -19,6 +19,12 @@ void _sys_exit(int x)
 { 
 	x = x; 
 } 
+
+void _ttywrch(int ch)
+{
+	(void)ch;
+}
+
 //重定义fputc函数 
 int fputc(int ch, FILE *f)
 { 	

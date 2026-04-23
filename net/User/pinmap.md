@@ -6,8 +6,8 @@ Current project MCU: `GD32F407VG`
 
 | Pin | Label | Function |
 | --- | --- | --- |
-| B10 | wifitx | uart tx |
-| B11 | wifirx | uart rx |
+| A2 | wifitx | uart tx |
+| A3 | wifirx | uart rx |
 | D8  | wifien | gpio out|
 | D10 | 4G5Gpwrkey| gpio out |
 | D12 | 4G5Greset | gpio out |

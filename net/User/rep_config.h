@@ -8,6 +8,7 @@
 #include "../rep/rep.h"
 
 #define DRVGPIO_MAX                     9U
+#define DRVUART_MAX                     2U
 
 #ifndef REP_RTOS_SYSTEM
 #define REP_RTOS_SYSTEM                 REP_RTOS_UCOSII

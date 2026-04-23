@@ -29,6 +29,11 @@
 
 /* Includes ------------------------------------------------------------------*/
 #include "stm32f4xx_it.h"
+#include "../User/bsp/bspuart.h"
+#include "../User/bsp/bsp_rtt.h"
+#include "../UCOSIII/uCOS_CONFIG/includes.h"
+
+#include <stdint.h>
  
 
 /** @addtogroup Template_Project
@@ -36,11 +41,91 @@
   */
 
 /* Private typedef -----------------------------------------------------------*/
+typedef struct stFaultStackFrame {
+  uint32_t r0;
+  uint32_t r1;
+  uint32_t r2;
+  uint32_t r3;
+  uint32_t r12;
+  uint32_t lr;
+  uint32_t pc;
+  uint32_t psr;
+} stFaultStackFrame;
+
 /* Private define ------------------------------------------------------------*/
 /* Private macro -------------------------------------------------------------*/
 /* Private variables ---------------------------------------------------------*/
 /* Private function prototypes -----------------------------------------------*/
+static void faultWriteText(const char *text);
+static void faultWriteHex32(uint32_t value);
+static void faultWriteLabelHex32(const char *label, uint32_t value);
+void hardFaultHandlerC(const stFaultStackFrame *frame, uint32_t excReturn);
 /* Private functions ---------------------------------------------------------*/
+
+static void faultWriteText(const char *text)
+{
+  const char *lpText;
+  uint16_t lLength;
+
+  if (text == 0) {
+    return;
+  }
+
+  lpText = text;
+  lLength = 0u;
+  while (*lpText != '\0') {
+    lpText++;
+    lLength++;
+  }
+
+  if (lLength == 0u) {
+    return;
+  }
+
+  (void)bspRttLogWrite((const uint8_t *)text, lLength);
+}
+
+static void faultWriteHex32(uint32_t value)
+{
+  static const char lHexChars[] = "0123456789ABCDEF";
+  char lBuffer[10];
+  uint32_t lIndex;
+
+  lBuffer[0] = '0';
+  lBuffer[1] = 'x';
+  for (lIndex = 0u; lIndex < 8u; lIndex++) {
+    lBuffer[2u + lIndex] = lHexChars[(value >> (28u - (lIndex * 4u))) & 0x0Fu];
+  }
+
+  (void)bspRttLogWrite((const uint8_t *)lBuffer, sizeof(lBuffer));
+}
+
+static void faultWriteLabelHex32(const char *label, uint32_t value)
+{
+  faultWriteText(label);
+  faultWriteHex32(value);
+  faultWriteText("\r\n");
+}
+
+void hardFaultHandlerC(const stFaultStackFrame *frame, uint32_t excReturn)
+{
+  __disable_irq();
+  bspRttLogInit();
+  faultWriteText("\r\n[HardFault]\r\n");
+  faultWriteLabelHex32("EXC_RETURN=", excReturn);
+  faultWriteLabelHex32("PC=", (frame != 0) ? frame->pc : 0u);
+  faultWriteLabelHex32("LR=", (frame != 0) ? frame->lr : 0u);
+  faultWriteLabelHex32("CFSR=", SCB->CFSR);
+  faultWriteLabelHex32("HFSR=", SCB->HFSR);
+  faultWriteLabelHex32("BFAR=", SCB->BFAR);
+  faultWriteLabelHex32("MMFAR=", SCB->MMFAR);
+  faultWriteLabelHex32("MSP=", __get_MSP());
+  faultWriteLabelHex32("PSP=", __get_PSP());
+  faultWriteLabelHex32("PSR=", (frame != 0) ? frame->psr : 0u);
+
+  while (1) {
+  }
+}
 
 /******************************************************************************/
 /*            Cortex-M4 Processor Exceptions Handlers                         */
@@ -60,12 +145,15 @@ void NMI_Handler(void)
   * @param  None
   * @retval None
   */
-void HardFault_Handler(void)
+__asm void HardFault_Handler(void)
 {
-  /* Go to infinite loop when Hard Fault exception occurs */
-  while (1)
-  {
-  }
+  IMPORT  hardFaultHandlerC
+  TST     LR, #4
+  ITE     EQ
+  MRSEQ   R0, MSP
+  MRSNE   R0, PSP
+  MOV     R1, LR
+  B       hardFaultHandlerC
 }
 
 /**
@@ -159,6 +247,48 @@ void DebugMon_Handler(void)
 /*void PPP_IRQHandler(void)
 {
 }*/
+
+void USART2_IRQHandler(void)
+{
+  OSIntEnter();
+  bspUartHandleIrq(DRVUART_WIFI);
+  OSIntExit();
+}
+
+void DMA1_Stream5_IRQHandler(void)
+{
+  OSIntEnter();
+  bspUartHandleDmaRxIrq(DRVUART_WIFI);
+  OSIntExit();
+}
+
+void DMA1_Stream6_IRQHandler(void)
+{
+  OSIntEnter();
+  bspUartHandleDmaTxIrq(DRVUART_WIFI);
+  OSIntExit();
+}
+
+void USART3_IRQHandler(void)
+{
+  OSIntEnter();
+  bspUartHandleIrq(DRVUART_CELLULAR);
+  OSIntExit();
+}
+
+void DMA1_Stream1_IRQHandler(void)
+{
+  OSIntEnter();
+  bspUartHandleDmaRxIrq(DRVUART_CELLULAR);
+  OSIntExit();
+}
+
+void DMA1_Stream3_IRQHandler(void)
+{
+  OSIntEnter();
+  bspUartHandleDmaTxIrq(DRVUART_CELLULAR);
+  OSIntExit();
+}
 
 /**
   * @}
