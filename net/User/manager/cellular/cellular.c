@@ -11,6 +11,13 @@
 
 static unsigned char gCellularReady = 0u;
 
+bool cellularSendData(const uint8_t *buffer, uint16_t length)
+{
+	(void)buffer;
+	(void)length;
+	return false;
+}
+
 void cellularProcess(void)
 {
 	if (gCellularReady == 0u) {

@@ -431,6 +431,16 @@
               <FilePath>..\User\manager\iotmanager\iotmanager.c</FilePath>
             </File>
             <File>
+              <FileName>iotmanager_debug.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\User\manager\iotmanager\iotmanager_debug.c</FilePath>
+            </File>
+            <File>
+              <FileName>cprsensor_protocol.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\User\manager\iotmanager\cprsensor_protocol.c</FilePath>
+            </File>
+            <File>
               <FileName>wireless.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\User\manager\wireless\wireless.c</FilePath>
@@ -539,6 +549,11 @@
               <FileName>md5.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\rep\tools\md5\md5.c</FilePath>
+            </File>
+            <File>
+              <FileName>aes.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\rep\tools\aes\aes.c</FilePath>
             </File>
             <File>
               <FileName>rtos.c</FileName>

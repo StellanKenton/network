@@ -461,6 +461,16 @@ static bool systemStorageCheckSdMountPresence(stSystemStorageMountState *state)
     }
 
     if (!lIsPresent) {
+        if (!state->wasMounted && !sdcardIsReady(SDCARD_DEV0)) {
+            if (!state->hasPresence || state->isPresent) {
+                LOG_I(SYSTEM_STORAGE_LOG_TAG, "sd status absent, try init %s", SYSTEM_STORAGE_SD_MOUNT_PATH);
+            }
+
+            state->hasPresence = true;
+            state->isPresent = false;
+            return true;
+        }
+
         if (state->wasMounted) {
             (void)vfsUnmount(SYSTEM_STORAGE_SD_MOUNT_PATH);
             LOG_I(SYSTEM_STORAGE_LOG_TAG, "sd removed, unmount %s", SYSTEM_STORAGE_SD_MOUNT_PATH);
@@ -538,6 +548,22 @@ static void systemStorageTryMount(const char *mountPath)
         lState->hasLastError = true;
         lState->lastError = lError;
         return;
+    }
+
+    if ((strcmp(mountPath, SYSTEM_STORAGE_SD_MOUNT_PATH) == 0) && (lError == eVFS_CORRUPT)) {
+        if (!lState->hasLastError || (lState->lastError != lError) || lState->wasMounted) {
+            LOG_W(SYSTEM_STORAGE_LOG_TAG, "sd filesystem missing, format %s", mountPath);
+        }
+
+        if (vfsFormat(mountPath)) {
+            LOG_I(SYSTEM_STORAGE_LOG_TAG, "format ok %s", mountPath);
+            lState->wasMounted = vfsIsMounted(mountPath);
+            lState->hasLastError = false;
+            return;
+        }
+
+        lError = vfsGetStatus()->lastError;
+        LOG_W(SYSTEM_STORAGE_LOG_TAG, "format fail %s err=%u", mountPath, (unsigned)lError);
     }
 
     if (!lState->hasLastError || (lState->lastError != lError) || lState->wasMounted) {

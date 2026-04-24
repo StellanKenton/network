@@ -11,6 +11,7 @@
 #define NETWORK_APP_MANAGER_WIRELESS_WIRELESS_H
 
 #include <stdbool.h>
+#include <stdint.h>
 
 #ifdef __cplusplus
 extern "C" {
@@ -48,6 +49,8 @@ typedef enum wifiState {
 enum bleState wirelessGetBleState(void);
 bool wirelessIsReady(void);
 bool wirelessInit(void);
+bool wirelessSendData(const uint8_t *buffer, uint16_t length);
+bool wirelessGetMacAddress(char *buffer, uint16_t bufferSize);
 
 void wirelessProcess(void);
 

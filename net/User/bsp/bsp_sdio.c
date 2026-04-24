@@ -4,17 +4,23 @@
 **********************************************************************************/
 #include "bsp_sdio.h"
 
+#include "../../SYSTEM/delay/delay.h"
 #include "../../SYSTEM/sys/sys.h"
+#include "../../rep/service/log/log.h"
 
-#define BSP_SDIO_INIT_CLK_DIV                118U
-#define BSP_SDIO_TRANSFER_CLK_DIV            0U
+#define BSP_SDIO_INIT_CLK_DIV                238U
+#define BSP_SDIO_TRANSFER_CLK_DIV            10U
 #define BSP_SDIO_CMD_TIMEOUT_LOOP_PER_MS     6000U
 #define BSP_SDIO_DATA_TIMEOUT                0x00FFFFFFUL
 #define BSP_SDIO_BLOCK_SIZE                  512U
+#define BSP_SDIO_POWER_STABLE_DELAY_MS       20U
+#define BSP_SDIO_STATUS_PROBE_TIMEOUT_MS     200U
 #define BSP_SDIO_CARD_STATE_TRAN             4U
 #define BSP_SDIO_ACMD41_ARG                  0x40FF8000UL
+#define BSP_SDIO_LOG_TAG                     "sdio"
 
 #define BSP_SDIO_R1_ERROR_MASK               0xFDF98008UL
+#define BSP_SDIO_R6_ERROR_MASK               0x0000E000UL
 
 typedef enum eBspSdioRespType {
     BSP_SDIO_RESP_NONE = 0,
@@ -27,6 +33,8 @@ typedef struct stBspSdioContext {
     uint8_t isInitialized;
     uint8_t isHighCapacity;
     uint16_t rca;
+    uint8_t probeFailLogStatus;
+    uint8_t probeFailLogCount;
     stSdcardInfo info;
     uint32_t csd[4];
     uint32_t cid[4];
@@ -39,6 +47,9 @@ static uint32_t bspSdioGetLoopCount(uint32_t timeoutMs);
 static void bspSdioHwInit(void);
 static void bspSdioSetClock(uint8_t clockDiv, uint32_t busWidth);
 static bool bspSdioIsCardPresent(void);
+static bool bspSdioProbeCardPresent(uint8_t sdio, uint32_t timeoutMs);
+static bool bspSdioCheckCardResponsive(stBspSdioContext *context, uint32_t timeoutMs);
+static bool bspSdioShouldLogProbeFailure(stBspSdioContext *context, eDrvStatus status);
 static void bspSdioClearStaticFlags(void);
 static eDrvStatus bspSdioWaitFlags(uint32_t waitMask, uint32_t errorMask, uint32_t timeoutMs, uint32_t *flags);
 static eDrvStatus bspSdioSendCommand(uint8_t cmdIndex, uint32_t argument, eBspSdioRespType respType, uint32_t *response, uint32_t timeoutMs);
@@ -130,6 +141,61 @@ static void bspSdioSetClock(uint8_t clockDiv, uint32_t busWidth)
 static bool bspSdioIsCardPresent(void)
 {
     return (GPIO_ReadInputDataBit(GPIOD, GPIO_Pin_15) == Bit_RESET);
+}
+
+static bool bspSdioProbeCardPresent(uint8_t sdio, uint32_t timeoutMs)
+{
+    stBspSdioContext *lContext;
+
+    if (!bspSdioIsValidBus(sdio)) {
+        return false;
+    }
+
+    lContext = &gBspSdioContext[sdio];
+    lContext->isHighCapacity = 0U;
+    lContext->rca = 0U;
+    bspSdioHwInit();
+    return (bspSdioCardPowerOn(lContext, timeoutMs) == DRV_STATUS_OK);
+}
+
+static bool bspSdioCheckCardResponsive(stBspSdioContext *context, uint32_t timeoutMs)
+{
+    uint32_t lResponse[4] = {0U};
+
+    if ((context == NULL) || (context->isInitialized == 0U) || (context->rca == 0U)) {
+        return false;
+    }
+
+    if (bspSdioSendCommand(13U,
+                           ((uint32_t)context->rca << 16),
+                           BSP_SDIO_RESP_SHORT,
+                           lResponse,
+                           timeoutMs) != DRV_STATUS_OK) {
+        return false;
+    }
+
+    return !bspSdioRespHasError(lResponse[0]);
+}
+
+static bool bspSdioShouldLogProbeFailure(stBspSdioContext *context, eDrvStatus status)
+{
+    if (context == NULL) {
+        return true;
+    }
+
+    if (context->probeFailLogStatus != (uint8_t)status) {
+        context->probeFailLogStatus = (uint8_t)status;
+        context->probeFailLogCount = 1U;
+        return true;
+    }
+
+    if (context->probeFailLogCount < 3U) {
+        context->probeFailLogCount++;
+        return true;
+    }
+
+    context->probeFailLogCount++;
+    return false;
 }
 
 static void bspSdioClearStaticFlags(void)
@@ -228,7 +294,7 @@ static eDrvStatus bspSdioSendCommand(uint8_t cmdIndex, uint32_t argument, eBspSd
         return lStatus;
     }
 
-    if ((respType != BSP_SDIO_RESP_NONE) && (SDIO_GetCommandResponse() != cmdIndex)) {
+    if ((respType == BSP_SDIO_RESP_SHORT) && (SDIO_GetCommandResponse() != cmdIndex)) {
         bspSdioClearStaticFlags();
         return DRV_STATUS_ID_NOTMATCH;
     }
@@ -284,19 +350,23 @@ static eDrvStatus bspSdioCardPowerOn(stBspSdioContext *context, uint32_t timeout
 
     lIsV2 = 0U;
 
-    lLoops = bspSdioGetLoopCount(1U);
-    while (lLoops > 0U) {
-        lLoops--;
-    }
+    delay_ms(BSP_SDIO_POWER_STABLE_DELAY_MS);
 
     lStatus = bspSdioSendCommand(0U, 0U, BSP_SDIO_RESP_NONE, NULL, timeoutMs);
     if (lStatus != DRV_STATUS_OK) {
+        if (bspSdioShouldLogProbeFailure(context, lStatus)) {
+            LOG_W(BSP_SDIO_LOG_TAG, "cmd0 fail status=%d", (int)lStatus);
+        }
         return lStatus;
     }
 
     lStatus = bspSdioSendCommand(8U, 0x1AAU, BSP_SDIO_RESP_SHORT, lResponse, timeoutMs);
     if ((lStatus == DRV_STATUS_OK) && (lResponse[0] == 0x000001AAUL)) {
         lIsV2 = 1U;
+    } else if ((lStatus != DRV_STATUS_OK) && (lStatus != DRV_STATUS_TIMEOUT)) {
+        if (bspSdioShouldLogProbeFailure(context, lStatus)) {
+            LOG_W(BSP_SDIO_LOG_TAG, "cmd8 fail status=%d", (int)lStatus);
+        }
     }
 
     lLoops = bspSdioGetLoopCount(timeoutMs);
@@ -308,17 +378,25 @@ static eDrvStatus bspSdioCardPowerOn(stBspSdioContext *context, uint32_t timeout
                                         lResponse,
                                         timeoutMs);
         if (lStatus != DRV_STATUS_OK) {
+            if (bspSdioShouldLogProbeFailure(context, lStatus)) {
+                LOG_W(BSP_SDIO_LOG_TAG, "acmd41 fail status=%d", (int)lStatus);
+            }
             return lStatus;
         }
 
         if ((lResponse[0] & 0x80000000UL) != 0U) {
             context->isHighCapacity = ((lResponse[0] & 0x40000000UL) != 0U) ? 1U : 0U;
+            context->probeFailLogStatus = (uint8_t)DRV_STATUS_OK;
+            context->probeFailLogCount = 0U;
             return DRV_STATUS_OK;
         }
 
         lLoops--;
     }
 
+    if (bspSdioShouldLogProbeFailure(context, DRV_STATUS_TIMEOUT)) {
+        LOG_W(BSP_SDIO_LOG_TAG, "acmd41 timeout");
+    }
     return DRV_STATUS_TIMEOUT;
 }
 
@@ -329,20 +407,24 @@ static eDrvStatus bspSdioCardReadCidCsd(stBspSdioContext *context, uint32_t time
 
     lStatus = bspSdioSendCommand(2U, 0U, BSP_SDIO_RESP_LONG, context->cid, timeoutMs);
     if (lStatus != DRV_STATUS_OK) {
+        LOG_W(BSP_SDIO_LOG_TAG, "cmd2 fail status=%d", (int)lStatus);
         return lStatus;
     }
 
     lStatus = bspSdioSendCommand(3U, 0U, BSP_SDIO_RESP_SHORT, lResponse, timeoutMs);
     if (lStatus != DRV_STATUS_OK) {
+        LOG_W(BSP_SDIO_LOG_TAG, "cmd3 fail status=%d", (int)lStatus);
         return lStatus;
     }
 
-    if (bspSdioRespHasError(lResponse[0])) {
+    if ((lResponse[0] & BSP_SDIO_R6_ERROR_MASK) != 0U) {
+        LOG_W(BSP_SDIO_LOG_TAG, "cmd3 resp err r6=%08lX", (unsigned long)lResponse[0]);
         return DRV_STATUS_ERROR;
     }
 
     context->rca = (uint16_t)(lResponse[0] >> 16);
     if (context->rca == 0U) {
+        LOG_W(BSP_SDIO_LOG_TAG, "cmd3 rca zero r6=%08lX", (unsigned long)lResponse[0]);
         return DRV_STATUS_ERROR;
     }
 
@@ -352,6 +434,7 @@ static eDrvStatus bspSdioCardReadCidCsd(stBspSdioContext *context, uint32_t time
                                  context->csd,
                                  timeoutMs);
     if (lStatus != DRV_STATUS_OK) {
+        LOG_W(BSP_SDIO_LOG_TAG, "cmd9 fail status=%d rca=%04X", (int)lStatus, (unsigned int)context->rca);
         return lStatus;
     }
 
@@ -433,7 +516,7 @@ static void bspSdioUpdateCardInfo(stBspSdioContext *context)
 
     context->info.blockSize = BSP_SDIO_BLOCK_SIZE;
     context->info.eraseBlockSize = BSP_SDIO_BLOCK_SIZE;
-    context->info.isPresent = bspSdioIsCardPresent();
+    context->info.isPresent = true;
     context->info.isWriteProtected = false;
     context->info.isHighCapacity = (context->isHighCapacity != 0U);
 
@@ -538,6 +621,7 @@ static eDrvStatus bspSdioWriteSingleBlock(stBspSdioContext *context, uint32_t bl
     uint32_t lResponse[4] = {0U};
     uint32_t lFlags;
     uint32_t lLoops;
+    uint32_t lBurstCount;
     uint32_t lWord;
     uint32_t lOffset;
     eDrvStatus lStatus;
@@ -559,10 +643,12 @@ static eDrvStatus bspSdioWriteSingleBlock(stBspSdioContext *context, uint32_t bl
                                  lResponse,
                                  100U);
     if (lStatus != DRV_STATUS_OK) {
+        LOG_W(BSP_SDIO_LOG_TAG, "cmd24 fail block=%lu status=%d", (unsigned long)block, (int)lStatus);
         return lStatus;
     }
 
     if (bspSdioRespHasError(lResponse[0])) {
+        LOG_W(BSP_SDIO_LOG_TAG, "cmd24 resp err block=%lu r1=%08lX", (unsigned long)block, (unsigned long)lResponse[0]);
         return DRV_STATUS_ERROR;
     }
 
@@ -572,25 +658,35 @@ static eDrvStatus bspSdioWriteSingleBlock(stBspSdioContext *context, uint32_t bl
         if ((lFlags & (SDIO_FLAG_DTIMEOUT | SDIO_FLAG_DCRCFAIL | SDIO_FLAG_TXUNDERR | SDIO_FLAG_STBITERR)) != 0U) {
             bspSdioClearStaticFlags();
             if ((lFlags & SDIO_FLAG_DTIMEOUT) != 0U) {
+                LOG_W(BSP_SDIO_LOG_TAG, "write data timeout block=%lu sta=%08lX", (unsigned long)block, (unsigned long)lFlags);
                 return DRV_STATUS_TIMEOUT;
             }
             if ((lFlags & SDIO_FLAG_DCRCFAIL) != 0U) {
+                LOG_W(BSP_SDIO_LOG_TAG, "write data crc fail block=%lu sta=%08lX", (unsigned long)block, (unsigned long)lFlags);
                 return DRV_STATUS_NACK;
             }
+            LOG_W(BSP_SDIO_LOG_TAG, "write data err block=%lu sta=%08lX", (unsigned long)block, (unsigned long)lFlags);
             return DRV_STATUS_ERROR;
         }
 
         if ((lFlags & SDIO_FLAG_TXFIFOHE) != 0U) {
-            lWord = (uint32_t)buffer[lOffset] |
-                    ((uint32_t)buffer[lOffset + 1U] << 8) |
-                    ((uint32_t)buffer[lOffset + 2U] << 16) |
-                    ((uint32_t)buffer[lOffset + 3U] << 24);
-            SDIO_WriteData(lWord);
-            lOffset += 4U;
+            lBurstCount = 0U;
+            while ((lOffset < BSP_SDIO_BLOCK_SIZE) &&
+                   ((SDIO->STA & SDIO_FLAG_TXFIFOHE) != 0U) &&
+                   (lBurstCount < 8U)) {
+                lWord = (uint32_t)buffer[lOffset] |
+                        ((uint32_t)buffer[lOffset + 1U] << 8) |
+                        ((uint32_t)buffer[lOffset + 2U] << 16) |
+                        ((uint32_t)buffer[lOffset + 3U] << 24);
+                SDIO_WriteData(lWord);
+                lOffset += 4U;
+                lBurstCount++;
+            }
             lLoops = bspSdioGetLoopCount(100U);
         } else {
             if (lLoops == 0U) {
                 bspSdioClearStaticFlags();
+                LOG_W(BSP_SDIO_LOG_TAG, "write fifo timeout block=%lu", (unsigned long)block);
                 return DRV_STATUS_TIMEOUT;
             }
             lLoops--;
@@ -603,10 +699,15 @@ static eDrvStatus bspSdioWriteSingleBlock(stBspSdioContext *context, uint32_t bl
                                NULL);
     bspSdioClearStaticFlags();
     if (lStatus != DRV_STATUS_OK) {
+        LOG_W(BSP_SDIO_LOG_TAG, "write dbckend fail block=%lu status=%d", (unsigned long)block, (int)lStatus);
         return lStatus;
     }
 
-    return bspSdioWaitCardState(context, BSP_SDIO_CARD_STATE_TRAN, 200U);
+    lStatus = bspSdioWaitCardState(context, BSP_SDIO_CARD_STATE_TRAN, 200U);
+    if (lStatus != DRV_STATUS_OK) {
+        LOG_W(BSP_SDIO_LOG_TAG, "write wait tran fail block=%lu status=%d", (unsigned long)block, (int)lStatus);
+    }
+    return lStatus;
 }
 
 static eDrvStatus bspSdioWaitCardState(stBspSdioContext *context, uint32_t expectedState, uint32_t timeoutMs)
@@ -640,6 +741,7 @@ eDrvStatus bspSdioInit(uint8_t sdio, uint32_t timeoutMs)
 {
     stBspSdioContext *lContext;
     eDrvStatus lStatus;
+    bool lPresent;
 
     if (!bspSdioIsValidBus(sdio)) {
         return DRV_STATUS_INVALID_PARAM;
@@ -649,6 +751,8 @@ eDrvStatus bspSdioInit(uint8_t sdio, uint32_t timeoutMs)
     lContext->isInitialized = 0U;
     lContext->isHighCapacity = 0U;
     lContext->rca = 0U;
+    lContext->probeFailLogStatus = (uint8_t)DRV_STATUS_OK;
+    lContext->probeFailLogCount = 0U;
     bspSdioHwInit();
     lContext->info.blockSize = BSP_SDIO_BLOCK_SIZE;
     lContext->info.blockCount = 0U;
@@ -658,54 +762,83 @@ eDrvStatus bspSdioInit(uint8_t sdio, uint32_t timeoutMs)
     lContext->info.isWriteProtected = false;
     lContext->info.isHighCapacity = false;
 
-    if (!lContext->info.isPresent) {
+    lPresent = lContext->info.isPresent;
+    if (!lPresent) {
+        lPresent = bspSdioProbeCardPresent(sdio, timeoutMs);
+    }
+
+    if (!lPresent) {
         lContext->isInitialized = 1U;
         return DRV_STATUS_OK;
     }
 
+    lContext->info.isPresent = true;
+    bspSdioHwInit();
+
     lStatus = bspSdioCardPowerOn(lContext, timeoutMs);
     if (lStatus != DRV_STATUS_OK) {
+        LOG_W(BSP_SDIO_LOG_TAG, "init power on fail status=%d", (int)lStatus);
         return lStatus;
     }
 
     lStatus = bspSdioCardReadCidCsd(lContext, timeoutMs);
     if (lStatus != DRV_STATUS_OK) {
+        LOG_W(BSP_SDIO_LOG_TAG, "init read cid/csd fail status=%d", (int)lStatus);
         return lStatus;
     }
 
     lStatus = bspSdioSelectCard(lContext, ENABLE, timeoutMs);
     if (lStatus != DRV_STATUS_OK) {
+        LOG_W(BSP_SDIO_LOG_TAG, "init select fail status=%d", (int)lStatus);
         return lStatus;
     }
 
     lStatus = bspSdioSetWideBus(lContext, timeoutMs);
     if (lStatus != DRV_STATUS_OK) {
+        LOG_W(BSP_SDIO_LOG_TAG, "init wide bus fail status=%d", (int)lStatus);
         return lStatus;
     }
 
     if (lContext->isHighCapacity == 0U) {
         lStatus = bspSdioSetBlockLength(lContext, BSP_SDIO_BLOCK_SIZE, timeoutMs);
         if (lStatus != DRV_STATUS_OK) {
+            LOG_W(BSP_SDIO_LOG_TAG, "init block len fail status=%d", (int)lStatus);
             return lStatus;
         }
     }
 
     bspSdioUpdateCardInfo(lContext);
     lContext->isInitialized = 1U;
+    lContext->probeFailLogStatus = (uint8_t)DRV_STATUS_OK;
+    lContext->probeFailLogCount = 0U;
     return DRV_STATUS_OK;
 }
 
 eDrvStatus bspSdioGetStatus(uint8_t sdio, bool *isPresent, bool *isWriteProtected)
 {
+    stBspSdioContext *lContext;
     bool lPresent;
 
     if (!bspSdioIsValidBus(sdio)) {
         return DRV_STATUS_INVALID_PARAM;
     }
 
+    lContext = &gBspSdioContext[sdio];
     lPresent = bspSdioIsCardPresent();
-    gBspSdioContext[sdio].info.isPresent = lPresent;
-    gBspSdioContext[sdio].info.isWriteProtected = false;
+    if (!lPresent) {
+        if (bspSdioCheckCardResponsive(lContext, 10U)) {
+            lPresent = true;
+        } else {
+            lPresent = bspSdioProbeCardPresent(sdio, BSP_SDIO_STATUS_PROBE_TIMEOUT_MS);
+        }
+    }
+
+    if (!lPresent) {
+        lContext->isInitialized = 0U;
+    }
+
+    lContext->info.isPresent = lPresent;
+    lContext->info.isWriteProtected = false;
 
     if (isPresent != NULL) {
         *isPresent = lPresent;
@@ -729,7 +862,7 @@ eDrvStatus bspSdioReadBlocks(uint8_t sdio, uint32_t startBlock, uint8_t *buffer,
     }
 
     lContext = &gBspSdioContext[sdio];
-    if ((lContext->isInitialized == 0U) || !bspSdioIsCardPresent()) {
+    if ((lContext->isInitialized == 0U) || !lContext->info.isPresent) {
         return (eDrvStatus)SDCARD_STATUS_NO_MEDIUM;
     }
 
@@ -754,7 +887,7 @@ eDrvStatus bspSdioWriteBlocks(uint8_t sdio, uint32_t startBlock, const uint8_t *
     }
 
     lContext = &gBspSdioContext[sdio];
-    if ((lContext->isInitialized == 0U) || !bspSdioIsCardPresent()) {
+    if ((lContext->isInitialized == 0U) || !lContext->info.isPresent) {
         return (eDrvStatus)SDCARD_STATUS_NO_MEDIUM;
     }
 
@@ -777,7 +910,7 @@ eDrvStatus bspSdioIoctl(uint8_t sdio, uint32_t command, void *buffer)
     }
 
     lContext = &gBspSdioContext[sdio];
-    if ((lContext->isInitialized == 0U) || !bspSdioIsCardPresent()) {
+    if ((lContext->isInitialized == 0U) || !lContext->info.isPresent) {
         return (eDrvStatus)SDCARD_STATUS_NO_MEDIUM;
     }
 

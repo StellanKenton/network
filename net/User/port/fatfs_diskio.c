@@ -7,8 +7,12 @@
 #include "../../rep/lib/fatfs/diskio.h"
 #include "../../rep/lib/fatfs/ff.h"
 #include "../../rep/module/sdcard/sdcard.h"
+#include "../../rep/service/log/log.h"
 
 #define FATFS_SDCARD_PDRV  0U
+
+static eSdcardStatus gFatfsLastInitStatus = SDCARD_STATUS_OK;
+static bool gFatfsHasLastInitStatus = false;
 
 DSTATUS disk_initialize(BYTE pdrv)
 {
@@ -20,8 +24,16 @@ DSTATUS disk_initialize(BYTE pdrv)
 
     lStatus = sdcardInit(SDCARD_DEV0);
     if (lStatus == SDCARD_STATUS_OK) {
+        gFatfsHasLastInitStatus = false;
         return 0U;
     }
+
+    if (!gFatfsHasLastInitStatus || (gFatfsLastInitStatus != lStatus)) {
+        LOG_W("fatfs", "sd init fail status=%d", (int)lStatus);
+        gFatfsLastInitStatus = lStatus;
+        gFatfsHasLastInitStatus = true;
+    }
+
     if (lStatus == SDCARD_STATUS_NO_MEDIUM) {
         return (STA_NOINIT | STA_NODISK);
     }
@@ -35,6 +47,7 @@ DSTATUS disk_status(BYTE pdrv)
 {
     bool lIsPresent = false;
     bool lIsWriteProtected = false;
+    DSTATUS lDiskStatus = 0U;
     eSdcardStatus lStatus;
 
     if (pdrv != FATFS_SDCARD_PDRV) {
@@ -48,7 +61,16 @@ DSTATUS disk_status(BYTE pdrv)
     if (!lIsPresent) {
         return (STA_NOINIT | STA_NODISK);
     }
-    return lIsWriteProtected ? STA_PROTECT : 0U;
+
+    if (!sdcardIsReady(SDCARD_DEV0)) {
+        lDiskStatus |= STA_NOINIT;
+    }
+
+    if (lIsWriteProtected) {
+        lDiskStatus |= STA_PROTECT;
+    }
+
+    return lDiskStatus;
 }
 
 DRESULT disk_read(BYTE pdrv, BYTE *buff, DWORD sector, UINT count)
@@ -84,6 +106,7 @@ DRESULT disk_write(BYTE pdrv, const BYTE *buff, DWORD sector, UINT count)
     if (lStatus == SDCARD_STATUS_OK) {
         return RES_OK;
     }
+    LOG_W("fatfs", "sd write fail sector=%lu count=%u status=%d", (unsigned long)sector, (unsigned int)count, (int)lStatus);
     if (lStatus == SDCARD_STATUS_WRITE_PROTECTED) {
         return RES_WRPRT;
     }
