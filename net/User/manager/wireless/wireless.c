@@ -20,6 +20,7 @@
 #define WIRELESS_DEVICE                  ESP32C5_DEV0
 #define WIRELESS_RETRY_LOG_MS            1000U
 #define WIRELESS_BLE_NAME                "Primedic-VENT-0001"
+#define WIRELESS_BLE_ECHO_MAX_LEN        512U
 
 static bool gWirelessConfigured = false;
 static bool gWirelessStarted = false;
@@ -30,10 +31,17 @@ static uint32_t gWirelessLastWarnTick = 0U;
 static eBleState gWirelessBleState = BLE_STATE_IDLE;
 static uint8_t gWirelessBleRxServiceIndex = 0U;
 static uint8_t gWirelessBleRxCharIndex = 0U;
+static uint8_t gWirelessBleTxServiceIndex = 0U;
+static uint8_t gWirelessBleTxCharIndex = 0U;
 
 static bool wirelessCopyText(char *buffer, uint16_t bufferSize, const char *text);
 static bool wirelessMatchPrefix(const uint8_t *buffer, uint16_t length, const char *text);
 static bool wirelessTryParseUint(const uint8_t *buffer, uint16_t length, uint16_t *value);
+static void wirelessLogTxCccdWrite(uint16_t serviceIndex,
+				   uint16_t charIndex,
+				   uint16_t descIndex,
+				   const uint8_t *dataBuf,
+				   uint16_t dataLen);
 static bool wirelessHandleWriteUrc(const uint8_t *lineBuf, uint16_t lineLen);
 static void wirelessEsp32c5UrcHandler(void *userData, const uint8_t *lineBuf, uint16_t lineLen);
 static bool wirelessConfigureIfNeeded(void);
@@ -105,6 +113,30 @@ static bool wirelessTryParseUint(const uint8_t *buffer, uint16_t length, uint16_
 	return true;
 }
 
+static void wirelessLogTxCccdWrite(uint16_t serviceIndex,
+				   uint16_t charIndex,
+				   uint16_t descIndex,
+				   const uint8_t *dataBuf,
+				   uint16_t dataLen)
+{
+	if ((serviceIndex != (uint16_t)gWirelessBleTxServiceIndex) ||
+		(charIndex != (uint16_t)gWirelessBleTxCharIndex) ||
+		(descIndex != 1U) ||
+		(dataBuf == NULL) ||
+		(dataLen == 0U)) {
+		return;
+	}
+
+	LOG_I(WIRELESS_LOG_TAG,
+		  "ble tx cccd write svc=%u char=%u desc=%u len=%u data=%.*s",
+		  (unsigned int)serviceIndex,
+		  (unsigned int)charIndex,
+		  (unsigned int)descIndex,
+		  (unsigned int)dataLen,
+		  (int)dataLen,
+		  (const char *)dataBuf);
+}
+
 static bool wirelessHandleWriteUrc(const uint8_t *lineBuf, uint16_t lineLen)
 {
 	uint16_t commaPos[5];
@@ -171,10 +203,16 @@ static bool wirelessHandleWriteUrc(const uint8_t *lineBuf, uint16_t lineLen)
 	}
 
 	dataLen = (uint16_t)(lineLen - (uint16_t)(commaPos[commaCount - 1U] + 1U));
-	if ((dataLen == 0U) || (dataLen > 256U) || (dataLen != valueLen)) {
+	if ((dataLen == 0U) || (dataLen > WIRELESS_BLE_ECHO_MAX_LEN) || (dataLen != valueLen)) {
 		LOG_W(WIRELESS_LOG_TAG, "ignore ble write len=%u", (unsigned int)dataLen);
 		return true;
 	}
+
+	wirelessLogTxCccdWrite(serviceIndex,
+				  charIndex,
+				  descIndex,
+				  &lineBuf[commaPos[commaCount - 1U] + 1U],
+				  dataLen);
 
 	if ((serviceIndex != (uint16_t)gWirelessBleRxServiceIndex) ||
 		(charIndex != (uint16_t)gWirelessBleRxCharIndex) ||
@@ -234,9 +272,9 @@ static bool wirelessConfigureIfNeeded(void)
 	bleCfg.advIntervalMin = 200U;
 	bleCfg.advIntervalMax = 200U;
 	bleCfg.rxServiceIndex = 1U;
-	bleCfg.rxCharIndex = 5U;
+	bleCfg.rxCharIndex = 1U;
 	bleCfg.txServiceIndex = 1U;
-	bleCfg.txCharIndex = 6U;
+	bleCfg.txCharIndex = 2U;
 	if (!wirelessCopyText(bleCfg.name, (uint16_t)sizeof(bleCfg.name), WIRELESS_BLE_NAME)) {
 		gWirelessBleState = BLE_STATE_ERROR;
 		return false;
@@ -269,6 +307,8 @@ static bool wirelessConfigureIfNeeded(void)
 	gWirelessConfigured = true;
 	gWirelessBleRxServiceIndex = bleCfg.rxServiceIndex;
 	gWirelessBleRxCharIndex = bleCfg.rxCharIndex;
+	gWirelessBleTxServiceIndex = bleCfg.txServiceIndex;
+	gWirelessBleTxCharIndex = bleCfg.txCharIndex;
 	gWirelessBleState = BLE_STATE_INITIALIZING;
 	return true;
 }

@@ -11,10 +11,12 @@ from bleak.backends.characteristic import BleakGATTCharacteristic
 DEFAULT_DEVICE_NAME = "Primedic-VENT-0001"
 DEFAULT_SCAN_TIMEOUT = 8.0
 DEFAULT_ECHO_TIMEOUT = 5.0
-MAX_TEST_PAYLOAD = 256
+MAX_TEST_PAYLOAD = 300
 SAFE_PAYLOAD_ALPHABET = b"0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz-_.:/"
-DEFAULT_WRITE_UUID = "0000c304-0000-1000-8000-00805f9b34fb"
-DEFAULT_NOTIFY_UUID = "0000c305-0000-1000-8000-00805f9b34fb"
+DEFAULT_WRITE_UUID = "0000fe61-0000-1000-8000-00805f9b34fb"
+DEFAULT_NOTIFY_UUID = "0000fe62-0000-1000-8000-00805f9b34fb"
+DEFAULT_MTU_POLL_ATTEMPTS = 15
+DEFAULT_MTU_POLL_INTERVAL = 0.5
 
 
 @dataclass
@@ -56,8 +58,8 @@ class EchoCollector:
 
 
 def build_safe_payload(length: int) -> bytes:
-    if length < 1 or length > MAX_TEST_PAYLOAD:
-        raise ValueError(f"length must be in 1..{MAX_TEST_PAYLOAD}")
+    if length < 0 or length > MAX_TEST_PAYLOAD:
+        raise ValueError(f"length must be in 0..{MAX_TEST_PAYLOAD}")
 
     data = bytearray(length)
     for index in range(length):
@@ -168,13 +170,47 @@ def resolve_characteristics(
 
 async def discover_device(name: str, timeout: float):
     print(f"Scanning for {name!r} for up to {timeout:.1f}s...")
-    devices = await BleakScanner.discover(timeout=timeout, return_adv=True)
-    for _, (device, adv) in devices.items():
-        local_name = adv.local_name or device.name
-        if local_name == name:
-            print(f"Found {name!r} at {device.address}")
-            return device
+    device = await BleakScanner.find_device_by_filter(
+        lambda candidate, adv: (adv.local_name or candidate.name) == name,
+        timeout=timeout,
+    )
+    if device is not None:
+        print(f"Found {name!r} at {device.address}")
+        return device
     raise RuntimeError(f"Device {name!r} not found")
+
+
+async def wait_for_mtu(client: BleakClient, attempts: int, interval: float) -> int:
+    current_mtu = getattr(client, "mtu_size", 0)
+    for index in range(attempts):
+        await asyncio.sleep(interval)
+        current_mtu = getattr(client, "mtu_size", current_mtu)
+        print(f"MTU poll {index + 1}/{attempts}: {current_mtu}")
+        if current_mtu > 23:
+            break
+    return current_mtu
+
+
+def get_max_wwr_sizes(client: BleakClient) -> dict[str, int]:
+    backend = getattr(client, "_backend", None)
+    if backend is None:
+        return {}
+
+    getter = getattr(backend, "_get_max_write_without_response_size", None)
+    services = getattr(client, "services", None)
+    if getter is None or services is None:
+        return {}
+
+    sizes: dict[str, int] = {}
+    for service in services:
+        for char in service.characteristics:
+            if "write-without-response" not in char.properties:
+                continue
+            try:
+                sizes[char.uuid] = getter(char.obj)
+            except Exception:
+                continue
+    return sizes
 
 
 async def send_and_expect_echo(
@@ -184,8 +220,8 @@ async def send_and_expect_echo(
     payload: bytes,
     timeout: float,
 ) -> None:
-    if len(payload) < 1 or len(payload) > MAX_TEST_PAYLOAD:
-        raise ValueError(f"payload length must be in 1..{MAX_TEST_PAYLOAD}")
+    if len(payload) > MAX_TEST_PAYLOAD:
+        raise ValueError(f"payload length must be in 0..{MAX_TEST_PAYLOAD}")
 
     collector.clear()
     response = "write" in resolved.write_char.properties
@@ -261,16 +297,25 @@ async def main_async(args: argparse.Namespace) -> None:
     device = await discover_device(args.name, args.scan_timeout)
     collector = EchoCollector()
 
-    async with BleakClient(device, timeout=args.connect_timeout) as client:
-        resolved = resolve_characteristics(client, args.write_uuid, args.notify_uuid)
+    async with BleakClient(
+        device,
+        timeout=args.connect_timeout,
+        pair=False,
+        winrt={"use_cached_services": False},
+    ) as client:
         print(f"Connected to {device.address}")
+        negotiated_mtu = await wait_for_mtu(client, args.mtu_poll_attempts, args.mtu_poll_interval)
+        print(f"Negotiated MTU: {negotiated_mtu}")
+        resolved = resolve_characteristics(client, args.write_uuid, args.notify_uuid)
         print(f"Write characteristic:  {resolved.write_char.uuid} {sorted(resolved.write_char.properties)}")
         print(f"Notify characteristic: {resolved.notify_char.uuid} {sorted(resolved.notify_char.properties)}")
+        for uuid, size in sorted(get_max_wwr_sizes(client).items()):
+            print(f"Max write-without-response size {uuid}: {size}")
 
         await client.start_notify(resolved.notify_char, collector.feed)
         try:
             if args.auto_check:
-                await run_auto_check(client, resolved, collector, 1, MAX_TEST_PAYLOAD, args.echo_timeout)
+                await run_auto_check(client, resolved, collector, 0, MAX_TEST_PAYLOAD, args.echo_timeout)
             await interactive_shell(client, resolved, collector, args.echo_timeout)
         finally:
             await client.stop_notify(resolved.notify_char)
@@ -284,7 +329,9 @@ def build_arg_parser() -> argparse.ArgumentParser:
     parser.add_argument("--echo-timeout", type=float, default=DEFAULT_ECHO_TIMEOUT, help="echo wait timeout in seconds")
     parser.add_argument("--write-uuid", default=DEFAULT_WRITE_UUID, help="write characteristic UUID")
     parser.add_argument("--notify-uuid", default=DEFAULT_NOTIFY_UUID, help="notify characteristic UUID")
-    parser.add_argument("--no-auto-check", action="store_true", help="skip the 1..256 byte automatic echo sweep")
+    parser.add_argument("--mtu-poll-attempts", type=int, default=DEFAULT_MTU_POLL_ATTEMPTS, help="number of post-connect MTU polling attempts")
+    parser.add_argument("--mtu-poll-interval", type=float, default=DEFAULT_MTU_POLL_INTERVAL, help="delay between MTU polls in seconds")
+    parser.add_argument("--no-auto-check", action="store_true", help="skip the 0..300 byte automatic echo sweep")
     return parser
 
 

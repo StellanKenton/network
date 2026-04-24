@@ -232,7 +232,11 @@ static void bspUartTraceBuffer(uint8_t uart, const char *direction, const uint8_
 	uint16_t lIndex;
 	uint16_t lTraceLen;
 
-	if ((uart != DRVUART_WIFI) || (direction == NULL) || (buffer == NULL) || (length == 0U)) {
+	if ((direction == NULL) || (buffer == NULL) || (length == 0U)) {
+		return;
+	}
+
+	if (uart == DRVUART_WIFI) {
 		return;
 	}
 
@@ -665,9 +669,7 @@ static void bspUartHandleOverrun(stBspUartContext *context)
 	lUart = bspUartGetIdByContext(context);
 	(void)context->instance->SR;
 	(void)context->instance->DR;
-	if (lUart == DRVUART_WIFI) {
-		bspUartTraceText("[uart:wifi] rx overrun detected\r\n");
-	}
+	(void)lUart;
 	(void)bspUartStartRxDma(context);
 }
 
@@ -698,9 +700,6 @@ eDrvStatus bspUartInit(uint8_t uart)
 		return lStatus;
 	}
 	lContext->isInitialized = 1U;
-	if (uart == DRVUART_WIFI) {
-		bspUartTraceText("[uart:wifi] init USART2 PA2/PA3 115200, host logs stay on RTT\r\n");
-	}
 	return DRV_STATUS_OK;
 }
 
