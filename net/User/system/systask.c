@@ -8,6 +8,7 @@
 #include "../manager/cellular/cellular.h"
 #include "../manager/ethernet/ethernet.h"
 #include "../manager/iotmanager/iotmanager.h"
+#include "../manager/iotmanager/protcolmgr.h"
 #include "../manager/wireless/wireless.h"
 #include "sysmgr.h"
 #include "system_storage.h"
@@ -64,6 +65,8 @@ static void systaskCreateTask(const char *name,
 static void iotManagerTask(void *pdata)
 {
 	(void)pdata;
+    iotManagerEnsureStateInitialized();
+	(void)protcolMgrTryInitCipherKey();
 	for (;;) {
 		iotManagerProcess();
 		systaskAssertRtosStatus(repRtosDelayMs(IOT_MANAGER_TASK_INTERVAL_MS));

@@ -8,6 +8,7 @@ public_headers:
     - iotmanager.h
 core_files:
     - iotmanager.c
+    - protcolmgr.c
     - cprsensor_protocol.c
 port_files: []
 debug_files:
@@ -25,6 +26,8 @@ common_utils: []
 copy_minimal_set:
     - iotmanager.h
     - iotmanager.c
+    - protcolmgr.h
+    - protcolmgr.c
     - cprsensor_protocol.h
     - cprsensor_protocol.c
 read_next:
@@ -43,6 +46,8 @@ read_next:
 - 各自状态应该怎么体现，避免继续用一个过于粗的 `ReadyStatus[]`。
 
 `cprsensor_protocol.md` 只描述 BLE/协议帧，不负责链路路由和业务切换。
+
+当前实现中，链路状态、业务路由和设备管理保留在 `iotmanager.c`，协议收包、解包、应答和协议轮询下沉到 `protcolmgr.c`。
 
 ## 调试补充
 

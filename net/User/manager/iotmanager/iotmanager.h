@@ -153,7 +153,6 @@ bool iotManagerSend(eIotManagerServiceId serviceId, const uint8_t *buffer, uint1
 bool iotManagerSendByLink(eIotManagerLinkId linkId, const uint8_t *buffer, uint16_t length);
 bool iotManagerUpdateLinkState(eIotManagerLinkId linkId, const stIotManagerLinkRuntime *runtime);
 bool iotManagerSelectRoute(eIotManagerServiceId serviceId, eIotManagerLinkId linkId);
-bool iotManagerPushReceivedData(eIotManagerInterface interfaceType, const uint8_t *buffer, uint16_t length);
 bool iotManagerSendByInterface(eIotManagerInterface interfaceType, const uint8_t *buffer, uint16_t length);
 bool iotManagerSetActiveInterface(eIotManagerInterface interfaceType);
 bool iotManagerSetTargetInterface(eIotManagerInterface interfaceType);
@@ -161,6 +160,7 @@ bool iotManagerSetInterfaceReady(eIotManagerInterface interfaceType, bool ready)
 bool iotManagerSetInterfaceStatus(eIotManagerInterface interfaceType, eIotManagerNetStatus status);
 const stIotManagerState *iotManagerGetState(void);
 void iotManagerProcess(void);
+void iotManagerEnsureStateInitialized(void);
 
 #ifdef __cplusplus
 }

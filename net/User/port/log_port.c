@@ -4,6 +4,7 @@
 * @details  : Binds the reusable log layer to the board RTT transport.
 **********************************************************************************/
 #include "../../rep/service/log/log.h"
+#include "../../rep/tools/trace/trace.h"
 
 #include "../bsp/bsp_rtt.h"
 
@@ -31,6 +32,16 @@ uint32_t logGetPlatformInterfaceCount(void)
 void logPlatformConsolePoll(void)
 {
 	(void)bspRttLogGetInputBuffer();
+}
+
+void traceFaultPlatformTransportInit(void)
+{
+	bspRttLogInit();
+}
+
+int32_t traceFaultPlatformTransportWrite(const uint8_t *buffer, uint16_t length)
+{
+	return bspRttLogWrite(buffer, length);
 }
 
 /**************************End of file********************************/

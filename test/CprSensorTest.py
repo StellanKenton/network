@@ -26,6 +26,7 @@ CMD_HEARTBEAT = 0x03
 CMD_DISCONNECT = 0x04
 CMD_GET_DEVICE_INFO = 0x11
 CMD_GET_BLE_INFO = 0x13
+BLE_HEARTBEAT_INTERVAL_S = 0.3
 
 class BLEApp:
     def __init__(self, root):
@@ -183,14 +184,14 @@ class BLEApp:
                 if transport_ready:
                     self.send_hand_shake()
                     handshake_flag = True
-                    next_heartbeat_time = now + 1.0
+                    next_heartbeat_time = now + BLE_HEARTBEAT_INTERVAL_S
             else:
                 if not transport_ready:
                     handshake_flag = False
                     next_heartbeat_time = 0.0
                 elif now >= next_heartbeat_time:
                     self.send_heartbeat()
-                    next_heartbeat_time = now + 1.0
+                    next_heartbeat_time = now + BLE_HEARTBEAT_INTERVAL_S
                 
     def start_tcp_server(self):
         """启动TCP服务器"""

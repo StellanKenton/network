@@ -6,6 +6,7 @@
 #include "system_storage.h"
 #include "core_cm4.h"
 #include "../manager/iotmanager/iotmanager_debug.h"
+#include "../manager/wireless/wireless_debug.h"
 #include "../manager/wireless/wireless.h"
 #include "../../rep/driver/drvgpio/drvgpio.h"
 #include "../../rep/service/log/console.h"
@@ -98,6 +99,10 @@ static void systemConsoleServiceInit(void)
 
 	if (!iotManagerDebugConsoleRegister()) {
 		LOG_W(SYSMGR_LOG_TAG, "iot debug console register failed");
+	}
+
+	if (!wirelessDebugConsoleRegister()) {
+		LOG_W(SYSMGR_LOG_TAG, "wireless debug console register failed");
 	}
 
 	gSystemConsoleReady = 1u;

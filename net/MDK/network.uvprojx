@@ -431,6 +431,11 @@
               <FilePath>..\User\manager\iotmanager\iotmanager.c</FilePath>
             </File>
             <File>
+              <FileName>protcolmgr.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\User\manager\iotmanager\protcolmgr.c</FilePath>
+            </File>
+            <File>
               <FileName>iotmanager_debug.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\User\manager\iotmanager\iotmanager_debug.c</FilePath>
@@ -444,6 +449,11 @@
               <FileName>wireless.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\User\manager\wireless\wireless.c</FilePath>
+            </File>
+            <File>
+              <FileName>wireless_debug.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\User\manager\wireless\wireless_debug.c</FilePath>
             </File>
             <File>
               <FileName>esp32c5_port.c</FileName>
@@ -556,6 +566,16 @@
               <FilePath>..\rep\tools\aes\aes.c</FilePath>
             </File>
             <File>
+              <FileName>jsonparser.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\rep\tools\jsonparser\jsonparser.c</FilePath>
+            </File>
+            <File>
+              <FileName>trace.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\rep\tools\trace\trace.c</FilePath>
+            </File>
+            <File>
               <FileName>rtos.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\rep\service\rtos\rtos.c</FilePath>
@@ -604,6 +624,26 @@
               <FileName>esp32c5_ctrl.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\rep\module\esp32c5\esp32c5_ctrl.c</FilePath>
+            </File>
+            <File>
+              <FileName>esp32c5_ble.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\rep\module\esp32c5\esp32c5_ble.c</FilePath>
+            </File>
+            <File>
+              <FileName>esp32c5_wifi.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\rep\module\esp32c5\esp32c5_wifi.c</FilePath>
+            </File>
+            <File>
+              <FileName>esp32c5_http.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\rep\module\esp32c5\esp32c5_http.c</FilePath>
+            </File>
+            <File>
+              <FileName>esp32c5_mqtt.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\rep\module\esp32c5\esp32c5_mqtt.c</FilePath>
             </File>
             <File>
               <FileName>esp32c5_data.c</FileName>

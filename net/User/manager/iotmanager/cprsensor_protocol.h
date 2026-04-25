@@ -65,27 +65,20 @@ typedef enum eCprsensorProtocolCmd {
 	CPRSENSOR_PROTOCOL_CMD_HISTORY_DATA = 0x41,
 } eCprsensorProtocolCmd;
 
-typedef union {
-	uint16_t value;
-    struct {
-        uint16_t HandShake : 1;
-        uint16_t HeartBeat : 1;
-        uint16_t Disconnect : 1;
-		uint16_t DevInfo : 1;
-		uint16_t BleInfo : 1;
-		uint16_t Battery : 1;
-		uint16_t Language : 1;
-		uint16_t Volume : 1;
-		uint16_t Metronome : 1;
-		uint16_t UtcSetting : 1;
-		uint16_t bit10 : 1;
-		uint16_t bit11 : 1;
-		uint16_t bit12 : 1;
-		uint16_t bit13 : 1;
-		uint16_t bit14 : 1;
-		uint16_t bit15 : 1;
-    } bits;
-} eCprsensorProtocolTxFlag;
+typedef enum eCprsensorProtocolReplySlot {
+	CPRSENSOR_PROTOCOL_REPLY_SLOT_HANDSHAKE = 0,
+	CPRSENSOR_PROTOCOL_REPLY_SLOT_HEARTBEAT,
+	CPRSENSOR_PROTOCOL_REPLY_SLOT_DISCONNECT,
+	CPRSENSOR_PROTOCOL_REPLY_SLOT_DEV_INFO,
+	CPRSENSOR_PROTOCOL_REPLY_SLOT_BLE_INFO,
+	CPRSENSOR_PROTOCOL_REPLY_SLOT_WIFI_SETTING,
+	CPRSENSOR_PROTOCOL_REPLY_SLOT_BATTERY,
+	CPRSENSOR_PROTOCOL_REPLY_SLOT_LANGUAGE,
+	CPRSENSOR_PROTOCOL_REPLY_SLOT_VOLUME,
+	CPRSENSOR_PROTOCOL_REPLY_SLOT_METRONOME,
+	CPRSENSOR_PROTOCOL_REPLY_SLOT_UTC_SETTING,
+	CPRSENSOR_PROTOCOL_REPLY_SLOT_MAX,
+} eCprsensorProtocolReplySlot;
 
 typedef enum eCprsensorProtocolCommPriority {
 	CPRSENSOR_PROTOCOL_COMM_PRIORITY_BLE = 0,

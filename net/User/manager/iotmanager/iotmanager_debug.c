@@ -11,18 +11,21 @@
 
 #include <string.h>
 
+#include "../wireless/wireless.h"
 #include "../../../rep/service/log/console.h"
 
 static bool iotManagerDebugTryParseLink(const char *text, eIotManagerLinkId *linkId);
 static bool iotManagerDebugTryParseService(const char *text, eIotManagerServiceId *serviceId);
 static eConsoleCommandResult iotManagerDebugReplyHelp(uint32_t transport);
 static eConsoleCommandResult iotManagerDebugReplyStatus(uint32_t transport);
+static eConsoleCommandResult iotManagerDebugHandlePub(uint32_t transport, int argc, char *argv[]);
+static eConsoleCommandResult iotManagerDebugHandleRetry(uint32_t transport, int argc, char *argv[]);
 static eConsoleCommandResult iotManagerDebugConsoleHandler(uint32_t transport, int argc, char *argv[]);
 
 #if (IOT_MANAGER_DEBUG_CONSOLE_SUPPORT == 1)
 static const stConsoleCommand gIotManagerDebugConsoleCommand = {
 	.commandName = "iot",
-	.helpText = "iot <status|select|help> ...",
+	.helpText = "iot <status|route|select|pub|retry|help> ...",
 	.ownerTag = "iotmgr",
 	.handler = iotManagerDebugConsoleHandler,
 };
@@ -200,6 +203,8 @@ static eConsoleCommandResult iotManagerDebugReplyHelp(uint32_t transport)
 {
 	if (consoleReply(transport,
 		"iot status\n"
+		"iot pub <text>\n"
+		"iot retry\n"
 		"iot route <ble|mqttauth|mqtt|tcp> <none|ble|wifi|cellular|ethernet>\n"
 		"iot select <none|ble|cellular|ethernet>\n"
 		"iot help\n"
@@ -280,6 +285,67 @@ static eConsoleCommandResult iotManagerDebugReplyStatus(uint32_t transport)
 	return CONSOLE_COMMAND_RESULT_OK;
 }
 
+static eConsoleCommandResult iotManagerDebugHandlePub(uint32_t transport, int argc, char *argv[])
+{
+	char payload[160];
+	uint16_t offset;
+	int index;
+	uint16_t partLen;
+
+	if ((argc < 3) || (argv == NULL)) {
+		return CONSOLE_COMMAND_RESULT_INVALID_ARGUMENT;
+	}
+
+	offset = 0U;
+	for (index = 2; index < argc; ++index) {
+		if (argv[index] == NULL) {
+			return CONSOLE_COMMAND_RESULT_INVALID_ARGUMENT;
+		}
+
+		partLen = (uint16_t)strlen(argv[index]);
+		if ((index > 2) && (offset < (uint16_t)(sizeof(payload) - 1U))) {
+			payload[offset++] = ' ';
+		}
+		if ((uint16_t)(offset + partLen) >= sizeof(payload)) {
+			return CONSOLE_COMMAND_RESULT_INVALID_ARGUMENT;
+		}
+		(void)memcpy(&payload[offset], argv[index], partLen);
+		offset = (uint16_t)(offset + partLen);
+	}
+
+	if (offset == 0U) {
+		return CONSOLE_COMMAND_RESULT_INVALID_ARGUMENT;
+	}
+	payload[offset] = '\0';
+
+	if (!iotManagerSendByLink(IOT_MANAGER_LINK_WIFI, (const uint8_t *)payload, offset)) {
+		return CONSOLE_COMMAND_RESULT_ERROR;
+	}
+
+	if (consoleReply(transport, "mqtt pub ok len=%u\nOK", (unsigned int)offset) <= 0) {
+		return CONSOLE_COMMAND_RESULT_ERROR;
+	}
+
+	return CONSOLE_COMMAND_RESULT_OK;
+}
+
+static eConsoleCommandResult iotManagerDebugHandleRetry(uint32_t transport, int argc, char *argv[])
+{
+	if (argc != 2) {
+		return CONSOLE_COMMAND_RESULT_INVALID_ARGUMENT;
+	}
+
+	if (!wirelessRequestIotRetry()) {
+		return CONSOLE_COMMAND_RESULT_ERROR;
+	}
+
+	if (consoleReply(transport, "iot retry armed\nOK") <= 0) {
+		return CONSOLE_COMMAND_RESULT_ERROR;
+	}
+
+	return CONSOLE_COMMAND_RESULT_OK;
+}
+
 static eConsoleCommandResult iotManagerDebugConsoleHandler(uint32_t transport, int argc, char *argv[])
 {
 	eIotManagerServiceId lServiceId;
@@ -295,6 +361,14 @@ static eConsoleCommandResult iotManagerDebugConsoleHandler(uint32_t transport, i
 		}
 
 		return iotManagerDebugReplyStatus(transport);
+	}
+
+	if (strcmp(argv[1], "pub") == 0) {
+		return iotManagerDebugHandlePub(transport, argc, argv);
+	}
+
+	if (strcmp(argv[1], "retry") == 0) {
+		return iotManagerDebugHandleRetry(transport, argc, argv);
 	}
 
 	if (strcmp(argv[1], "route") == 0) {

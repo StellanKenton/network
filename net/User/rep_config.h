@@ -9,6 +9,7 @@
 
 #define DRVGPIO_MAX                     9U
 #define DRVUART_MAX                     2U
+#define CONSOLE_MAX_LINE_LENGTH         160U
 
 #ifndef REP_RTOS_SYSTEM
 #define REP_RTOS_SYSTEM                 REP_RTOS_UCOSII
