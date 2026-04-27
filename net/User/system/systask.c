@@ -140,12 +140,8 @@ void systaskCreateWorkerTasks(void)
 				  IOT_MANAGER_TASK_PRIO,
 				  &gIotManagerTaskStk[0],
 				  IOT_MANAGER_TASK_STK_SIZE);
-	systaskCreateTask("Wireless",
-				  wirelessTask,
-				  NULL,
-				  WIRELESS_TASK_PRIO,
-				  &gWirelessTaskStk[0],
-				  WIRELESS_TASK_STK_SIZE);
+	(void)wirelessTask;
+	(void)gWirelessTaskStk;
 	systaskCreateTask("Cellular",
 				  cellularTask,
 				  NULL,

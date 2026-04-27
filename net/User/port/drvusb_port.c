@@ -23,7 +23,7 @@ static const stDrvUsbBspInterface gDrvUsbBspInterfaces[DRVUSB_MAX] = {
 		bspUsbIsConfigured,
 		bspUsbGetSpeed,
 		DRVUSB_DEFAULT_TIMEOUT_MS,
-		DRVUSB_ROLE_DEVICE,
+		DRVUSB_ROLE_HOST,
 	},
 };
 

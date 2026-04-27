@@ -29,6 +29,7 @@
 
 /* Includes ------------------------------------------------------------------*/
 #include "stm32f4xx_it.h"
+#include "../User/bsp/bspusb.h"
 #include "../User/bsp/bspuart.h"
 #include "../UCOSIII/uCOS_CONFIG/includes.h"
 
@@ -147,6 +148,13 @@ void DMA1_Stream3_IRQHandler(void)
 {
   OSIntEnter();
   bspUartHandleDmaTxIrq(DRVUART_CELLULAR);
+  OSIntExit();
+}
+
+void OTG_FS_IRQHandler(void)
+{
+  OSIntEnter();
+  bspUsbHandleIrq();
   OSIntExit();
 }
 

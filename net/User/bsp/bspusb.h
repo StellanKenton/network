@@ -23,6 +23,7 @@ eDrvStatus bspUsbReceive(uint8_t usb, uint8_t endpointAddress, uint8_t *buffer, 
 bool bspUsbIsConnected(uint8_t usb);
 bool bspUsbIsConfigured(uint8_t usb);
 eDrvUsbSpeed bspUsbGetSpeed(uint8_t usb);
+void bspUsbHandleIrq(void);
 
 #ifdef __cplusplus
 }

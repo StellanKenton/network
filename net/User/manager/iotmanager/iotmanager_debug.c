@@ -11,8 +11,12 @@
 
 #include <string.h>
 
+#include "../cellular/cellular.h"
 #include "../wireless/wireless.h"
+#include "../../port/drvgpio_port.h"
+#include "../../../rep/driver/drvgpio/drvgpio.h"
 #include "../../../rep/service/log/console.h"
+#include "../../../rep/service/rtos/rtos.h"
 
 static bool iotManagerDebugTryParseLink(const char *text, eIotManagerLinkId *linkId);
 static bool iotManagerDebugTryParseService(const char *text, eIotManagerServiceId *serviceId);
@@ -20,12 +24,50 @@ static eConsoleCommandResult iotManagerDebugReplyHelp(uint32_t transport);
 static eConsoleCommandResult iotManagerDebugReplyStatus(uint32_t transport);
 static eConsoleCommandResult iotManagerDebugHandlePub(uint32_t transport, int argc, char *argv[]);
 static eConsoleCommandResult iotManagerDebugHandleRetry(uint32_t transport, int argc, char *argv[]);
+static eConsoleCommandResult iotManagerDebugHandleCellPin(uint32_t transport, int argc, char *argv[]);
+static eConsoleCommandResult iotManagerDebugHandleCell(uint32_t transport, int argc, char *argv[]);
 static eConsoleCommandResult iotManagerDebugConsoleHandler(uint32_t transport, int argc, char *argv[]);
+
+static eConsoleCommandResult iotManagerDebugHandleCellPin(uint32_t transport, int argc, char *argv[])
+{
+	uint8_t pin;
+
+	if ((argc != 4) || (argv == NULL) || (argv[2] == NULL) || (argv[3] == NULL)) {
+		return CONSOLE_COMMAND_RESULT_INVALID_ARGUMENT;
+	}
+
+	if (strcmp(argv[2], "pwrkey") == 0) {
+		pin = DRVGPIO_CELLULAR_PWRKEY;
+	} else if (strcmp(argv[2], "reset") == 0) {
+		pin = DRVGPIO_CELLULAR_RESET;
+	} else {
+		return CONSOLE_COMMAND_RESULT_INVALID_ARGUMENT;
+	}
+
+	if (strcmp(argv[3], "low") == 0) {
+		drvGpioWrite(pin, DRVGPIO_PIN_RESET);
+		return (consoleReply(transport, "cell %s low\nOK", argv[2]) > 0) ? CONSOLE_COMMAND_RESULT_OK : CONSOLE_COMMAND_RESULT_ERROR;
+	}
+
+	if (strcmp(argv[3], "high") == 0) {
+		drvGpioWrite(pin, DRVGPIO_PIN_SET);
+		return (consoleReply(transport, "cell %s high\nOK", argv[2]) > 0) ? CONSOLE_COMMAND_RESULT_OK : CONSOLE_COMMAND_RESULT_ERROR;
+	}
+
+	if (strcmp(argv[3], "pulse") == 0) {
+		drvGpioWrite(pin, DRVGPIO_PIN_RESET);
+		(void)repRtosDelayMs((pin == DRVGPIO_CELLULAR_PWRKEY) ? 1200U : 300U);
+		drvGpioWrite(pin, DRVGPIO_PIN_SET);
+		return (consoleReply(transport, "cell %s low pulse\nOK", argv[2]) > 0) ? CONSOLE_COMMAND_RESULT_OK : CONSOLE_COMMAND_RESULT_ERROR;
+	}
+
+	return CONSOLE_COMMAND_RESULT_INVALID_ARGUMENT;
+}
 
 #if (IOT_MANAGER_DEBUG_CONSOLE_SUPPORT == 1)
 static const stConsoleCommand gIotManagerDebugConsoleCommand = {
 	.commandName = "iot",
-	.helpText = "iot <status|route|select|pub|retry|help> ...",
+	.helpText = "iot <status|route|select|pub|retry|cell|help> ...",
 	.ownerTag = "iotmgr",
 	.handler = iotManagerDebugConsoleHandler,
 };
@@ -205,6 +247,7 @@ static eConsoleCommandResult iotManagerDebugReplyHelp(uint32_t transport)
 		"iot status\n"
 		"iot pub <text>\n"
 		"iot retry\n"
+		"iot cell <status|info>\n"
 		"iot route <ble|mqttauth|mqtt|tcp> <none|ble|wifi|cellular|ethernet>\n"
 		"iot select <none|ble|cellular|ethernet>\n"
 		"iot help\n"
@@ -318,7 +361,7 @@ static eConsoleCommandResult iotManagerDebugHandlePub(uint32_t transport, int ar
 	}
 	payload[offset] = '\0';
 
-	if (!iotManagerSendByLink(IOT_MANAGER_LINK_WIFI, (const uint8_t *)payload, offset)) {
+	if (!iotManagerSend(IOT_MANAGER_SERVICE_MQTT, (const uint8_t *)payload, offset)) {
 		return CONSOLE_COMMAND_RESULT_ERROR;
 	}
 
@@ -327,6 +370,65 @@ static eConsoleCommandResult iotManagerDebugHandlePub(uint32_t transport, int ar
 	}
 
 	return CONSOLE_COMMAND_RESULT_OK;
+}
+
+static eConsoleCommandResult iotManagerDebugHandleCell(uint32_t transport, int argc, char *argv[])
+{
+	stCellularDebugStatus status;
+
+	if ((argc < 3) || (argv == NULL) || (argv[2] == NULL)) {
+		return CONSOLE_COMMAND_RESULT_INVALID_ARGUMENT;
+	}
+
+	if ((strcmp(argv[2], "pwrkey") == 0) || (strcmp(argv[2], "reset") == 0)) {
+		return iotManagerDebugHandleCellPin(transport, argc, argv);
+	}
+
+	if (argc != 3) {
+		return CONSOLE_COMMAND_RESULT_INVALID_ARGUMENT;
+	}
+
+	if (strcmp(argv[2], "info") == 0) {
+		if (!cellularRequestInfoRead()) {
+			return CONSOLE_COMMAND_RESULT_ERROR;
+		}
+
+		if (consoleReply(transport, "cell info armed\nOK") <= 0) {
+			return CONSOLE_COMMAND_RESULT_ERROR;
+		}
+
+		return CONSOLE_COMMAND_RESULT_OK;
+	}
+
+	if (strcmp(argv[2], "status") == 0) {
+		if (!cellularGetDebugStatus(&status)) {
+			return CONSOLE_COMMAND_RESULT_ERROR;
+		}
+
+		if (consoleReply(transport,
+			"cell init=%u start=%u initStatus=%d procStatus=%d run=%u ready=%u busy=%u at=%u sim=%u sig=%u csq=%d infoPending=%u infoActive=%u ok=%lu fail=%lu\nOK",
+			status.initialized ? 1U : 0U,
+			status.started ? 1U : 0U,
+			(int)status.initStatus,
+			(int)status.lastProcessStatus,
+			(unsigned int)status.runState,
+			status.moduleReady ? 1U : 0U,
+			status.busy ? 1U : 0U,
+			status.atReady ? 1U : 0U,
+			status.simChecked ? 1U : 0U,
+			status.signalChecked ? 1U : 0U,
+			(int)status.signalStrength,
+			status.infoReadPending ? 1U : 0U,
+			status.infoReadActive ? 1U : 0U,
+			(unsigned long)status.lastOkTick,
+			(unsigned long)status.lastFailTick) <= 0) {
+			return CONSOLE_COMMAND_RESULT_ERROR;
+		}
+
+		return CONSOLE_COMMAND_RESULT_OK;
+	}
+
+	return CONSOLE_COMMAND_RESULT_INVALID_ARGUMENT;
 }
 
 static eConsoleCommandResult iotManagerDebugHandleRetry(uint32_t transport, int argc, char *argv[])
@@ -369,6 +471,10 @@ static eConsoleCommandResult iotManagerDebugConsoleHandler(uint32_t transport, i
 
 	if (strcmp(argv[1], "retry") == 0) {
 		return iotManagerDebugHandleRetry(transport, argc, argv);
+	}
+
+	if (strcmp(argv[1], "cell") == 0) {
+		return iotManagerDebugHandleCell(transport, argc, argv);
 	}
 
 	if (strcmp(argv[1], "route") == 0) {

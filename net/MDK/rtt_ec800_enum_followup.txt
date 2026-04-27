@@ -1,0 +1,4 @@
+SEGGER J-Link V9.18 - Real time terminal output
+SEGGER J-Link ARM Pro V12.0, SN=601012478
+Process: JLinkGDBServerCL.exe
+

@@ -1,0 +1,120 @@
+SEGGER J-Link V9.18 - Real time terminal output
+SEGGER J-Link ARM Pro V12.0, SN=601012478
+Process: JLinkGDBServerCL.exe
+I (0) sysmgr: USART2 PA2/PA3 reserved for wifi, debug logs use RTT
+I (0) sysmgr: rtt console ready
+I (0) sysmgr: system init
+I (0) storage: vfs shell ready at /
+I (0) storage: w25q jedec=EF 40 18
+I (10) sysmgr: wifi_en=RESET (PD8 low, module held reset/disable)
+I (276) wireless: storage cfg wifi=0 sn=1 key=0 http=1 mqttHost=1 id=HC630257T6001
+I (276) esp32c5Ctl: start role=ble_peripheral
+I (276) esp32c5Ctl: assert reset pin=0 pulse=1000
+I (276) storage: mount ok /mem
+I (303) storage: sd detected, mount /sd
+I (346) storage: mount ok /sd
+W (556) usbHost: host init
+I (556) cellular: ec800m init ok
+I (556) ec800m: start service=1
+I (556) cellular: ec800m start ok
+W (556) usbHost: wait conn=0 enumDone=0 cdc=0 hprt=0x00001000 dp=0 dm=0 state=0 enum=0 in=0x00 out=0x00
+I (1276) esp32c5Ctl: release reset waitReady timeout=4000 probe=100
+I (1280) sysmgr: wifi_en=SET (PD8 high, module enabled)
+W (1556) usbHost: wait conn=0 enumDone=0 cdc=0 hprt=0x00001000 dp=0 dm=0 state=0 enum=0 in=0x00 out=0x00
+W (2261) cellular: ec800m process status=10
+W (2556) usbHost: wait conn=0 enumDone=0 cdc=0 hprt=0x00001000 dp=0 dm=0 state=0 enum=0 in=0x00 out=0x00
+I (2886) esp32c5Ctl: urc ready
+I (2976) esp32c5Ctl: ready urc seen, continue init
+W (3262) cellular: ec800m process status=10
+I (3518) esp32c5Ctl: module ready mac=3c:dc:75:9b:28:3a
+I (3518) wireless: esp32c5 ready ble=Primedic-VENT-0001
+I (3518) wireless: ble mac: 3c:dc:75:9b:28:3a
+W (3559) usbHost: wait conn=0 enumDone=0 cdc=0 hprt=0x00001000 dp=0 dm=0 state=0 enum=0 in=0x00 out=0x00
+W (3829) usbHost: device disconnected
+W (4264) cellular: ec800m process status=10
+W (4559) usbHost: wait conn=0 enumDone=0 cdc=0 hprt=0x00001000 dp=0 dm=0 state=0 enum=0 in=0x00 out=0x00
+W (5264) cellular: ec800m process status=10
+W (5559) usbHost: wait conn=0 enumDone=0 cdc=0 hprt=0x00001000 dp=0 dm=0 state=0 enum=0 in=0x00 out=0x00
+W (5844) usbHost: device attached
+W (5874) usbHost: device reset
+W (5874) usbHost: speed=1
+W (5944) usbHost: vid=0x2c7c pid=0x6002 class=0xef
+W (6001) usbHost: cfg ifs=6 firstClass=0x02 eps=1
+W (6011) usbHost: device disconnected
+W (6266) cellular: ec800m process status=10
+W (6561) usbHost: wait conn=0 enumDone=0 cdc=0 hprt=0x00001000 dp=0 dm=0 state=0 enum=0 in=0x00 out=0x00
+W (7266) cellular: ec800m process status=10
+W (7561) usbHost: wait conn=0 enumDone=0 cdc=0 hprt=0x00001000 dp=0 dm=0 state=0 enum=0 in=0x00 out=0x00
+W (8026) usbHost: device attached
+W (8056) usbHost: device reset
+W (8056) usbHost: speed=1
+W (8126) usbHost: vid=0x2c7c pid=0x6002 class=0xef
+W (8183) usbHost: cfg ifs=6 firstClass=0x02 eps=1
+W (8193) usbHost: device disconnected
+W (8268) cellular: ec800m process status=10
+W (8563) usbHost: wait conn=0 enumDone=0 cdc=0 hprt=0x00001000 dp=0 dm=0 state=0 enum=0 in=0x00 out=0x00
+W (9268) cellular: ec800m process status=10
+W (9563) usbHost: wait conn=0 enumDone=0 cdc=0 hprt=0x00001000 dp=0 dm=0 state=0 enum=0 in=0x00 out=0x00
+W (10208) usbHost: device attached
+W (10238) usbHost: device reset
+W (10238) usbHost: speed=1
+W (10293) cellular: ec800m process status=10
+W (10308) usbHost: vid=0x2c7c pid=0x6002 class=0xef
+W (10365) usbHost: cfg ifs=6 firstClass=0x02 eps=1
+W (10375) usbHost: device disconnected
+W (10565) usbHost: wait conn=0 enumDone=0 cdc=0 hprt=0x00001000 dp=0 dm=0 state=0 enum=0 in=0x00 out=0x00
+W (11295) cellular: ec800m process status=10
+W (11565) usbHost: wait conn=0 enumDone=0 cdc=0 hprt=0x00001000 dp=0 dm=0 state=0 enum=0 in=0x00 out=0x00
+W (12390) usbHost: device attached
+W (12420) usbHost: device reset
+W (12420) usbHost: speed=1
+W (12425) cellular: ec800m process status=10
+W (12490) usbHost: vid=0x2c7c pid=0x6002 class=0xef
+W (12547) usbHost: cfg ifs=6 firstClass=0x02 eps=1
+W (12552) usbHost: device disconnected
+W (12567) usbHost: wait conn=0 enumDone=0 cdc=0 hprt=0x00001000 dp=0 dm=0 state=0 enum=0 in=0x00 out=0x00
+W (13427) cellular: ec800m process status=10
+W (13567) usbHost: wait conn=0 enumDone=0 cdc=0 hprt=0x00001000 dp=0 dm=0 state=0 enum=0 in=0x00 out=0x00
+W (14427) cellular: ec800m process status=10
+W (14572) usbHost: wait conn=1 enumDone=0 cdc=0 hprt=0x00021401 dp=0 dm=0 state=1 enum=0 in=0x00 out=0x00
+W (14572) usbHost: device attached
+W (14602) usbHost: device reset
+W (14602) usbHost: speed=1
+W (14672) usbHost: vid=0x2c7c pid=0x6002 class=0xef
+W (14729) usbHost: cfg ifs=6 firstClass=0x02 eps=1
+W (14739) usbHost: device disconnected
+W (15429) cellular: ec800m process status=10
+W (15574) usbHost: wait conn=0 enumDone=0 cdc=0 hprt=0x00001000 dp=0 dm=0 state=0 enum=0 in=0x00 out=0x00
+W (16429) cellular: ec800m process status=10
+W (16574) usbHost: wait conn=0 enumDone=0 cdc=0 hprt=0x00001000 dp=0 dm=0 state=0 enum=0 in=0x00 out=0x00
+W (16754) usbHost: device attached
+W (16784) usbHost: device reset
+W (16784) usbHost: speed=1
+W (16854) usbHost: vid=0x2c7c pid=0x6002 class=0xef
+W (16911) usbHost: cfg ifs=6 firstClass=0x02 eps=1
+W (16916) usbHost: device disconnected
+W (17431) cellular: ec800m process status=10
+W (17576) usbHost: wait conn=0 enumDone=0 cdc=0 hprt=0x00001000 dp=0 dm=0 state=0 enum=0 in=0x00 out=0x00
+W (18431) cellular: ec800m process status=10
+W (18576) usbHost: wait conn=0 enumDone=0 cdc=0 hprt=0x00001000 dp=0 dm=0 state=0 enum=0 in=0x00 out=0x00
+W (18936) usbHost: device attached
+W (18966) usbHost: device reset
+W (18966) usbHost: speed=1
+W (19036) usbHost: vid=0x2c7c pid=0x6002 class=0xef
+W (19093) usbHost: cfg ifs=6 firstClass=0x02 eps=1
+W (19103) usbHost: device disconnected
+W (19433) cellular: ec800m process status=10
+W (19578) usbHost: wait conn=0 enumDone=0 cdc=0 hprt=0x00001000 dp=0 dm=0 state=0 enum=0 in=0x00 out=0x00
+W (20433) cellular: ec800m process status=10
+W (20578) usbHost: wait conn=0 enumDone=0 cdc=0 hprt=0x00001000 dp=0 dm=0 state=0 enum=0 in=0x00 out=0x00
+W (21118) usbHost: device attached
+W (21148) usbHost: device reset
+W (21148) usbHost: speed=1
+W (21218) usbHost: vid=0x2c7c pid=0x6002 class=0xef
+W (21275) usbHost: cfg ifs=6 firstClass=0x02 eps=1
+W (21280) usbHost: device disconnected
+W (21435) cellular: ec800m process status=10
+W (21580) usbHost: wait conn=0 enumDone=0 cdc=0 hprt=0x00001000 dp=0 dm=0 state=0 enum=0 in=0x00 out=0x00
+W (22435) cellular: ec800m process status=10
+W (22580) usbHost: wait conn=0 enumDone=0 cdc=0 hprt=0x00001000 dp=0 dm=0 state=0 enum=0 in=0x00 out=0x00
+

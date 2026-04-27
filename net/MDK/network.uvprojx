@@ -341,7 +341,7 @@
               <MiscControls></MiscControls>
               <Define>STM32F40_41xxx,USE_STDPERIPH_DRIVER,__FPU_USED=1</Define>
               <Undefine></Undefine>
-              <IncludePath>.;..\CORE;..\SYSTEM\delay;..\SYSTEM\sys;..\SYSTEM\usart;..\FWLIB\STM32F4xx_StdPeriph_Driver\inc;..\User;..\User\port;..\HARDWARE\LED;..\rep\tools\ringbuffer;..\UCOSIII\uC-CPU;..\UCOSIII\uC-LIB;..\UCOSIII\uCOS-III;..\UCOSIII\UCOS_BSP;..\UCOSIII\uCOS_CONFIG;..\UCOSIII\uCOS-III\Source;..\UCOSIII\uC-CPU\ARM-Cortex-M4\RealView;..\UCOSIII\uC-LIB\Ports\ARM-Cortex-M4\RealView;..\UCOSIII\uCOS-III\Ports\ARM-Cortex-M4\Generic\RealView</IncludePath>
+              <IncludePath>.;..\CORE;..\SYSTEM\delay;..\SYSTEM\sys;..\SYSTEM\usart;..\FWLIB\STM32F4xx_StdPeriph_Driver\inc;..\User;..\User\port;..\User\bsp\usbhost\inc;..\User\bsp\usbhost\official\host_inc;..\User\bsp\usbhost\official\otg_inc;..\HARDWARE\LED;..\rep\tools\ringbuffer;..\UCOSIII\uC-CPU;..\UCOSIII\uC-LIB;..\UCOSIII\uCOS-III;..\UCOSIII\UCOS_BSP;..\UCOSIII\uCOS_CONFIG;..\UCOSIII\uCOS-III\Source;..\UCOSIII\uC-CPU\ARM-Cortex-M4\RealView;..\UCOSIII\uC-LIB\Ports\ARM-Cortex-M4\RealView;..\UCOSIII\uCOS-III\Ports\ARM-Cortex-M4\Generic\RealView</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -461,6 +461,11 @@
               <FilePath>..\User\port\esp32c5_port.c</FilePath>
             </File>
             <File>
+              <FileName>ec800m_port.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\User\port\ec800m_port.c</FilePath>
+            </File>
+            <File>
               <FileName>cellular.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\User\manager\cellular\cellular.c</FilePath>
@@ -484,6 +489,16 @@
               <FileName>bspuart.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\User\bsp\bspuart.c</FilePath>
+            </File>
+            <File>
+              <FileName>bspusb.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\User\bsp\bspusb.c</FilePath>
+            </File>
+            <File>
+              <FileName>bspusb_ec800.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\User\bsp\bspusb_ec800.c</FilePath>
             </File>
             <File>
               <FileName>bspspi.c</FileName>
@@ -516,6 +531,11 @@
               <FilePath>..\User\port\drvspi_port.c</FilePath>
             </File>
             <File>
+              <FileName>drvusb_port.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\User\port\drvusb_port.c</FilePath>
+            </File>
+            <File>
               <FileName>w25qxxx_port.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\User\port\w25qxxx_port.c</FilePath>
@@ -539,6 +559,56 @@
               <FileName>drvspi.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\rep\driver\drvspi\drvspi.c</FilePath>
+            </File>
+            <File>
+              <FileName>drvusb.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\rep\driver\drvusb\drvusb.c</FilePath>
+            </File>
+            <File>
+              <FileName>usbhost_ec800.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\User\bsp\usbhost\src\usbhost_ec800.c</FilePath>
+            </File>
+            <File>
+              <FileName>usbh_cdc_host.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\User\bsp\usbhost\src\usbh_cdc_host.c</FilePath>
+            </File>
+            <File>
+              <FileName>usbh_core.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\User\bsp\usbhost\official\host_src\usbh_core.c</FilePath>
+            </File>
+            <File>
+              <FileName>usbh_hcs.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\User\bsp\usbhost\official\host_src\usbh_hcs.c</FilePath>
+            </File>
+            <File>
+              <FileName>usbh_ioreq.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\User\bsp\usbhost\official\host_src\usbh_ioreq.c</FilePath>
+            </File>
+            <File>
+              <FileName>usbh_stdreq.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\User\bsp\usbhost\official\host_src\usbh_stdreq.c</FilePath>
+            </File>
+            <File>
+              <FileName>usb_core.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\User\bsp\usbhost\official\otg_src\usb_core.c</FilePath>
+            </File>
+            <File>
+              <FileName>usb_hcd.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\User\bsp\usbhost\official\otg_src\usb_hcd.c</FilePath>
+            </File>
+            <File>
+              <FileName>usb_hcd_int.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\User\bsp\usbhost\official\otg_src\usb_hcd_int.c</FilePath>
             </File>
             <File>
               <FileName>flowparser.c</FileName>
@@ -649,6 +719,21 @@
               <FileName>esp32c5_data.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\rep\module\esp32c5\esp32c5_data.c</FilePath>
+            </File>
+            <File>
+              <FileName>ec800m.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\rep\module\ec800m\ec800m.c</FilePath>
+            </File>
+            <File>
+              <FileName>ec800m_http.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\rep\module\ec800m\ec800m_http.c</FilePath>
+            </File>
+            <File>
+              <FileName>ec800m_mqtt.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\rep\module\ec800m\ec800m_mqtt.c</FilePath>
             </File>
             <File>
               <FileName>SEGGER_RTT.c</FileName>

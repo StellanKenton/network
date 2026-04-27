@@ -22,6 +22,9 @@ typedef enum eDrvUsbPortMap {
 #define DRVUSB_PORT_CDC_DATA_OUT_EP   0x01U
 #define DRVUSB_PORT_CDC_CMD_EP        0x82U
 
+#define DRVUSB_PORT_EC800M_AT_IN_EP   DRVUSB_PORT_CDC_DATA_IN_EP
+#define DRVUSB_PORT_EC800M_AT_OUT_EP  DRVUSB_PORT_CDC_DATA_OUT_EP
+
 #ifdef __cplusplus
 }
 #endif

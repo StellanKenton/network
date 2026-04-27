@@ -1,0 +1,290 @@
+SEGGER J-Link V9.18 - Real time terminal output
+SEGGER J-Link ARM Pro V12.0, SN=601012478
+Process: JLinkGDBServerCL.exe
+I (0) sysmgr: USART2 PA2/PA3 reserved for wifi, debug logs use RTT
+I (0) sysmgr: rtt console ready
+I (0) sysmgr: system init
+I (0) storage: vfs shell ready at /
+I (0) storage: w25q jedec=EF 40 18
+I (10) sysmgr: wifi_en=RESET (PD8 low, module held reset/disable)
+I (23) storage: mount ok /mem
+I (50) storage: sd detected, mount /sd
+I (93) storage: mount ok /sd
+W (310) usbHost: host init
+I (310) cellular: ec800m init ok
+I (310) ec800m: start service=1
+I (310) cellular: ec800m start ok
+W (310) usbHost: wait conn=0 enumDone=0 cdc=0 hprt=0x00001000 dp=0 dm=0 state=0 enum=0 in=0x00 out=0x00
+W (1310) usbHost: wait conn=0 enumDone=0 cdc=0 hprt=0x00001000 dp=0 dm=0 state=0 enum=0 in=0x00 out=0x00
+W (1415) cellular: ec800m process status=10
+W (1695) usbCore: disconnect hprt=0x00001000 state=1 enum=0 ctrl=1 req=1
+W (1695) usbHost: device disconnected
+W (2310) usbHost: wait conn=0 enumDone=0 cdc=0 hprt=0x00001000 dp=0 dm=0 state=0 enum=0 in=0x00 out=0x00
+W (2415) cellular: ec800m process status=10
+W (3310) usbHost: wait conn=0 enumDone=0 cdc=0 hprt=0x00001000 dp=0 dm=0 state=0 enum=0 in=0x00 out=0x00
+W (3415) cellular: ec800m process status=10
+W (3585) usbHost: device attached
+W (3615) usbHost: device reset
+W (3615) usbHost: speed=1
+W (3620) usbCore: ctrl state=1 urb=0 hc=0 ch=0 hprt=0x00021405 setup=80 06 00 01 00 00 08 00
+W (3625) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 01 00 00 08 00
+W (3670) usbCore: enum state=1 ctrl=0 req=1
+W (3670) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 01 00 00 12 00
+W (3675) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 01 00 00 12 00
+W (3685) usbHost: vid=0x2c7c pid=0x6002 class=0xef
+W (3690) usbCore: enum state=2 ctrl=0 req=1
+W (3690) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=00 05 01 00 00 00 00 00
+W (3695) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=00 05 01 00 00 00 00 00
+W (3695) usbCore: ctrl state=7 urb=1 hc=1 ch=1 hprt=0x00021405 setup=00 05 01 00 00 00 00 00
+W (3700) usbCore: ctrl state=8 urb=1 hc=1 ch=1 hprt=0x00021405 setup=00 05 01 00 00 00 00 00
+W (3707) usbCore: enum state=3 ctrl=0 req=1
+W (3707) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (3712) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (3727) usbCore: enum state=4 ctrl=0 req=1
+W (3727) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 80 00
+W (3732) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 80 00
+W (3742) usbHost: cfg val=1 ifs=6 attr=0xe0 maxPower=500mA firstClass=0x02 eps=1
+W (3747) usbCore: enum state=8 ctrl=0 req=1
+W (3747) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=00 09 01 00 00 00 00 00
+W (3752) usbCore: disconnect hprt=0x00001000 state=7 enum=8 ctrl=2 req=2
+W (3752) usbHost: device disconnected
+W (4312) usbHost: wait conn=0 enumDone=0 cdc=0 hprt=0x00001000 dp=0 dm=0 state=0 enum=0 in=0x00 out=0x00
+W (4417) cellular: ec800m process status=10
+W (5312) usbHost: wait conn=0 enumDone=0 cdc=0 hprt=0x00001000 dp=0 dm=0 state=0 enum=0 in=0x00 out=0x00
+W (5417) cellular: ec800m process status=10
+W (5767) usbHost: device attached
+W (5797) usbHost: device reset
+W (5797) usbHost: speed=1
+W (5802) usbCore: enum state=0 ctrl=1 req=1
+W (5807) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 01 00 00 08 00
+W (5852) usbCore: enum state=1 ctrl=0 req=1
+W (5852) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 01 00 00 12 00
+W (5857) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 01 00 00 12 00
+W (5867) usbHost: vid=0x2c7c pid=0x6002 class=0xef
+W (5872) usbCore: enum state=2 ctrl=0 req=1
+W (5872) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=00 05 01 00 00 00 00 00
+W (5877) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=00 05 01 00 00 00 00 00
+W (5877) usbCore: ctrl state=7 urb=1 hc=1 ch=1 hprt=0x00021405 setup=00 05 01 00 00 00 00 00
+W (5882) usbCore: ctrl state=8 urb=1 hc=1 ch=1 hprt=0x00021405 setup=00 05 01 00 00 00 00 00
+W (5889) usbCore: enum state=3 ctrl=0 req=1
+W (5889) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (5894) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (5909) usbCore: enum state=4 ctrl=0 req=1
+W (5909) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 80 00
+W (5914) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 80 00
+W (5924) usbHost: cfg val=1 ifs=6 attr=0xe0 maxPower=500mA firstClass=0x02 eps=1
+W (5929) usbCore: enum state=8 ctrl=0 req=1
+W (5929) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=00 09 01 00 00 00 00 00
+W (5934) usbCore: disconnect hprt=0x00001000 state=7 enum=8 ctrl=2 req=2
+W (5934) usbHost: device disconnected
+W (6314) usbHost: wait conn=0 enumDone=0 cdc=0 hprt=0x00001000 dp=0 dm=0 state=0 enum=0 in=0x00 out=0x00
+W (6419) cellular: ec800m process status=10
+W (7314) usbHost: wait conn=0 enumDone=0 cdc=0 hprt=0x00001000 dp=0 dm=0 state=0 enum=0 in=0x00 out=0x00
+W (7419) cellular: ec800m process status=10
+W (7949) usbHost: device attached
+W (7979) usbHost: device reset
+W (7979) usbHost: speed=1
+W (7984) usbCore: enum state=0 ctrl=1 req=1
+W (7989) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 01 00 00 08 00
+W (8034) usbCore: enum state=1 ctrl=0 req=1
+W (8034) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 01 00 00 12 00
+W (8039) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 01 00 00 12 00
+W (8049) usbHost: vid=0x2c7c pid=0x6002 class=0xef
+W (8054) usbCore: enum state=2 ctrl=0 req=1
+W (8054) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=00 05 01 00 00 00 00 00
+W (8059) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=00 05 01 00 00 00 00 00
+W (8059) usbCore: ctrl state=7 urb=1 hc=1 ch=1 hprt=0x00021405 setup=00 05 01 00 00 00 00 00
+W (8064) usbCore: ctrl state=8 urb=1 hc=1 ch=1 hprt=0x00021405 setup=00 05 01 00 00 00 00 00
+W (8071) usbCore: enum state=3 ctrl=0 req=1
+W (8071) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (8076) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (8091) usbCore: enum state=4 ctrl=0 req=1
+W (8091) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 80 00
+W (8096) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 80 00
+W (8106) usbHost: cfg val=1 ifs=6 attr=0xe0 maxPower=500mA firstClass=0x02 eps=1
+W (8111) usbCore: enum state=8 ctrl=0 req=1
+W (8111) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=00 09 01 00 00 00 00 00
+W (8116) usbCore: disconnect hprt=0x00001000 state=7 enum=8 ctrl=2 req=2
+W (8116) usbHost: device disconnected
+W (8316) usbHost: wait conn=0 enumDone=0 cdc=0 hprt=0x00001000 dp=0 dm=0 state=0 enum=0 in=0x00 out=0x00
+W (8421) cellular: ec800m process status=10
+W (9316) usbHost: wait conn=0 enumDone=0 cdc=0 hprt=0x00001000 dp=0 dm=0 state=0 enum=0 in=0x00 out=0x00
+W (9421) cellular: ec800m process status=10
+W (10131) usbHost: device attached
+W (10161) usbHost: device reset
+W (10161) usbHost: speed=1
+W (10166) usbCore: enum state=0 ctrl=1 req=1
+W (10171) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 01 00 00 08 00
+W (10216) usbCore: enum state=1 ctrl=0 req=1
+W (10216) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 01 00 00 12 00
+W (10221) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 01 00 00 12 00
+W (10231) usbHost: vid=0x2c7c pid=0x6002 class=0xef
+W (10236) usbCore: enum state=2 ctrl=0 req=1
+W (10236) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=00 05 01 00 00 00 00 00
+W (10241) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=00 05 01 00 00 00 00 00
+W (10241) usbCore: ctrl state=7 urb=1 hc=1 ch=1 hprt=0x00021405 setup=00 05 01 00 00 00 00 00
+W (10246) usbCore: ctrl state=8 urb=1 hc=1 ch=1 hprt=0x00021405 setup=00 05 01 00 00 00 00 00
+W (10253) usbCore: enum state=3 ctrl=0 req=1
+W (10253) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (10258) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (10273) usbCore: enum state=4 ctrl=0 req=1
+W (10273) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 80 00
+W (10278) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 80 00
+W (10288) usbHost: cfg val=1 ifs=6 attr=0xe0 maxPower=500mA firstClass=0x02 eps=1
+W (10293) usbCore: disconnect hprt=0x00001000 state=4 enum=8 ctrl=0 req=1
+W (10293) usbHost: device disconnected
+W (10318) usbHost: wait conn=0 enumDone=0 cdc=0 hprt=0x00001000 dp=0 dm=0 state=0 enum=0 in=0x00 out=0x00
+W (10423) cellular: ec800m process status=10
+W (11318) usbHost: wait conn=0 enumDone=0 cdc=0 hprt=0x00001000 dp=0 dm=0 state=0 enum=0 in=0x00 out=0x00
+W (11423) cellular: ec800m process status=10
+W (12313) usbHost: device attached
+W (12343) usbHost: device reset
+W (12343) usbHost: speed=1
+W (12343) usbHost: wait conn=1 enumDone=0 cdc=0 hprt=0x00021405 dp=0 dm=0 state=4 enum=0 in=0x00 out=0x00
+W (12348) usbCore: enum state=0 ctrl=1 req=1
+W (12348) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 01 00 00 08 00
+W (12353) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 01 00 00 08 00
+W (12398) usbCore: enum state=1 ctrl=0 req=1
+W (12398) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 01 00 00 12 00
+W (12403) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 01 00 00 12 00
+W (12413) usbHost: vid=0x2c7c pid=0x6002 class=0xef
+W (12418) usbCore: enum state=2 ctrl=0 req=1
+W (12418) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=00 05 01 00 00 00 00 00
+W (12423) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=00 05 01 00 00 00 00 00
+W (12423) usbCore: ctrl state=7 urb=1 hc=1 ch=1 hprt=0x00021405 setup=00 05 01 00 00 00 00 00
+W (12423) cellular: ec800m process status=10
+W (12428) usbCore: ctrl state=8 urb=1 hc=1 ch=1 hprt=0x00021405 setup=00 05 01 00 00 00 00 00
+W (12435) usbCore: enum state=3 ctrl=0 req=1
+W (12435) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (12440) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (12455) usbCore: enum state=4 ctrl=0 req=1
+W (12455) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 80 00
+W (12460) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 80 00
+W (12470) usbHost: cfg val=1 ifs=6 attr=0xe0 maxPower=500mA firstClass=0x02 eps=1
+W (12475) usbCore: enum state=8 ctrl=0 req=1
+W (12475) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=00 09 01 00 00 00 00 00
+W (12480) usbCore: disconnect hprt=0x00001000 state=7 enum=8 ctrl=2 req=2
+W (12480) usbHost: device disconnected
+W (13345) usbHost: wait conn=0 enumDone=0 cdc=0 hprt=0x00001000 dp=0 dm=0 state=0 enum=0 in=0x00 out=0x00
+W (13425) cellular: ec800m process status=10
+W (14345) usbHost: wait conn=0 enumDone=0 cdc=0 hprt=0x00001000 dp=0 dm=0 state=0 enum=0 in=0x00 out=0x00
+W (14495) usbHost: device attached
+W (14525) usbHost: device reset
+W (14525) usbHost: speed=1
+W (14530) usbCore: enum state=0 ctrl=1 req=1
+W (14530) cellular: ec800m process status=10
+W (14535) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 01 00 00 08 00
+W (14580) usbCore: enum state=1 ctrl=0 req=1
+W (14580) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 01 00 00 12 00
+W (14585) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 01 00 00 12 00
+W (14595) usbHost: vid=0x2c7c pid=0x6002 class=0xef
+W (14600) usbCore: enum state=2 ctrl=0 req=1
+W (14600) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=00 05 01 00 00 00 00 00
+W (14605) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=00 05 01 00 00 00 00 00
+W (14605) usbCore: ctrl state=7 urb=1 hc=1 ch=1 hprt=0x00021405 setup=00 05 01 00 00 00 00 00
+W (14610) usbCore: ctrl state=8 urb=1 hc=1 ch=1 hprt=0x00021405 setup=00 05 01 00 00 00 00 00
+W (14617) usbCore: enum state=3 ctrl=0 req=1
+W (14617) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (14622) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (14637) usbCore: enum state=4 ctrl=0 req=1
+W (14637) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 80 00
+W (14642) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 80 00
+W (14652) usbHost: cfg val=1 ifs=6 attr=0xe0 maxPower=500mA firstClass=0x02 eps=1
+W (14657) usbCore: disconnect hprt=0x00001000 state=4 enum=8 ctrl=0 req=1
+W (14657) usbHost: device disconnected
+W (15347) usbHost: wait conn=0 enumDone=0 cdc=0 hprt=0x00001000 dp=0 dm=0 state=0 enum=0 in=0x00 out=0x00
+W (15532) cellular: ec800m process status=10
+W (16347) usbHost: wait conn=0 enumDone=0 cdc=0 hprt=0x00001000 dp=0 dm=0 state=0 enum=0 in=0x00 out=0x00
+W (16532) cellular: ec800m process status=10
+W (16677) usbHost: device attached
+W (16707) usbHost: device reset
+W (16707) usbHost: speed=1
+W (16712) usbCore: enum state=0 ctrl=1 req=1
+W (16712) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 01 00 00 08 00
+W (16717) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 01 00 00 08 00
+W (16762) usbCore: enum state=1 ctrl=0 req=1
+W (16762) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 01 00 00 12 00
+W (16767) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 01 00 00 12 00
+W (16777) usbHost: vid=0x2c7c pid=0x6002 class=0xef
+W (16782) usbCore: enum state=2 ctrl=0 req=1
+W (16782) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=00 05 01 00 00 00 00 00
+W (16787) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=00 05 01 00 00 00 00 00
+W (16787) usbCore: ctrl state=7 urb=1 hc=1 ch=1 hprt=0x00021405 setup=00 05 01 00 00 00 00 00
+W (16792) usbCore: ctrl state=8 urb=1 hc=1 ch=1 hprt=0x00021405 setup=00 05 01 00 00 00 00 00
+W (16799) usbCore: enum state=3 ctrl=0 req=1
+W (16799) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (16804) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (16819) usbCore: enum state=4 ctrl=0 req=1
+W (16819) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 80 00
+W (16824) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 80 00
+W (16834) usbHost: cfg val=1 ifs=6 attr=0xe0 maxPower=500mA firstClass=0x02 eps=1
+W (16839) usbCore: enum state=8 ctrl=0 req=1
+W (16839) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=00 09 01 00 00 00 00 00
+W (16844) usbCore: disconnect hprt=0x00001000 state=7 enum=8 ctrl=2 req=2
+W (16844) usbHost: device disconnected
+W (17349) usbHost: wait conn=0 enumDone=0 cdc=0 hprt=0x00001000 dp=0 dm=0 state=0 enum=0 in=0x00 out=0x00
+W (17534) cellular: ec800m process status=10
+W (18349) usbHost: wait conn=0 enumDone=0 cdc=0 hprt=0x00001000 dp=0 dm=0 state=0 enum=0 in=0x00 out=0x00
+W (18534) cellular: ec800m process status=10
+W (18859) usbHost: device attached
+W (18889) usbHost: device reset
+W (18889) usbHost: speed=1
+W (18894) usbCore: enum state=0 ctrl=1 req=1
+W (18899) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 01 00 00 08 00
+W (18944) usbCore: enum state=1 ctrl=0 req=1
+W (18944) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 01 00 00 12 00
+W (18949) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 01 00 00 12 00
+W (18959) usbHost: vid=0x2c7c pid=0x6002 class=0xef
+W (18964) usbCore: enum state=2 ctrl=0 req=1
+W (18964) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=00 05 01 00 00 00 00 00
+W (18969) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=00 05 01 00 00 00 00 00
+W (18969) usbCore: ctrl state=7 urb=1 hc=1 ch=1 hprt=0x00021405 setup=00 05 01 00 00 00 00 00
+W (18974) usbCore: ctrl state=8 urb=1 hc=1 ch=1 hprt=0x00021405 setup=00 05 01 00 00 00 00 00
+W (18981) usbCore: enum state=3 ctrl=0 req=1
+W (18981) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (18986) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (19001) usbCore: enum state=4 ctrl=0 req=1
+W (19001) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 80 00
+W (19006) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 80 00
+W (19016) usbHost: cfg val=1 ifs=6 attr=0xe0 maxPower=500mA firstClass=0x02 eps=1
+W (19021) usbCore: disconnect hprt=0x00001000 state=4 enum=8 ctrl=0 req=1
+W (19021) usbHost: device disconnected
+W (19351) usbHost: wait conn=0 enumDone=0 cdc=0 hprt=0x00001000 dp=0 dm=0 state=0 enum=0 in=0x00 out=0x00
+W (19536) cellular: ec800m process status=10
+W (20351) usbHost: wait conn=0 enumDone=0 cdc=0 hprt=0x00001000 dp=0 dm=0 state=0 enum=0 in=0x00 out=0x00
+W (20536) cellular: ec800m process status=10
+W (21041) usbHost: device attached
+W (21071) usbHost: device reset
+W (21071) usbHost: speed=1
+W (21076) usbCore: enum state=0 ctrl=1 req=1
+W (21076) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 01 00 00 08 00
+W (21081) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 01 00 00 08 00
+W (21126) usbCore: enum state=1 ctrl=0 req=1
+W (21126) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 01 00 00 12 00
+W (21131) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 01 00 00 12 00
+W (21141) usbHost: vid=0x2c7c pid=0x6002 class=0xef
+W (21146) usbCore: enum state=2 ctrl=0 req=1
+W (21146) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=00 05 01 00 00 00 00 00
+W (21151) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=00 05 01 00 00 00 00 00
+W (21151) usbCore: ctrl state=7 urb=1 hc=1 ch=1 hprt=0x00021405 setup=00 05 01 00 00 00 00 00
+W (21156) usbCore: ctrl state=8 urb=1 hc=1 ch=1 hprt=0x00021405 setup=00 05 01 00 00 00 00 00
+W (21163) usbCore: enum state=3 ctrl=0 req=1
+W (21163) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (21168) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (21183) usbCore: enum state=4 ctrl=0 req=1
+W (21183) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 80 00
+W (21188) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 80 00
+W (21198) usbHost: cfg val=1 ifs=6 attr=0xe0 maxPower=500mA firstClass=0x02 eps=1
+W (21203) usbCore: enum state=8 ctrl=0 req=1
+W (21203) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=00 09 01 00 00 00 00 00
+W (21208) usbCore: disconnect hprt=0x00001000 state=7 enum=8 ctrl=2 req=2
+W (21208) usbHost: device disconnected
+W (21353) usbHost: wait conn=0 enumDone=0 cdc=0 hprt=0x00001000 dp=0 dm=0 state=0 enum=0 in=0x00 out=0x00
+W (21538) cellular: ec800m process status=10
+W (22353) usbHost: wait conn=0 enumDone=0 cdc=0 hprt=0x00001000 dp=0 dm=0 state=0 enum=0 in=0x00 out=0x00
+W (22538) cellular: ec800m process status=10
+W (23223) usbHost: device attached
+W (23253) usbHost: device reset
+W (23253) usbHost: speed=1
+W (23258) usbCore: enum state=0 ctrl=1 req=1
+

@@ -4,32 +4,20 @@
 **********************************************************************************/
 #include "bspusb.h"
 
-#include "../../SYSTEM/sys/sys.h"
+#include "../port/drvusb_port.h"
+#include "usbhost/inc/usbhost_ec800.h"
 
 static uint8_t gBspUsbInitialized[DRVUSB_MAX];
 
 eDrvStatus bspUsbInit(uint8_t usb)
 {
-	GPIO_InitTypeDef lGpioInit;
-
-	if (usb != DRVUSB_DEV0) {
+	if (usb != DRVUSB_CELLULAR) {
 		return DRV_STATUS_INVALID_PARAM;
 	}
 
-	RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOA, ENABLE);
-	RCC_AHB2PeriphClockCmd(RCC_AHB2Periph_OTG_FS, ENABLE);
-
-	GPIO_PinAFConfig(GPIOA, GPIO_PinSource11, GPIO_AF_OTG_FS);
-	GPIO_PinAFConfig(GPIOA, GPIO_PinSource12, GPIO_AF_OTG_FS);
-
-	GPIO_StructInit(&lGpioInit);
-	lGpioInit.GPIO_Pin = GPIO_Pin_11 | GPIO_Pin_12;
-	lGpioInit.GPIO_Mode = GPIO_Mode_AF;
-	lGpioInit.GPIO_OType = GPIO_OType_PP;
-	lGpioInit.GPIO_PuPd = GPIO_PuPd_NOPULL;
-	lGpioInit.GPIO_Speed = GPIO_Speed_100MHz;
-	GPIO_Init(GPIOA, &lGpioInit);
-
+	if (usbHostEc800Init() != DRV_STATUS_OK) {
+		return DRV_STATUS_ERROR;
+	}
 	gBspUsbInitialized[usb] = 1U;
 	return DRV_STATUS_OK;
 }
@@ -40,7 +28,7 @@ eDrvStatus bspUsbStart(uint8_t usb)
 		return DRV_STATUS_NOT_READY;
 	}
 
-	return DRV_STATUS_UNSUPPORTED;
+	return usbHostEc800Start();
 }
 
 eDrvStatus bspUsbStop(uint8_t usb)
@@ -49,76 +37,88 @@ eDrvStatus bspUsbStop(uint8_t usb)
 		return DRV_STATUS_NOT_READY;
 	}
 
-	return DRV_STATUS_UNSUPPORTED;
+	return usbHostEc800Stop();
 }
 
 eDrvStatus bspUsbSetConnect(uint8_t usb, bool isConnect)
 {
 	(void)usb;
 	(void)isConnect;
-	return DRV_STATUS_UNSUPPORTED;
+	return DRV_STATUS_OK;
 }
 
 eDrvStatus bspUsbOpenEndpoint(uint8_t usb, const stDrvUsbEndpointConfig *config)
 {
 	(void)usb;
 	(void)config;
-	return DRV_STATUS_UNSUPPORTED;
+	return DRV_STATUS_OK;
 }
 
 eDrvStatus bspUsbCloseEndpoint(uint8_t usb, uint8_t endpointAddress)
 {
 	(void)usb;
 	(void)endpointAddress;
-	return DRV_STATUS_UNSUPPORTED;
+	return DRV_STATUS_OK;
 }
 
 eDrvStatus bspUsbFlushEndpoint(uint8_t usb, uint8_t endpointAddress)
 {
 	(void)usb;
 	(void)endpointAddress;
-	return DRV_STATUS_UNSUPPORTED;
+	return DRV_STATUS_OK;
 }
 
 eDrvStatus bspUsbTransmit(uint8_t usb, uint8_t endpointAddress, const uint8_t *buffer, uint16_t length, uint32_t timeoutMs)
 {
-	(void)usb;
-	(void)endpointAddress;
-	(void)buffer;
-	(void)length;
-	(void)timeoutMs;
-	return DRV_STATUS_UNSUPPORTED;
+	if ((usb >= DRVUSB_MAX) || (gBspUsbInitialized[usb] == 0U)) {
+		return DRV_STATUS_NOT_READY;
+	}
+
+	return usbHostEc800Transmit(endpointAddress, buffer, length, timeoutMs);
 }
 
 eDrvStatus bspUsbReceive(uint8_t usb, uint8_t endpointAddress, uint8_t *buffer, uint16_t length, uint16_t *actualLength, uint32_t timeoutMs)
 {
-	(void)usb;
-	(void)endpointAddress;
-	(void)buffer;
-	(void)length;
-	(void)timeoutMs;
 	if (actualLength != NULL) {
 		*actualLength = 0U;
 	}
-	return DRV_STATUS_UNSUPPORTED;
+	if ((usb >= DRVUSB_MAX) || (gBspUsbInitialized[usb] == 0U)) {
+		return DRV_STATUS_NOT_READY;
+	}
+
+	return usbHostEc800Receive(endpointAddress, buffer, length, actualLength, timeoutMs);
 }
 
 bool bspUsbIsConnected(uint8_t usb)
 {
-	(void)usb;
-	return false;
+	if ((usb >= DRVUSB_MAX) || (gBspUsbInitialized[usb] == 0U)) {
+		return false;
+	}
+
+	return usbHostEc800IsConnected();
 }
 
 bool bspUsbIsConfigured(uint8_t usb)
 {
-	(void)usb;
-	return false;
+	if ((usb >= DRVUSB_MAX) || (gBspUsbInitialized[usb] == 0U)) {
+		return false;
+	}
+
+	return usbHostEc800IsConfigured();
 }
 
 eDrvUsbSpeed bspUsbGetSpeed(uint8_t usb)
 {
-	(void)usb;
-	return DRVUSB_SPEED_UNKNOWN;
+	if ((usb >= DRVUSB_MAX) || (gBspUsbInitialized[usb] == 0U)) {
+		return DRVUSB_SPEED_UNKNOWN;
+	}
+
+	return usbHostEc800GetSpeed();
+}
+
+void bspUsbHandleIrq(void)
+{
+	usbHostEc800HandleIrq();
 }
 
 /**************************End of file********************************/

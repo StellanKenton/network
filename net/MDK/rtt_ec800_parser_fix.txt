@@ -1,0 +1,43 @@
+SEGGER J-Link V9.18 - Real time terminal output
+SEGGER J-Link ARM Pro V12.0, SN=601012478
+Process: JLinkGDBServerCL.exe
+I (0) sysmgr: USART2 PA2/PA3 reserved for wifi, debug logs use RTT
+I (0) sysmgr: rtt console ready
+I (0) sysmgr: system init
+I (0) storage: vfs shell ready at /
+I (0) storage: w25q jedec=EF 40 18
+I (10) sysmgr: wifi_en=RESET (PD8 low, module held reset/disable)
+I (276) wireless: storage cfg wifi=0 sn=1 key=0 http=1 mqttHost=1 id=HC630257T6001
+I (276) esp32c5Ctl: start role=ble_peripheral
+I (276) esp32c5Ctl: assert reset pin=0 pulse=1000
+I (276) storage: mount ok /mem
+I (303) storage: sd detected, mount /sd
+I (346) storage: mount ok /sd
+W (556) usbHost: host init
+I (556) cellular: ec800m init ok
+I (556) ec800m: start service=1
+I (556) cellular: ec800m start ok
+W (556) usbHost: wait conn=0 enumDone=0 cdc=0 hprt=0x00001000 dp=0 dm=0 state=0 enum=0 in=0x00 out=0x00
+I (1276) esp32c5Ctl: release reset waitReady timeout=4000 probe=100
+I (1280) sysmgr: wifi_en=SET (PD8 high, module enabled)
+W (1556) usbHost: wait conn=0 enumDone=0 cdc=0 hprt=0x00001000 dp=0 dm=0 state=0 enum=0 in=0x00 out=0x00
+W (1946) usbHost: device disconnected
+W (2261) cellular: ec800m process status=10
+W (2556) usbHost: wait conn=0 enumDone=0 cdc=0 hprt=0x00001000 dp=0 dm=0 state=0 enum=0 in=0x00 out=0x00
+I (2881) esp32c5Ctl: urc ready
+I (2976) esp32c5Ctl: ready urc seen, continue init
+W (3262) cellular: ec800m process status=10
+I (3518) esp32c5Ctl: module ready mac=3c:dc:75:9b:28:3a
+I (3518) wireless: esp32c5 ready ble=Primedic-VENT-0001
+I (3518) wireless: ble mac: 3c:dc:75:9b:28:3a
+W (3559) usbHost: wait conn=0 enumDone=0 cdc=0 hprt=0x00001000 dp=0 dm=0 state=0 enum=0 in=0x00 out=0x00
+W (3834) usbHost: device disconnected
+W (4264) cellular: ec800m process status=10
+W (4559) usbHost: wait conn=0 enumDone=0 cdc=0 hprt=0x00001000 dp=0 dm=0 state=0 enum=0 in=0x00 out=0x00
+W (5264) cellular: ec800m process status=10
+W (5559) usbHost: wait conn=0 enumDone=0 cdc=0 hprt=0x00001000 dp=0 dm=0 state=0 enum=0 in=0x00 out=0x00
+W (5854) usbHost: device attached
+W (5884) usbHost: device reset
+W (5884) usbHost: speed=1
+W (5954) usbHost: vid=0x2c7c pid=0x6002 class=0xef
+

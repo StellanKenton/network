@@ -9,7 +9,11 @@
 #include "delay.h"
 #include "core_cm4.h"
 
+#include "../manager/cellular/cellular.h"
+#include "../port/drvgpio_port.h"
+#include "../../rep/driver/drvgpio/drvgpio.h"
 #include "../../rep/lib/SEGGER/SEGGER_RTT.h"
+#include "../../rep/service/rtos/rtos.h"
 
 #define SYSTEM_RTT_UP_BUFFER_INDEX     0u
 #define SYSTEM_RTT_DOWN_BUFFER_INDEX   0u
@@ -28,7 +32,124 @@ static void systemRttResetLine(void);
 static char *systemRttTrimLeft(char *text);
 static void systemRttTrimRight(char *text);
 static void systemRttHandleCommand(void);
+static bool systemRttHandleCellCommand(const char *command);
+static bool systemRttHandleCellPinCommand(const char *command);
 static void systemRttProcessByte(uint8_t data);
+
+static void systemRttDelayMs(uint32_t delayMs)
+{
+	if (repRtosIsSchedulerRunning()) {
+		(void)repRtosDelayMs(delayMs);
+	} else {
+		delay_ms(delayMs);
+	}
+}
+
+static bool systemRttHandleCellPinCommand(const char *command)
+{
+	if (command == NULL) {
+		return false;
+	}
+
+	if (strcmp(command, "cell pwrkey low") == 0) {
+		drvGpioWrite(DRVGPIO_CELLULAR_PWRKEY, DRVGPIO_PIN_RESET);
+		systemRttWriteString("cell pwrkey low\r\n");
+		return true;
+	}
+
+	if (strcmp(command, "cell pwrkey high") == 0) {
+		drvGpioWrite(DRVGPIO_CELLULAR_PWRKEY, DRVGPIO_PIN_SET);
+		systemRttWriteString("cell pwrkey high\r\n");
+		return true;
+	}
+
+	if (strcmp(command, "cell pwrkey pulse") == 0) {
+		drvGpioWrite(DRVGPIO_CELLULAR_PWRKEY, DRVGPIO_PIN_RESET);
+		systemRttDelayMs(1200U);
+		drvGpioWrite(DRVGPIO_CELLULAR_PWRKEY, DRVGPIO_PIN_SET);
+		systemRttWriteString("cell pwrkey low pulse\r\n");
+		return true;
+	}
+
+	if (strcmp(command, "cell reset low") == 0) {
+		drvGpioWrite(DRVGPIO_CELLULAR_RESET, DRVGPIO_PIN_RESET);
+		systemRttWriteString("cell reset low\r\n");
+		return true;
+	}
+
+	if (strcmp(command, "cell reset high") == 0) {
+		drvGpioWrite(DRVGPIO_CELLULAR_RESET, DRVGPIO_PIN_SET);
+		systemRttWriteString("cell reset high\r\n");
+		return true;
+	}
+
+	if (strcmp(command, "cell reset pulse") == 0) {
+		drvGpioWrite(DRVGPIO_CELLULAR_RESET, DRVGPIO_PIN_RESET);
+		systemRttDelayMs(300U);
+		drvGpioWrite(DRVGPIO_CELLULAR_RESET, DRVGPIO_PIN_SET);
+		systemRttWriteString("cell reset low pulse\r\n");
+		return true;
+	}
+
+	return false;
+}
+
+static bool systemRttHandleCellCommand(const char *command)
+{
+	stCellularDebugStatus status;
+	char line_buffer[192];
+	int line_length;
+
+	if (command == NULL) {
+		return false;
+	}
+
+	if (systemRttHandleCellPinCommand(command)) {
+		return true;
+	}
+
+	if ((strcmp(command, "cell info") == 0) || (strcmp(command, "iot cell info") == 0)) {
+		if (cellularRequestInfoRead()) {
+			systemRttWriteString("cell info armed\r\n");
+		} else {
+			systemRttWriteString("cell info failed\r\n");
+		}
+		return true;
+	}
+
+	if ((strcmp(command, "cell status") == 0) || (strcmp(command, "iot cell status") == 0)) {
+		if (!cellularGetDebugStatus(&status)) {
+			systemRttWriteString("cell status failed\r\n");
+			return true;
+		}
+
+		line_length = snprintf(line_buffer,
+					       sizeof(line_buffer),
+					       "cell init=%u start=%u initStatus=%d procStatus=%d run=%u ready=%u busy=%u at=%u sim=%u sig=%u csq=%d infoPending=%u infoActive=%u\r\n",
+					       status.initialized ? 1u : 0u,
+					       status.started ? 1u : 0u,
+					       (int)status.initStatus,
+					       (int)status.lastProcessStatus,
+					       (unsigned)status.runState,
+					       status.moduleReady ? 1u : 0u,
+					       status.busy ? 1u : 0u,
+					       status.atReady ? 1u : 0u,
+					       status.simChecked ? 1u : 0u,
+					       status.signalChecked ? 1u : 0u,
+					       (int)status.signalStrength,
+					       status.infoReadPending ? 1u : 0u,
+					       status.infoReadActive ? 1u : 0u);
+		if (line_length > 0) {
+			if (line_length > (int)sizeof(line_buffer)) {
+				line_length = (int)sizeof(line_buffer);
+			}
+			systemRttWriteBuffer(line_buffer, (uint16_t)line_length);
+		}
+		return true;
+	}
+
+	return false;
+}
 
 static void systemRttWriteBuffer(const char *buffer, uint16_t length)
 {
@@ -104,8 +225,16 @@ static void systemRttHandleCommand(void)
 		systemRttWriteString("  help   - show this help\r\n");
 		systemRttWriteString("  ping   - reply pong\r\n");
 		systemRttWriteString("  status - show RTT background status\r\n");
+		systemRttWriteString("  cell status - show EC800M status\r\n");
+		systemRttWriteString("  cell info - request EC800M AT info read\r\n");
+		systemRttWriteString("  cell pwrkey <low|high|pulse>\r\n");
+		systemRttWriteString("  cell reset <low|high|pulse>\r\n");
 		systemRttWriteString("  log <text> - emit one RTT log line\r\n");
 		systemRttWriteString("  reboot - software reset\r\n");
+		return;
+	}
+
+	if (systemRttHandleCellCommand(command)) {
 		return;
 	}
 

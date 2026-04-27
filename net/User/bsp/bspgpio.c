@@ -12,7 +12,7 @@ typedef struct stBspGpioMap {
 	GPIO_TypeDef *gpioPort;
 	uint16_t gpioPin;
 	uint8_t isOutput;
-	uint32_t pull;
+	GPIOPuPd_TypeDef pull;
 	eDrvGpioPinState defaultState;
 } stBspGpioMap;
 
@@ -83,7 +83,7 @@ void bspGpioWrite(uint8_t pin, eDrvGpioPinState state)
 
 eDrvGpioPinState bspGpioRead(uint8_t pin)
 {
-	BitAction lState;
+	uint8_t lState;
 
 	if (pin >= DRVGPIO_MAX) {
 		return DRVGPIO_PIN_STATE_INVALID;

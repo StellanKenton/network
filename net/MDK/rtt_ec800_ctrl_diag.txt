@@ -1,0 +1,96 @@
+SEGGER J-Link V9.18 - Real time terminal output
+SEGGER J-Link ARM Pro V12.0, SN=601012478
+Process: JLinkGDBServerCL.exe
+I (0) sysmgr: USART2 PA2/PA3 reserved for wifi, debug logs use RTT
+I (0) sysmgr: rtt console ready
+I (0) sysmgr: system init
+I (0) storage: vfs shell ready at /
+I (0) storage: w25q jedec=EF 40 18
+I (10) sysmgr: wifi_en=RESET (PD8 low, module held reset/disable)
+I (276) wireless: storage cfg wifi=0 sn=1 key=0 http=1 mqttHost=1 id=HC630257T6001
+I (276) esp32c5Ctl: start role=ble_peripheral
+I (276) esp32c5Ctl: assert reset pin=0 pulse=1000
+I (276) storage: mount ok /mem
+I (303) storage: sd detected, mount /sd
+I (346) storage: mount ok /sd
+W (556) usbHost: host init
+I (556) cellular: ec800m init ok
+I (556) ec800m: start service=1
+I (556) cellular: ec800m start ok
+W (556) usbHost: wait conn=0 enumDone=0 cdc=0 hprt=0x00001000 dp=0 dm=0 state=0 enum=0 in=0x00 out=0x00
+I (1276) esp32c5Ctl: release reset waitReady timeout=4000 probe=100
+I (1280) sysmgr: wifi_en=SET (PD8 high, module enabled)
+W (1556) usbHost: wait conn=0 enumDone=0 cdc=0 hprt=0x00001000 dp=0 dm=0 state=0 enum=0 in=0x00 out=0x00
+W (1941) usbCore: disconnect hprt=0x00001000 state=1 enum=0 ctrl=1 req=1
+W (1941) usbHost: device disconnected
+W (2261) cellular: ec800m process status=10
+W (2556) usbHost: wait conn=0 enumDone=0 cdc=0 hprt=0x00001000 dp=0 dm=0 state=0 enum=0 in=0x00 out=0x00
+I (2881) esp32c5Ctl: urc ready
+I (2976) esp32c5Ctl: ready urc seen, continue init
+W (3262) cellular: ec800m process status=10
+I (3518) esp32c5Ctl: module ready mac=3c:dc:75:9b:28:3a
+I (3518) wireless: esp32c5 ready ble=Primedic-VENT-0001
+I (3518) wireless: ble mac: 3c:dc:75:9b:28:3a
+W (3559) usbHost: wait conn=0 enumDone=0 cdc=0 hprt=0x00001000 dp=0 dm=0 state=0 enum=0 in=0x00 out=0x00
+W (3824) usbHost: device attached
+W (3854) usbHost: device reset
+W (3854) usbHost: speed=1
+W (3859) usbCore: ctrl state=1 urb=0 hc=0 ch=0 hprt=0x00021405 setup=80 06 00 01 00 00 08 00
+W (3864) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 01 00 00 08 00
+W (3909) usbCore: enum state=1 ctrl=0 req=1
+W (3909) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 01 00 00 12 00
+W (3914) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 01 00 00 12 00
+W (3924) usbHost: vid=0x2c7c pid=0x6002 class=0xef
+W (3929) usbCore: enum state=2 ctrl=0 req=1
+W (3929) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=00 05 01 00 00 00 00 00
+W (3934) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=00 05 01 00 00 00 00 00
+W (3934) usbCore: ctrl state=7 urb=1 hc=1 ch=1 hprt=0x00021405 setup=00 05 01 00 00 00 00 00
+W (3939) usbCore: ctrl state=8 urb=1 hc=1 ch=1 hprt=0x00021405 setup=00 05 01 00 00 00 00 00
+W (3946) usbCore: enum state=3 ctrl=0 req=1
+W (3946) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (3951) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (3966) usbCore: enum state=4 ctrl=0 req=1
+W (3966) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 e8 00
+W (3971) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 e8 00
+W (3981) usbHost: cfg ifs=6 firstClass=0x02 eps=1
+W (3981) usbCore: wait before set cfg
+W (6981) usbHost: wait conn=1 enumDone=0 cdc=0 hprt=0x00021401 dp=0 dm=0 state=4 enum=8 in=0x00 out=0x00
+W (6986) usbCore: enum state=8 ctrl=0 req=1
+W (6986) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021401 setup=00 09 01 00 00 00 00 00
+W (6986) cellular: ec800m process status=10
+W (6991) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021401 setup=00 09 01 00 00 00 00 00
+W (7981) usbHost: wait conn=1 enumDone=0 cdc=0 hprt=0x00021401 dp=0 dm=0 state=7 enum=8 in=0x00 out=0x00
+W (7986) cellular: ec800m process status=10
+W (8981) usbHost: wait conn=1 enumDone=0 cdc=0 hprt=0x00021401 dp=0 dm=0 state=7 enum=8 in=0x00 out=0x00
+W (8986) cellular: ec800m process status=10
+W (9981) usbHost: wait conn=1 enumDone=0 cdc=0 hprt=0x00021401 dp=0 dm=0 state=7 enum=8 in=0x00 out=0x00
+W (9986) cellular: ec800m process status=10
+W (10981) usbHost: wait conn=1 enumDone=0 cdc=0 hprt=0x00021401 dp=0 dm=0 state=7 enum=8 in=0x00 out=0x00
+W (10986) cellular: ec800m process status=10
+W (11981) usbHost: wait conn=1 enumDone=0 cdc=0 hprt=0x00021401 dp=0 dm=0 state=7 enum=8 in=0x00 out=0x00
+W (11986) cellular: ec800m process status=10
+W (12981) usbHost: wait conn=1 enumDone=0 cdc=0 hprt=0x00021401 dp=0 dm=0 state=7 enum=8 in=0x00 out=0x00
+W (12986) cellular: ec800m process status=10
+W (13981) usbHost: wait conn=1 enumDone=0 cdc=0 hprt=0x00021401 dp=0 dm=0 state=7 enum=8 in=0x00 out=0x00
+W (13986) cellular: ec800m process status=10
+W (14981) usbHost: wait conn=1 enumDone=0 cdc=0 hprt=0x00021401 dp=0 dm=0 state=7 enum=8 in=0x00 out=0x00
+W (14986) cellular: ec800m process status=10
+W (15981) usbHost: wait conn=1 enumDone=0 cdc=0 hprt=0x00021401 dp=0 dm=0 state=7 enum=8 in=0x00 out=0x00
+W (15986) cellular: ec800m process status=10
+W (16981) usbHost: wait conn=1 enumDone=0 cdc=0 hprt=0x00021401 dp=0 dm=0 state=7 enum=8 in=0x00 out=0x00
+W (16986) cellular: ec800m process status=10
+W (17981) usbHost: wait conn=1 enumDone=0 cdc=0 hprt=0x00021401 dp=0 dm=0 state=7 enum=8 in=0x00 out=0x00
+W (17986) cellular: ec800m process status=10
+W (18981) usbHost: wait conn=1 enumDone=0 cdc=0 hprt=0x00021401 dp=0 dm=0 state=7 enum=8 in=0x00 out=0x00
+W (18986) cellular: ec800m process status=10
+W (19981) usbHost: wait conn=1 enumDone=0 cdc=0 hprt=0x00021401 dp=0 dm=0 state=7 enum=8 in=0x00 out=0x00
+W (19986) cellular: ec800m process status=10
+W (20981) usbHost: wait conn=1 enumDone=0 cdc=0 hprt=0x00021401 dp=0 dm=0 state=7 enum=8 in=0x00 out=0x00
+W (20986) cellular: ec800m process status=10
+W (21981) usbHost: wait conn=1 enumDone=0 cdc=0 hprt=0x00021401 dp=0 dm=0 state=7 enum=8 in=0x00 out=0x00
+W (21986) cellular: ec800m process status=10
+W (22981) usbHost: wait conn=1 enumDone=0 cdc=0 hprt=0x00021401 dp=0 dm=0 state=7 enum=8 in=0x00 out=0x00
+W (22986) cellular: ec800m process status=10
+W (23981) usbHost: wait conn=1 enumDone=0 cdc=0 hprt=0x00021401 dp=0 dm=0 state=7 enum=8 in=0x00 out=0x00
+W (23986) cellular: ec800m process status=10
+
