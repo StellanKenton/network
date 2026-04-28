@@ -28,6 +28,7 @@ static USBH_Status usbhCdcClassRequest(USB_OTG_CORE_HANDLE *pdev, void *phost);
 static USBH_Status usbhCdcHandle(USB_OTG_CORE_HANDLE *pdev, void *phost);
 static bool usbhCdcFindBulkEndpoints(USBH_HOST *host);
 static bool usbhCdcCaptureCandidate(USBH_HOST *host, uint8_t interfaceIndex, stUsbhCdcHostContext *candidate);
+static bool usbhCdcSwitchToNextFixedEndpoint(USB_OTG_CORE_HANDLE *pdev);
 static USBH_Status usbhCdcSetLineCoding(USB_OTG_CORE_HANDLE *pdev, USBH_HOST *host);
 static USBH_Status usbhCdcSetControlLineState(USB_OTG_CORE_HANDLE *pdev, USBH_HOST *host);
 static uint32_t usbhCdcGetTimeout(uint32_t timeoutMs);
@@ -39,15 +40,15 @@ static uint8_t gUsbhCdcLineCodingBuffer[7];
 static uint32_t gUsbhCdcReadyTickMs;
 static uint8_t gUsbhCdcFixedEndpointIndex;
 static const uint8_t gUsbhCdcFixedBulkInEp[USBH_CDC_QUECTEL_EC800M_EP_PAIR_COUNT] = {
-    USBH_CDC_QUECTEL_EC800M_AT_BULK_IN,
     USBH_CDC_QUECTEL_EC800M_ALT0_BULK_IN,
+    USBH_CDC_QUECTEL_EC800M_AT_BULK_IN,
     USBH_CDC_QUECTEL_EC800M_ALT1_BULK_IN,
     USBH_CDC_QUECTEL_EC800M_ALT2_BULK_IN,
     USBH_CDC_QUECTEL_EC800M_ALT3_BULK_IN,
 };
 static const uint8_t gUsbhCdcFixedBulkOutEp[USBH_CDC_QUECTEL_EC800M_EP_PAIR_COUNT] = {
-    USBH_CDC_QUECTEL_EC800M_AT_BULK_OUT,
     USBH_CDC_QUECTEL_EC800M_ALT0_BULK_OUT,
+    USBH_CDC_QUECTEL_EC800M_AT_BULK_OUT,
     USBH_CDC_QUECTEL_EC800M_ALT1_BULK_OUT,
     USBH_CDC_QUECTEL_EC800M_ALT2_BULK_OUT,
     USBH_CDC_QUECTEL_EC800M_ALT3_BULK_OUT,
@@ -111,9 +112,11 @@ eUsbhCdcHostStatus usbhCdcHostTransmit(USB_OTG_CORE_HANDLE *pdev, const uint8_t 
         if (urbState == URB_NOTREADY) {
             (void)USBH_BulkSendData(pdev, (uint8_t *)buffer, length, gUsbhCdcContext.bulkOutChannel);
         } else if ((urbState == URB_ERROR) || (urbState == URB_STALL)) {
+            (void)usbhCdcSwitchToNextFixedEndpoint(pdev);
             return USBH_CDC_HOST_ERROR;
         }
         if (usbhCdcIsTimeout(startMs, timeoutMs)) {
+            (void)usbhCdcSwitchToNextFixedEndpoint(pdev);
             return USBH_CDC_HOST_TIMEOUT;
         }
         usbhCdcWaitOneMs();
@@ -402,6 +405,68 @@ static bool usbhCdcCaptureCandidate(USBH_HOST *host, uint8_t interfaceIndex, stU
 
     candidate->bulkInMps = (candidate->bulkInMps != 0U) ? candidate->bulkInMps : USBH_CDC_MPS_SIZE;
     candidate->bulkOutMps = (candidate->bulkOutMps != 0U) ? candidate->bulkOutMps : USBH_CDC_MPS_SIZE;
+    return true;
+}
+
+static bool usbhCdcSwitchToNextFixedEndpoint(USB_OTG_CORE_HANDLE *pdev)
+{
+    uint8_t devAddr;
+    uint8_t speed;
+
+    if ((pdev == NULL) || !gUsbhCdcContext.skipClassRequest ||
+        (gUsbhCdcFixedEndpointIndex >= USBH_CDC_QUECTEL_EC800M_EP_PAIR_COUNT)) {
+        return false;
+    }
+
+    devAddr = (gUsbhCdcContext.bulkOutChannel != USBH_CDC_INVALID_CHANNEL) ?
+              pdev->host.hc[gUsbhCdcContext.bulkOutChannel].dev_addr : USBH_DEVICE_ADDRESS;
+    speed = (gUsbhCdcContext.bulkOutChannel != USBH_CDC_INVALID_CHANNEL) ?
+            pdev->host.hc[gUsbhCdcContext.bulkOutChannel].speed : HPRT0_PRTSPD_FULL_SPEED;
+
+    if (gUsbhCdcContext.bulkOutChannel != USBH_CDC_INVALID_CHANNEL) {
+        USB_OTG_HC_Halt(pdev, gUsbhCdcContext.bulkOutChannel);
+        (void)USBH_Free_Channel(pdev, gUsbhCdcContext.bulkOutChannel);
+        gUsbhCdcContext.bulkOutChannel = USBH_CDC_INVALID_CHANNEL;
+    }
+    if (gUsbhCdcContext.bulkInChannel != USBH_CDC_INVALID_CHANNEL) {
+        USB_OTG_HC_Halt(pdev, gUsbhCdcContext.bulkInChannel);
+        (void)USBH_Free_Channel(pdev, gUsbhCdcContext.bulkInChannel);
+        gUsbhCdcContext.bulkInChannel = USBH_CDC_INVALID_CHANNEL;
+    }
+
+    gUsbhCdcContext.bulkInEp = gUsbhCdcFixedBulkInEp[gUsbhCdcFixedEndpointIndex];
+    gUsbhCdcContext.bulkOutEp = gUsbhCdcFixedBulkOutEp[gUsbhCdcFixedEndpointIndex];
+    gUsbhCdcContext.bulkInMps = USBH_CDC_QUECTEL_EC800M_AT_BULK_MPS;
+    gUsbhCdcContext.bulkOutMps = USBH_CDC_QUECTEL_EC800M_AT_BULK_MPS;
+    gUsbhCdcContext.dataInterface = (uint8_t)(USBH_CDC_QUECTEL_EC800M_AT_INTERFACE + gUsbhCdcFixedEndpointIndex);
+    gUsbhCdcContext.bulkOutChannel = USBH_Alloc_Channel(pdev, gUsbhCdcContext.bulkOutEp);
+    gUsbhCdcContext.bulkInChannel = USBH_Alloc_Channel(pdev, gUsbhCdcContext.bulkInEp);
+
+    if ((gUsbhCdcContext.bulkOutChannel == USBH_CDC_INVALID_CHANNEL) ||
+        (gUsbhCdcContext.bulkInChannel == USBH_CDC_INVALID_CHANNEL)) {
+        return false;
+    }
+
+    (void)USBH_Open_Channel(pdev,
+                            gUsbhCdcContext.bulkOutChannel,
+                            devAddr,
+                            speed,
+                            EP_TYPE_BULK,
+                            gUsbhCdcContext.bulkOutMps);
+    (void)USBH_Open_Channel(pdev,
+                            gUsbhCdcContext.bulkInChannel,
+                            devAddr,
+                            speed,
+                            EP_TYPE_BULK,
+                            gUsbhCdcContext.bulkInMps);
+
+    LOG_W(USBH_CDC_LOG_TAG,
+          "switch ec800m endpoints idx=%u in=0x%02x out=0x%02x if=%u",
+          gUsbhCdcFixedEndpointIndex,
+          gUsbhCdcContext.bulkInEp,
+          gUsbhCdcContext.bulkOutEp,
+          gUsbhCdcContext.dataInterface);
+    gUsbhCdcFixedEndpointIndex++;
     return true;
 }
 

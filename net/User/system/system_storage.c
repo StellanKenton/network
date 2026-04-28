@@ -8,17 +8,14 @@
 #include <string.h>
 
 #include "../../rep/module/w25qxxx/w25qxxx.h"
-#include "../../rep/module/sdcard/sdcard.h"
 #include "../../rep/service/log/log.h"
 #include "../../rep/service/rtos/rtos.h"
 #include "../../rep/service/vfs/vfs.h"
 #include "../../rep/service/vfs/vfs_debug.h"
-#include "../../rep/service/vfs/vfs_fatfs.h"
 #include "../../rep/service/vfs/vfs_littlefs.h"
 
 #define SYSTEM_STORAGE_LOG_TAG            "storage"
 #define SYSTEM_STORAGE_FLASH_MOUNT_PATH   "/mem"
-#define SYSTEM_STORAGE_SD_MOUNT_PATH      "/sd"
 #define SYSTEM_STORAGE_W25Q_REGION_OFFSET 0UL
 #define SYSTEM_STORAGE_W25Q_REGION_SIZE   (512UL * 1024UL)
 #define SYSTEM_STORAGE_MOUNT_RETRY_MS     1000UL
@@ -33,8 +30,6 @@ typedef struct stSystemStorageMountState {
     eVfsResult lastError;
     bool hasLastError;
     bool wasMounted;
-    bool hasPresence;
-    bool isPresent;
 } stSystemStorageMountState;
 
 typedef struct stSystemStorageFlashState {
@@ -71,12 +66,10 @@ static void systemStorageRequestFlashFormat(void);
 static bool systemStorageIsFlashFormatActive(void);
 static void systemStorageResetFormatProgress(void);
 static void systemStorageLogFormatProgress(void);
-static bool systemStorageCheckSdMountPresence(stSystemStorageMountState *state);
 static void systemStorageTryMount(const char *mountPath);
 static stSystemStorageMountState *systemStorageGetMountState(const char *mountPath);
 
 static stVfsLittlefsContext gSystemStorageLittlefsContext;
-static stVfsFatfsContext gSystemStorageFatfsContext;
 static stSystemStorageFlashState gSystemStorageFlashState;
 static stSystemStorageFormatState gSystemStorageFormatState;
 static bool gSystemStorageMountsRegistered = false;
@@ -85,9 +78,6 @@ static bool gSystemStorageReady = false;
 static repRtosStackType gSystemStorageFormatTaskStack[SYSTEM_STORAGE_FORMAT_TASK_STACK];
 static stSystemStorageMountState gSystemStorageFlashMountState = {
     .mountPath = SYSTEM_STORAGE_FLASH_MOUNT_PATH,
-};
-static stSystemStorageMountState gSystemStorageSdMountState = {
-    .mountPath = SYSTEM_STORAGE_SD_MOUNT_PATH,
 };
 
 static const stVfsLittlefsBlockDeviceOps gSystemStorageFlashOps = {
@@ -136,7 +126,6 @@ void systemStorageProcess(void)
 
     (void)systemStoragePrepareFlash(W25QXXX_DEV0);
     systemStorageTryMount(SYSTEM_STORAGE_FLASH_MOUNT_PATH);
-    systemStorageTryMount(SYSTEM_STORAGE_SD_MOUNT_PATH);
 }
 
 bool systemStorageIsReady(void)
@@ -270,7 +259,6 @@ static bool systemStoragePrepareFlash(eW25qxxxMapType device)
 static bool systemStorageRegisterMounts(void)
 {
     stVfsLittlefsCfg lLittlefsCfg;
-    stVfsFatfsCfg lFatfsCfg;
     stVfsMountCfg lMountCfg;
 
     (void)memset(&lLittlefsCfg, 0, sizeof(lLittlefsCfg));
@@ -288,24 +276,10 @@ static bool systemStorageRegisterMounts(void)
         return false;
     }
 
-    lFatfsCfg.physicalDrive = 0U;
-    if (!vfsFatfsInitContext(&gSystemStorageFatfsContext, &lFatfsCfg)) {
-        return false;
-    }
-
     (void)memset(&lMountCfg, 0, sizeof(lMountCfg));
     lMountCfg.mountPath = SYSTEM_STORAGE_FLASH_MOUNT_PATH;
     lMountCfg.backendOps = vfsLittlefsGetBackendOps();
     lMountCfg.backendContext = &gSystemStorageLittlefsContext;
-    lMountCfg.isAutoMount = false;
-    lMountCfg.isReadOnly = false;
-    if (!vfsRegisterMount(&lMountCfg)) {
-        return false;
-    }
-
-    lMountCfg.mountPath = SYSTEM_STORAGE_SD_MOUNT_PATH;
-    lMountCfg.backendOps = vfsFatfsGetBackendOps();
-    lMountCfg.backendContext = &gSystemStorageFatfsContext;
     lMountCfg.isAutoMount = false;
     lMountCfg.isReadOnly = false;
     if (!vfsRegisterMount(&lMountCfg)) {
@@ -444,57 +418,6 @@ static void systemStorageLogFormatProgress(void)
     }
 }
 
-static bool systemStorageCheckSdMountPresence(stSystemStorageMountState *state)
-{
-    bool lIsPresent = false;
-    bool lIsWriteProtected = false;
-    eSdcardStatus lStatus;
-
-    if (state == NULL) {
-        return false;
-    }
-
-    lStatus = sdcardGetStatus(SDCARD_DEV0, &lIsPresent, &lIsWriteProtected);
-    (void)lIsWriteProtected;
-    if ((lStatus != SDCARD_STATUS_OK) && (lStatus != SDCARD_STATUS_NO_MEDIUM)) {
-        return true;
-    }
-
-    if (!lIsPresent) {
-        if (!state->wasMounted && !sdcardIsReady(SDCARD_DEV0)) {
-            if (!state->hasPresence || state->isPresent) {
-                LOG_I(SYSTEM_STORAGE_LOG_TAG, "sd status absent, try init %s", SYSTEM_STORAGE_SD_MOUNT_PATH);
-            }
-
-            state->hasPresence = true;
-            state->isPresent = false;
-            return true;
-        }
-
-        if (state->wasMounted) {
-            (void)vfsUnmount(SYSTEM_STORAGE_SD_MOUNT_PATH);
-            LOG_I(SYSTEM_STORAGE_LOG_TAG, "sd removed, unmount %s", SYSTEM_STORAGE_SD_MOUNT_PATH);
-        } else if (!state->hasPresence || state->isPresent) {
-            LOG_I(SYSTEM_STORAGE_LOG_TAG, "sd absent, skip mount %s", SYSTEM_STORAGE_SD_MOUNT_PATH);
-        }
-
-        state->wasMounted = false;
-        state->hasLastError = false;
-        state->hasPresence = true;
-        state->isPresent = false;
-        return false;
-    }
-
-    if (!state->hasPresence || !state->isPresent) {
-        LOG_I(SYSTEM_STORAGE_LOG_TAG, "sd detected, mount %s", SYSTEM_STORAGE_SD_MOUNT_PATH);
-        state->lastAttemptTickMs = 0UL;
-    }
-
-    state->hasPresence = true;
-    state->isPresent = true;
-    return true;
-}
-
 static void systemStorageTryMount(const char *mountPath)
 {
     stSystemStorageMountState *lState;
@@ -507,10 +430,6 @@ static void systemStorageTryMount(const char *mountPath)
     }
 
     if ((strcmp(mountPath, SYSTEM_STORAGE_FLASH_MOUNT_PATH) == 0) && systemStorageIsFlashFormatActive()) {
-        return;
-    }
-
-    if ((strcmp(mountPath, SYSTEM_STORAGE_SD_MOUNT_PATH) == 0) && !systemStorageCheckSdMountPresence(lState)) {
         return;
     }
 
@@ -550,22 +469,6 @@ static void systemStorageTryMount(const char *mountPath)
         return;
     }
 
-    if ((strcmp(mountPath, SYSTEM_STORAGE_SD_MOUNT_PATH) == 0) && (lError == eVFS_CORRUPT)) {
-        if (!lState->hasLastError || (lState->lastError != lError) || lState->wasMounted) {
-            LOG_W(SYSTEM_STORAGE_LOG_TAG, "sd filesystem missing, format %s", mountPath);
-        }
-
-        if (vfsFormat(mountPath)) {
-            LOG_I(SYSTEM_STORAGE_LOG_TAG, "format ok %s", mountPath);
-            lState->wasMounted = vfsIsMounted(mountPath);
-            lState->hasLastError = false;
-            return;
-        }
-
-        lError = vfsGetStatus()->lastError;
-        LOG_W(SYSTEM_STORAGE_LOG_TAG, "format fail %s err=%u", mountPath, (unsigned)lError);
-    }
-
     if (!lState->hasLastError || (lState->lastError != lError) || lState->wasMounted) {
         LOG_W(SYSTEM_STORAGE_LOG_TAG, "mount fail %s err=%u", mountPath, (unsigned)lError);
     }
@@ -583,10 +486,6 @@ static stSystemStorageMountState *systemStorageGetMountState(const char *mountPa
 
     if (strcmp(mountPath, SYSTEM_STORAGE_FLASH_MOUNT_PATH) == 0) {
         return &gSystemStorageFlashMountState;
-    }
-
-    if (strcmp(mountPath, SYSTEM_STORAGE_SD_MOUNT_PATH) == 0) {
-        return &gSystemStorageSdMountState;
     }
 
     return NULL;

@@ -14,6 +14,7 @@
 #include "../../rep/service/rtos/rtos.h"
 
 #include "../port/drvgpio_port.h"
+#include "../port/tca9535_port.h"
 #include "system.h"
 
 #define SYSMGR_LOG_TAG "sysmgr"
@@ -21,6 +22,7 @@
 static u8 gSystemConsoleReady = 0u;
 static u8 gSystemInitStarted = 0u;
 static u8 gSystemGpioReady = 0u;
+static u8 gSystemTca9535InitTried = 0u;
 static eDrvGpioPinState gSystemLastWifiEnState = DRVGPIO_PIN_STATE_INVALID;
 
 static eConsoleCommandResult systemConsoleRebootHandler(uint32_t transport, int argc, char *argv[]);
@@ -80,6 +82,17 @@ static void systemGpioServiceInit(void)
 	}
 
 	drvGpioInit();
+	if (gSystemTca9535InitTried == 0u) {
+		eDrvStatus lTcaStatus;
+
+		gSystemTca9535InitTried = 1u;
+		lTcaStatus = tca9535PortInit();
+		if (lTcaStatus != DRV_STATUS_OK) {
+			LOG_W(SYSMGR_LOG_TAG, "tca9535 init failed status=%d", (int)lTcaStatus);
+		} else {
+			LOG_I(SYSMGR_LOG_TAG, "tca9535 ready at addr 0x%02X", (unsigned int)tca9535PortGetAddress());
+		}
+	}
 	gSystemGpioReady = 1u;
 }
 

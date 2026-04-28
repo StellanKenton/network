@@ -35,6 +35,9 @@
 #include "usb_hcd_int.h"
 #include "../../../../../rep/service/log/log.h"
 
+#define USBH_EC800M_VID 0x2C7CU
+#define USBH_EC800M_PID 0x6002U
+
 
 /** @addtogroup USBH_LIB
   * @{
@@ -448,12 +451,19 @@ static USBH_Status USBH_HandleEnum(USB_OTG_CORE_HANDLE *pdev, USBH_HOST *phost)
     /* set address */
     if ( USBH_SetAddress(pdev, phost, USBH_DEVICE_ADDRESS) == USBH_OK)
     {
-      USB_OTG_BSP_mDelay(2);
+      USB_OTG_BSP_mDelay(100);
       phost->device_prop.address = USBH_DEVICE_ADDRESS;
       
       /* user callback for device address assigned */
       phost->usr_cb->DeviceAddressAssigned();
-      phost->EnumState = ENUM_GET_CFG_DESC;
+      if ((phost->device_prop.Dev_Desc.idVendor == USBH_EC800M_VID) &&
+          (phost->device_prop.Dev_Desc.idProduct == USBH_EC800M_PID)) {
+        phost->device_prop.Cfg_Desc.bConfigurationValue = 1U;
+        phost->device_prop.Cfg_Desc.bNumInterfaces = 0U;
+        phost->EnumState = ENUM_SET_CONFIGURATION;
+      } else {
+        phost->EnumState = ENUM_GET_CFG_DESC;
+      }
       
       /* modify control channels to update device address */
       USBH_Modify_Channel (pdev,
@@ -703,9 +713,13 @@ USBH_Status USBH_HandleControl (USB_OTG_CORE_HANDLE *pdev, USBH_HOST *phost)
     { 
       phost->Control.state = CTRL_STATUS_OUT;
     }
+    else if (URB_Status == URB_NOTREADY)
+    {
+      phost->Control.state = CTRL_DATA_IN;
+    }
    
     /* manage error cases*/
-    if  (URB_Status == URB_STALL) 
+    else if  (URB_Status == URB_STALL) 
     { 
       /* In stall case, return to previous machine state*/
       phost->gState =   phost->gStateBkp;

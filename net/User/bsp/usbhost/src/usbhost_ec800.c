@@ -91,7 +91,7 @@ eDrvStatus usbHostEc800Start(void)
         return DRV_STATUS_OK;
     }
 
-    USBH_Init(&gUsbHostCore, USB_OTG_FS_CORE_ID, &gUsbHost, &USBH_CDC_cb, &gUsbHostUsrCb);
+    USBH_Init(&gUsbHostCore, USB_OTG_HS_CORE_ID, &gUsbHost, &USBH_CDC_cb, &gUsbHostUsrCb);
     gUsbHostStarted = true;
     return DRV_STATUS_OK;
 }
@@ -181,20 +181,20 @@ void USB_OTG_BSP_Init(USB_OTG_CORE_HANDLE *pdev)
     GPIO_InitTypeDef gpioInit;
 
     (void)pdev;
-    RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOA, ENABLE);
+    RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOB, ENABLE);
     RCC_APB2PeriphClockCmd(RCC_APB2Periph_SYSCFG, ENABLE);
-    RCC_AHB2PeriphClockCmd(RCC_AHB2Periph_OTG_FS, ENABLE);
+    RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_OTG_HS, ENABLE);
 
-    GPIO_PinAFConfig(GPIOA, GPIO_PinSource11, GPIO_AF_OTG_FS);
-    GPIO_PinAFConfig(GPIOA, GPIO_PinSource12, GPIO_AF_OTG_FS);
+    GPIO_PinAFConfig(GPIOB, GPIO_PinSource14, GPIO_AF_OTG_HS_FS);
+    GPIO_PinAFConfig(GPIOB, GPIO_PinSource15, GPIO_AF_OTG_HS_FS);
 
     GPIO_StructInit(&gpioInit);
-    gpioInit.GPIO_Pin = GPIO_Pin_11 | GPIO_Pin_12;
+    gpioInit.GPIO_Pin = GPIO_Pin_14 | GPIO_Pin_15;
     gpioInit.GPIO_Mode = GPIO_Mode_AF;
     gpioInit.GPIO_OType = GPIO_OType_PP;
     gpioInit.GPIO_PuPd = GPIO_PuPd_NOPULL;
     gpioInit.GPIO_Speed = GPIO_Speed_100MHz;
-    GPIO_Init(GPIOA, &gpioInit);
+    GPIO_Init(GPIOB, &gpioInit);
 
 }
 
@@ -217,10 +217,13 @@ void USB_OTG_BSP_EnableInterrupt(USB_OTG_CORE_HANDLE *pdev)
     NVIC_InitTypeDef nvicInit;
 
     (void)pdev;
-    nvicInit.NVIC_IRQChannel = OTG_FS_IRQn;
+    nvicInit.NVIC_IRQChannel = OTG_HS_IRQn;
     nvicInit.NVIC_IRQChannelPreemptionPriority = 5U;
     nvicInit.NVIC_IRQChannelSubPriority = 0U;
     nvicInit.NVIC_IRQChannelCmd = ENABLE;
+    NVIC_Init(&nvicInit);
+
+    nvicInit.NVIC_IRQChannel = 93U;
     NVIC_Init(&nvicInit);
 }
 
@@ -382,15 +385,15 @@ static void usbHostEc800LogReadyState(void)
 
     gUsbHostNextPortLogTick = nowTick + 1000U;
     hprt = USB_OTG_READ_REG32(gUsbHostCore.regs.HPRT0);
-    gpioIdr = GPIO_ReadInputData(GPIOA);
+    gpioIdr = GPIO_ReadInputData(GPIOB);
     LOG_W(USBHOST_EC800_LOG_TAG,
           "wait conn=%u enumDone=%u cdc=%u hprt=0x%08x dp=%u dm=%u state=%u enum=%u in=0x%02x out=0x%02x",
           (unsigned int)HCD_IsDeviceConnected(&gUsbHostCore),
           gUsbHostEnumerated ? 1U : 0U,
           usbhCdcHostIsReady() ? 1U : 0U,
           (unsigned int)hprt,
-          ((gpioIdr & GPIO_Pin_12) != 0U) ? 1U : 0U,
-          ((gpioIdr & GPIO_Pin_11) != 0U) ? 1U : 0U,
+          ((gpioIdr & GPIO_Pin_15) != 0U) ? 1U : 0U,
+          ((gpioIdr & GPIO_Pin_14) != 0U) ? 1U : 0U,
           (unsigned int)gUsbHost.gState,
           (unsigned int)gUsbHost.EnumState,
           (unsigned int)usbhCdcHostGetInEndpoint(),

@@ -4,7 +4,7 @@
     HexFilePath = 'net/OBJ/network.hex'
 
     JLink = @{
-        Device = 'GD32F407VG'
+        Device = 'GD32F470ZI'
         Interface = 'SWD'
         SpeedKHz = 4000
         GdbPort = 3331

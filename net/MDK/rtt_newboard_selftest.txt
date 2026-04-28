@@ -1,0 +1,581 @@
+SEGGER J-Link V9.18 - Real time terminal output
+SEGGER J-Link ARM Pro V12.0, SN=601012478
+Process: JLinkGDBServerCL.exe
+I (0) sysmgr: USART2 PA2/PA3 reserved for wifi, debug logs use RTT
+I (0) sysmgr: rtt console ready
+I (0) storage: vfs shell ready at /
+I (0) storage: w25q jedec=EF 40 18
+I (1) storage: mount ok /mem
+I (122) sysmgr: tca9535 ready at addr 0x27
+I (122) sysmgr: system init
+I (122) sysmgr: wifi_en=RESET (PD8 low, module held reset/disable)
+I (346) ec800mPort: cellular power on, usb routed to 4g
+W (646) usbHost: host init
+I (2726) ec800mPort: board boot pulse done
+I (2726) cellular: ec800m init ok
+I (2726) ec800m: start service=1
+I (2726) cellular: ec800m start ok
+W (2726) usbHost: wait conn=0 enumDone=0 cdc=0 hprt=0x00021000 dp=0 dm=0 state=0 enum=0 in=0x00 out=0x00
+W (3276) usbHost: device attached
+W (3306) usbHost: device reset
+W (3306) usbHost: speed=1
+W (3316) usbCore: ctrl state=1 urb=0 hc=0 ch=0 hprt=0x00021405 setup=80 06 00 01 00 00 08 00
+W (3321) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 01 00 00 08 00
+W (3341) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 01 00 00 08 00
+W (3346) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 01 00 00 08 00
+W (3716) usbCore: disconnect hprt=0x00021000 state=7 enum=0 ctrl=4 req=2
+W (3716) usbHost: device disconnected
+W (3726) usbHost: wait conn=0 enumDone=0 cdc=0 hprt=0x00021000 dp=0 dm=0 state=0 enum=0 in=0x00 out=0x00
+W (4726) usbHost: wait conn=0 enumDone=0 cdc=0 hprt=0x00021000 dp=0 dm=0 state=0 enum=0 in=0x00 out=0x00
+W (5021) usbHost: device attached
+W (5051) usbHost: device reset
+W (5051) usbHost: speed=1
+W (5061) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 01 00 00 08 00
+W (5066) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 01 00 00 08 00
+W (5086) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 01 00 00 08 00
+W (5091) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 01 00 00 08 00
+W (5121) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 01 00 00 08 00
+W (5126) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 01 00 00 08 00
+W (5186) usbCore: enum state=1 ctrl=0 req=1
+W (5191) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 01 00 00 12 00
+W (5196) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 01 00 00 12 00
+W (5226) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 01 00 00 12 00
+W (5231) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 01 00 00 12 00
+W (5256) usbHost: vid=0x2c7c pid=0x6002 class=0xef
+W (5261) usbCore: enum state=2 ctrl=0 req=1
+W (5266) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=00 05 01 00 00 00 00 00
+W (5271) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=00 05 01 00 00 00 00 00
+W (5276) usbCore: ctrl state=7 urb=1 hc=1 ch=1 hprt=0x00021405 setup=00 05 01 00 00 00 00 00
+W (5281) usbCore: ctrl state=8 urb=1 hc=1 ch=1 hprt=0x00021405 setup=00 05 01 00 00 00 00 00
+W (5391) usbCore: enum state=8 ctrl=0 req=1
+W (6726) usbHost: wait conn=1 enumDone=1 cdc=0 hprt=0x00021405 dp=0 dm=0 state=6 enum=9 in=0x82 out=0x02
+W (6746) cellular: ec800m process status=10
+W (7632) usbHost: tx status=4 len=4
+W (7838) usbHost: tx status=4 len=4
+W (7845) usbHost: tx status=8 len=4
+W (7845) cellular: ec800m process status=10
+W (8051) usbHost: tx status=4 len=4
+W (8257) usbHost: tx status=4 len=4
+W (8264) usbHost: tx status=8 len=4
+W (8470) usbHost: tx status=4 len=4
+W (8676) usbHost: tx status=4 len=4
+W (8683) usbHost: tx status=8 len=4
+W (8889) usbHost: tx status=4 len=4
+W (9095) usbHost: tx status=4 len=4
+W (9095) cellular: ec800m process status=10
+W (9102) usbHost: tx status=8 len=4
+W (9308) usbHost: tx status=4 len=4
+W (9514) usbHost: tx status=4 len=4
+W (9521) usbHost: tx status=8 len=4
+W (9727) usbHost: tx status=4 len=4
+W (9933) usbHost: tx status=4 len=4
+W (9940) usbHost: tx status=8 len=4
+W (9940) cellular: ec800m process status=10
+W (10146) usbHost: tx status=4 len=4
+W (10352) usbHost: tx status=4 len=4
+W (10359) usbHost: tx status=8 len=4
+W (10565) usbHost: tx status=4 len=4
+W (10771) usbHost: tx status=4 len=4
+W (10778) usbHost: tx status=8 len=4
+W (10984) usbHost: tx status=4 len=4
+W (11190) usbHost: tx status=4 len=4
+W (11190) cellular: ec800m process status=10
+W (11197) usbHost: tx status=8 len=4
+W (11403) usbHost: tx status=4 len=4
+W (11609) usbHost: tx status=4 len=4
+W (11616) usbHost: tx status=8 len=4
+W (11822) usbHost: tx status=4 len=4
+W (12028) usbHost: tx status=4 len=4
+W (12035) usbHost: tx status=8 len=4
+W (12035) cellular: ec800m process status=10
+W (12241) usbHost: tx status=4 len=4
+W (12447) usbHost: tx status=4 len=4
+W (12454) usbHost: tx status=8 len=4
+W (12660) usbHost: tx status=4 len=4
+W (12866) usbHost: tx status=4 len=4
+W (12873) usbHost: tx status=8 len=4
+W (13079) usbHost: tx status=4 len=4
+W (13285) usbHost: tx status=4 len=4
+W (13285) cellular: ec800m process status=10
+W (13292) usbHost: tx status=8 len=4
+W (13498) usbHost: tx status=4 len=4
+W (13704) usbHost: tx status=4 len=4
+W (13711) usbHost: tx status=8 len=4
+W (13917) usbHost: tx status=4 len=4
+W (14123) usbHost: tx status=4 len=4
+W (14130) usbHost: tx status=8 len=4
+W (14130) cellular: ec800m process status=10
+W (14336) usbHost: tx status=4 len=4
+W (14542) usbHost: tx status=4 len=4
+W (14549) usbHost: tx status=8 len=4
+W (14755) usbHost: tx status=4 len=4
+W (14961) usbHost: tx status=4 len=4
+W (14968) usbHost: tx status=8 len=4
+W (15174) usbHost: tx status=4 len=4
+W (15380) usbHost: tx status=4 len=4
+W (15380) cellular: ec800m process status=10
+W (15387) usbHost: tx status=8 len=4
+W (15593) usbHost: tx status=4 len=4
+W (15799) usbHost: tx status=4 len=4
+W (15806) usbHost: tx status=8 len=4
+W (16012) usbHost: tx status=4 len=4
+W (16218) usbHost: tx status=4 len=4
+W (16225) usbHost: tx status=8 len=4
+W (16225) cellular: ec800m process status=10
+W (16431) usbHost: tx status=4 len=4
+W (16637) usbHost: tx status=4 len=4
+W (16644) usbHost: tx status=8 len=4
+W (16850) usbHost: tx status=4 len=4
+W (17056) usbHost: tx status=4 len=4
+W (17063) usbHost: tx status=8 len=4
+W (17269) usbHost: tx status=4 len=4
+W (17475) usbHost: tx status=4 len=4
+W (17475) cellular: ec800m process status=10
+W (17482) usbHost: tx status=8 len=4
+W (17688) usbHost: tx status=4 len=4
+W (17894) usbHost: tx status=4 len=4
+W (17901) usbHost: tx status=8 len=4
+W (18107) usbHost: tx status=4 len=4
+W (18313) usbHost: tx status=4 len=4
+W (18320) usbHost: tx status=8 len=4
+W (18320) cellular: ec800m process status=10
+W (18526) usbHost: tx status=4 len=4
+W (18732) usbHost: tx status=4 len=4
+W (18739) usbHost: tx status=8 len=4
+W (18945) usbHost: tx status=4 len=4
+W (19151) usbHost: tx status=4 len=4
+W (19158) usbHost: tx status=8 len=4
+W (19364) usbHost: tx status=4 len=4
+W (19570) usbHost: tx status=4 len=4
+W (19570) cellular: ec800m process status=10
+W (19577) usbHost: tx status=8 len=4
+W (19783) usbHost: tx status=4 len=4
+W (19989) usbHost: tx status=4 len=4
+W (19996) usbHost: tx status=8 len=4
+W (20202) usbHost: tx status=4 len=4
+W (20408) usbHost: tx status=4 len=4
+W (20415) usbHost: tx status=8 len=4
+W (20415) cellular: ec800m process status=10
+W (20621) usbHost: tx status=4 len=4
+W (20827) usbHost: tx status=4 len=4
+W (20834) usbHost: tx status=8 len=4
+W (21040) usbHost: tx status=4 len=4
+W (21246) usbHost: tx status=4 len=4
+W (21253) usbHost: tx status=8 len=4
+W (21459) usbHost: tx status=4 len=4
+W (21665) usbHost: tx status=4 len=4
+W (21665) cellular: ec800m process status=10
+W (21672) usbHost: tx status=8 len=4
+W (21878) usbHost: tx status=4 len=4
+W (22084) usbHost: tx status=4 len=4
+W (22091) usbHost: tx status=8 len=4
+W (22297) usbHost: tx status=4 len=4
+W (22503) usbHost: tx status=4 len=4
+W (22510) usbHost: tx status=8 len=4
+W (22510) cellular: ec800m process status=10
+W (22716) usbHost: tx status=4 len=4
+W (22922) usbHost: tx status=4 len=4
+W (22929) usbHost: tx status=8 len=4
+W (23135) usbHost: tx status=4 len=4
+W (23341) usbHost: tx status=4 len=4
+W (23348) usbHost: tx status=8 len=4
+W (23554) usbHost: tx status=4 len=4
+W (23760) usbHost: tx status=4 len=4
+W (23760) cellular: ec800m process status=10
+W (23767) usbHost: tx status=8 len=4
+W (23973) usbHost: tx status=4 len=4
+W (24179) usbHost: tx status=4 len=4
+W (24186) usbHost: tx status=8 len=4
+W (24392) usbHost: tx status=4 len=4
+W (24598) usbHost: tx status=4 len=4
+W (24605) usbHost: tx status=8 len=4
+W (24605) cellular: ec800m process status=10
+W (24811) usbHost: tx status=4 len=4
+W (25017) usbHost: tx status=4 len=4
+W (25024) usbHost: tx status=8 len=4
+W (25230) usbHost: tx status=4 len=4
+W (25436) usbHost: tx status=4 len=4
+W (25443) usbHost: tx status=8 len=4
+rebooting...
+I (0) sysmgr: USART2 PA2/PA3 reserved for wifi, debug logs use RTT
+I (0) sysmgr: rtt console ready
+I (0) storage: vfs shell ready at /
+I (0) storage: w25q jedec=EF 40 18
+I (1) storage: mount ok /mem
+I (122) sysmgr: tca9535 ready at addr 0x27
+I (122) sysmgr: system init
+I (122) sysmgr: wifi_en=RESET (PD8 low, module held reset/disable)
+I (346) ec800mPort: cellular power on, usb routed to 4g
+W (646) usbHost: host init
+I (2726) ec800mPort: board boot pulse done
+I (2726) cellular: ec800m init ok
+I (2726) ec800m: start service=1
+I (2726) cellular: ec800m start ok
+W (2726) usbHost: wait conn=0 enumDone=0 cdc=0 hprt=0x00021000 dp=0 dm=0 state=0 enum=0 in=0x00 out=0x00
+W (3791) usbHost: wait conn=1 enumDone=0 cdc=0 hprt=0x00021401 dp=0 dm=0 state=1 enum=0 in=0x00 out=0x00
+W (3796) usbHost: device attached
+W (3826) usbHost: device reset
+W (3826) usbHost: speed=1
+W (3836) usbCore: ctrl state=1 urb=0 hc=0 ch=0 hprt=0x00021405 setup=80 06 00 01 00 00 08 00
+W (3841) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 01 00 00 08 00
+W (3861) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 01 00 00 08 00
+W (3866) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 01 00 00 08 00
+W (4231) usbCore: disconnect hprt=0x00021000 state=7 enum=0 ctrl=4 req=2
+W (4231) usbHost: device disconnected
+W (4791) usbHost: wait conn=0 enumDone=0 cdc=0 hprt=0x00021000 dp=0 dm=0 state=0 enum=0 in=0x00 out=0x00
+W (5541) usbHost: device attached
+W (5571) usbHost: device reset
+W (5571) usbHost: speed=1
+W (5581) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 01 00 00 08 00
+W (5586) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 01 00 00 08 00
+W (5606) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 01 00 00 08 00
+W (5611) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 01 00 00 08 00
+W (5641) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 01 00 00 08 00
+W (5646) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 01 00 00 08 00
+W (5706) usbCore: enum state=1 ctrl=0 req=1
+W (5711) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 01 00 00 12 00
+W (5716) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 01 00 00 12 00
+W (5746) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 01 00 00 12 00
+W (5746) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 01 00 00 12 00
+W (5746) cellular: ec800m process status=10
+W (5751) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 01 00 00 12 00
+W (5766) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 01 00 00 12 00
+W (5766) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 01 00 00 12 00
+W (5771) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 01 00 00 12 00
+W (5781) usbHost: vid=0x2c7c pid=0x6002 class=0xef
+W (5786) usbCore: enum state=2 ctrl=0 req=1
+W (5786) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=00 05 01 00 00 00 00 00
+W (5791) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=00 05 01 00 00 00 00 00
+W (5791) usbHost: wait conn=1 enumDone=0 cdc=0 hprt=0x00021405 dp=0 dm=0 state=7 enum=2 in=0x00 out=0x00
+W (5791) usbCore: ctrl state=7 urb=1 hc=1 ch=1 hprt=0x00021405 setup=00 05 01 00 00 00 00 00
+W (5796) usbCore: ctrl state=8 urb=1 hc=1 ch=1 hprt=0x00021405 setup=00 05 01 00 00 00 00 00
+W (5901) usbCore: enum state=8 ctrl=0 req=1
+W (5901) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=00 09 01 00 00 00 00 00
+W (5906) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=00 09 01 00 00 00 00 00
+W (5906) usbCore: ctrl state=7 urb=1 hc=1 ch=1 hprt=0x00021405 setup=00 09 01 00 00 00 00 00
+W (5911) usbCore: ctrl state=8 urb=3 hc=6 ch=1 hprt=0x00021405 setup=00 09 01 00 00 00 00 00
+W (5916) usbCore: set cfg status=2 val=1 hprt=0x00021405 ctrl=11 req=1
+W (5921) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=00 09 01 00 00 00 00 00
+W (5921) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=00 09 01 00 00 00 00 00
+W (5926) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=00 09 01 00 00 00 00 00
+W (5926) usbCore: ctrl state=7 urb=3 hc=6 ch=1 hprt=0x00021405 setup=00 09 01 00 00 00 00 00
+W (5931) usbCore: ctrl state=8 urb=1 hc=1 ch=1 hprt=0x00021405 setup=00 09 01 00 00 00 00 00
+W (5931) usbCore: set cfg status=0 val=1 hprt=0x00021405 ctrl=0 req=1
+W (5936) usbCore: enum state=9 ctrl=0 req=1
+W (5936) usbHost: enumeration done
+W (5936) usbCdc: no cdc bulk pair vid=0x2c7c pid=0x6002 ifs=0
+W (5936) usbCdc: use ec800m fixed endpoints idx=0 in=0x82 out=0x02 if=2
+W (5936) usbCdc: cdc bulk endpoints in=0x82 out=0x02 if=2 fixed=1
+W (5941) usbCdc: skip ec800m cdc class request, transport ready delay
+W (6746) cellular: ec800m process status=10
+W (6791) usbHost: wait conn=1 enumDone=1 cdc=0 hprt=0x00021405 dp=0 dm=0 state=6 enum=9 in=0x82 out=0x02
+W (7746) cellular: ec800m process status=10
+W (7791) usbHost: wait conn=1 enumDone=1 cdc=0 hprt=0x00021405 dp=0 dm=0 state=6 enum=9 in=0x82 out=0x02
+W (8142) usbHost: tx status=4 len=4
+W (8348) usbHost: tx status=4 len=4
+W (8355) usbHost: tx status=8 len=4
+W (8561) usbHost: tx status=4 len=4
+W (8767) usbHost: tx status=4 len=4
+W (8774) usbHost: tx status=8 len=4
+W (8774) cellular: ec800m process status=10
+W (8980) usbHost: tx status=4 len=4
+W (9186) usbHost: tx status=4 len=4
+W (9193) usbHost: tx status=8 len=4
+W (9399) usbHost: tx status=4 len=4
+W (9605) usbHost: tx status=4 len=4
+W (9612) usbHost: tx status=8 len=4
+W (9818) usbHost: tx status=4 len=4
+W (10024) usbHost: tx status=4 len=4
+W (10024) cellular: ec800m process status=10
+W (10031) usbHost: tx status=8 len=4
+W (10237) usbHost: tx status=4 len=4
+W (10443) usbHost: tx status=4 len=4
+W (10450) usbHost: tx status=8 len=4
+W (10656) usbHost: tx status=4 len=4
+W (10862) usbHost: tx status=4 len=4
+W (10869) usbHost: tx status=8 len=4
+W (10869) cellular: ec800m process status=10
+W (11075) usbHost: tx status=4 len=4
+W (11281) usbHost: tx status=4 len=4
+W (11288) usbHost: tx status=8 len=4
+W (11494) usbHost: tx status=4 len=4
+W (11700) usbHost: tx status=4 len=4
+W (11707) usbHost: tx status=8 len=4
+W (11913) usbHost: tx status=4 len=4
+W (12119) usbHost: tx status=4 len=4
+W (12119) cellular: ec800m process status=10
+W (12126) usbHost: tx status=8 len=4
+W (12332) usbHost: tx status=4 len=4
+W (12538) usbHost: tx status=4 len=4
+W (12545) usbHost: tx status=8 len=4
+W (12751) usbHost: tx status=4 len=4
+W (12957) usbHost: tx status=4 len=4
+W (12964) usbHost: tx status=8 len=4
+W (12964) cellular: ec800m process status=10
+W (13170) usbHost: tx status=4 len=4
+W (13376) usbHost: tx status=4 len=4
+W (13383) usbHost: tx status=8 len=4
+W (13589) usbHost: tx status=4 len=4
+W (13795) usbHost: tx status=4 len=4
+W (13802) usbHost: tx status=8 len=4
+W (14008) usbHost: tx status=4 len=4
+W (14214) usbHost: tx status=4 len=4
+W (14214) cellular: ec800m process status=10
+W (14221) usbHost: tx status=8 len=4
+W (14427) usbHost: tx status=4 len=4
+W (14633) usbHost: tx status=4 len=4
+W (14640) usbHost: tx status=8 len=4
+W (14846) usbHost: tx status=4 len=4
+W (15052) usbHost: tx status=4 len=4
+W (15059) usbHost: tx status=8 len=4
+W (15059) cellular: ec800m process status=10
+W (15265) usbHost: tx status=4 len=4
+W (15471) usbHost: tx status=4 len=4
+W (15478) usbHost: tx status=8 len=4
+W (15684) usbHost: tx status=4 len=4
+W (15890) usbHost: tx status=4 len=4
+W (15897) usbHost: tx status=8 len=4
+W (16103) usbHost: tx status=4 len=4
+W (16309) usbHost: tx status=4 len=4
+W (16309) cellular: ec800m process status=10
+W (16316) usbHost: tx status=8 len=4
+W (16522) usbHost: tx status=4 len=4
+W (16728) usbHost: tx status=4 len=4
+W (16735) usbHost: tx status=8 len=4
+W (16941) usbHost: tx status=4 len=4
+W (17147) usbHost: tx status=4 len=4
+W (17154) usbHost: tx status=8 len=4
+W (17154) cellular: ec800m process status=10
+W (17360) usbHost: tx status=4 len=4
+W (17566) usbHost: tx status=4 len=4
+W (17573) usbHost: tx status=8 len=4
+W (17779) usbHost: tx status=4 len=4
+W (17985) usbHost: tx status=4 len=4
+W (17992) usbHost: tx status=8 len=4
+W (18198) usbHost: tx status=4 len=4
+W (18404) usbHost: tx status=4 len=4
+W (18404) cellular: ec800m process status=10
+W (18411) usbHost: tx status=8 len=4
+W (18617) usbHost: tx status=4 len=4
+W (18823) usbHost: tx status=4 len=4
+W (18830) usbHost: tx status=8 len=4
+W (19036) usbHost: tx status=4 len=4
+W (19242) usbHost: tx status=4 len=4
+W (19249) usbHost: tx status=8 len=4
+W (19249) cellular: ec800m process status=10
+W (19455) usbHost: tx status=4 len=4
+W (19661) usbHost: tx status=4 len=4
+W (19668) usbHost: tx status=8 len=4
+W (19874) usbHost: tx status=4 len=4
+W (20080) usbHost: tx status=4 len=4
+W (20087) usbHost: tx status=8 len=4
+W (20293) usbHost: tx status=4 len=4
+W (20499) usbHost: tx status=4 len=4
+W (20499) cellular: ec800m process status=10
+W (20506) usbHost: tx status=8 len=4
+W (20712) usbHost: tx status=4 len=4
+W (20918) usbHost: tx status=4 len=4
+W (20925) usbHost: tx status=8 len=4
+W (21131) usbHost: tx status=4 len=4
+W (21337) usbHost: tx status=4 len=4
+W (21344) usbHost: tx status=8 len=4
+W (21344) cellular: ec800m process status=10
+W (21550) usbHost: tx status=4 len=4
+W (21756) usbHost: tx status=4 len=4
+W (21763) usbHost: tx status=8 len=4
+W (21969) usbHost: tx status=4 len=4
+W (22175) usbHost: tx status=4 len=4
+W (22182) usbHost: tx status=8 len=4
+W (22388) usbHost: tx status=4 len=4
+W (22594) usbHost: tx status=4 len=4
+W (22594) cellular: ec800m process status=10
+W (22601) usbHost: tx status=8 len=4
+W (22807) usbHost: tx status=4 len=4
+W (23013) usbHost: tx status=4 len=4
+W (23020) usbHost: tx status=8 len=4
+W (23226) usbHost: tx status=4 len=4
+W (23432) usbHost: tx status=4 len=4
+W (23439) usbHost: tx status=8 len=4
+W (23439) cellular: ec800m process status=10
+W (23645) usbHost: tx status=4 len=4
+W (23851) usbHost: tx status=4 len=4
+W (23858) usbHost: tx status=8 len=4
+W (24064) usbHost: tx status=4 len=4
+W (24270) usbHost: tx status=4 len=4
+W (24277) usbHost: tx status=8 len=4
+W (24483) usbHost: tx status=4 len=4
+W (24689) usbHost: tx status=4 len=4
+W (24689) cellular: ec800m process status=10
+W (24696) usbHost: tx status=8 len=4
+W (24902) usbHost: tx status=4 len=4
+W (25108) usbHost: tx status=4 len=4
+W (25115) usbHost: tx status=8 len=4
+W (25321) usbHost: tx status=4 len=4
+W (25527) usbHost: tx status=4 len=4
+W (25534) usbHost: tx status=8 len=4
+W (25534) cellular: ec800m process status=10
+W (25740) usbHost: tx status=4 len=4
+W (25946) usbHost: tx status=4 len=4
+W (25953) usbHost: tx status=8 len=4
+W (26159) usbHost: tx status=4 len=4
+W (26365) usbHost: tx status=4 len=4
+W (26372) usbHost: tx status=8 len=4
+W (26578) usbHost: tx status=4 len=4
+W (26784) usbHost: tx status=4 len=4
+W (26784) cellular: ec800m process status=10
+W (26791) usbHost: tx status=8 len=4
+W (26997) usbHost: tx status=4 len=4
+W (27203) usbHost: tx status=4 len=4
+W (27210) usbHost: tx status=8 len=4
+W (27416) usbHost: tx status=4 len=4
+W (27622) usbHost: tx status=4 len=4
+W (27629) usbHost: tx status=8 len=4
+W (27629) cellular: ec800m process status=10
+W (27835) usbHost: tx status=4 len=4
+W (28041) usbHost: tx status=4 len=4
+W (28048) usbHost: tx status=8 len=4
+W (28254) usbHost: tx status=4 len=4
+W (28460) usbHost: tx status=4 len=4
+W (28467) usbHost: tx status=8 len=4
+W (28673) usbHost: tx status=4 len=4
+W (28879) usbHost: tx status=4 len=4
+W (28879) cellular: ec800m process status=10
+W (28886) usbHost: tx status=8 len=4
+W (29092) usbHost: tx status=4 len=4
+W (29298) usbHost: tx status=4 len=4
+W (29305) usbHost: tx status=8 len=4
+W (29511) usbHost: tx status=4 len=4
+W (29717) usbHost: tx status=4 len=4
+W (29724) usbHost: tx status=8 len=4
+W (29724) cellular: ec800m process status=10
+W (29930) usbHost: tx status=4 len=4
+W (30136) usbHost: tx status=4 len=4
+W (30143) usbHost: tx status=8 len=4
+W (30349) usbHost: tx status=4 len=4
+W (30555) usbHost: tx status=4 len=4
+W (30562) usbHost: tx status=8 len=4
+W (30768) usbHost: tx status=4 len=4
+W (30974) usbHost: tx status=4 len=4
+W (30974) cellular: ec800m process status=10
+W (30981) usbHost: tx status=8 len=4
+W (31187) usbHost: tx status=4 len=4
+W (31393) usbHost: tx status=4 len=4
+W (31400) usbHost: tx status=8 len=4
+W (31606) usbHost: tx status=4 len=4
+W (31812) usbHost: tx status=4 len=4
+W (31819) usbHost: tx status=8 len=4
+W (31819) cellular: ec800m process status=10
+W (32025) usbHost: tx status=4 len=4
+W (32231) usbHost: tx status=4 len=4
+W (32238) usbHost: tx status=8 len=4
+W (32444) usbHost: tx status=4 len=4
+W (32650) usbHost: tx status=4 len=4
+W (32657) usbHost: tx status=8 len=4
+W (32863) usbHost: tx status=4 len=4
+W (33069) usbHost: tx status=4 len=4
+W (33069) cellular: ec800m process status=10
+W (33076) usbHost: tx status=8 len=4
+W (33282) usbHost: tx status=4 len=4
+W (33488) usbHost: tx status=4 len=4
+W (33495) usbHost: tx status=8 len=4
+W (33701) usbHost: tx status=4 len=4
+W (33907) usbHost: tx status=4 len=4
+W (33914) usbHost: tx status=8 len=4
+W (33914) cellular: ec800m process status=10
+W (34120) usbHost: tx status=4 len=4
+W (34326) usbHost: tx status=4 len=4
+W (34333) usbHost: tx status=8 len=4
+W (34539) usbHost: tx status=4 len=4
+W (34745) usbHost: tx status=4 len=4
+W (34752) usbHost: tx status=8 len=4
+W (34958) usbHost: tx status=4 len=4
+W (35164) usbHost: tx status=4 len=4
+W (35164) cellular: ec800m process status=10
+W (35171) usbHost: tx status=8 len=4
+W (35377) usbHost: tx status=4 len=4
+W (35583) usbHost: tx status=4 len=4
+W (35590) usbHost: tx status=8 len=4
+W (35796) usbHost: tx status=4 len=4
+W (36002) usbHost: tx status=4 len=4
+W (36009) usbHost: tx status=8 len=4
+W (36009) cellular: ec800m process status=10
+W (36215) usbHost: tx status=4 len=4
+W (36421) usbHost: tx status=4 len=4
+W (36428) usbHost: tx status=8 len=4
+W (36634) usbHost: tx status=4 len=4
+W (36840) usbHost: tx status=4 len=4
+W (36847) usbHost: tx status=8 len=4
+W (37053) usbHost: tx status=4 len=4
+W (37259) usbHost: tx status=4 len=4
+W (37259) cellular: ec800m process status=10
+W (37266) usbHost: tx status=8 len=4
+W (37472) usbHost: tx status=4 len=4
+W (37678) usbHost: tx status=4 len=4
+W (37685) usbHost: tx status=8 len=4
+W (37891) usbHost: tx status=4 len=4
+W (38097) usbHost: tx status=4 len=4
+W (38104) usbHost: tx status=8 len=4
+W (38104) cellular: ec800m process status=10
+W (38310) usbHost: tx status=4 len=4
+W (38516) usbHost: tx status=4 len=4
+W (38523) usbHost: tx status=8 len=4
+W (38729) usbHost: tx status=4 len=4
+W (38935) usbHost: tx status=4 len=4
+W (38942) usbHost: tx status=8 len=4
+W (39148) usbHost: tx status=4 len=4
+W (39354) usbHost: tx status=4 len=4
+W (39354) cellular: ec800m process status=10
+W (39361) usbHost: tx status=8 len=4
+W (39567) usbHost: tx status=4 len=4
+W (39773) usbHost: tx status=4 len=4
+W (39780) usbHost: tx status=8 len=4
+W (39986) usbHost: tx status=4 len=4
+W (40192) usbHost: tx status=4 len=4
+W (40199) usbHost: tx status=8 len=4
+W (40199) cellular: ec800m process status=10
+W (40405) usbHost: tx status=4 len=4
+W (40611) usbHost: tx status=4 len=4
+W (40618) usbHost: tx status=8 len=4
+W (40824) usbHost: tx status=4 len=4
+W (41030) usbHost: tx status=4 len=4
+W (41037) usbHost: tx status=8 len=4
+W (41243) usbHost: tx status=4 len=4
+W (41449) usbHost: tx status=4 len=4
+W (41449) cellular: ec800m process status=10
+W (41456) usbHost: tx status=8 len=4
+W (41662) usbHost: tx status=4 len=4
+W (41868) usbHost: tx status=4 len=4
+W (41875) usbHost: tx status=8 len=4
+W (42081) usbHost: tx status=4 len=4
+W (42287) usbHost: tx status=4 len=4
+W (42294) usbHost: tx status=8 len=4
+W (42294) cellular: ec800m process status=10
+W (42500) usbHost: tx status=4 len=4
+W (42706) usbHost: tx status=4 len=4
+W (42713) usbHost: tx status=8 len=4
+W (42919) usbHost: tx status=4 len=4
+W (43125) usbHost: tx status=4 len=4
+W (43132) usbHost: tx status=8 len=4
+W (43338) usbHost: tx status=4 len=4
+W (43544) usbHost: tx status=4 len=4
+W (43544) cellular: ec800m process status=10
+W (43551) usbHost: tx status=8 len=4
+W (43757) usbHost: tx status=4 len=4
+W (43963) usbHost: tx status=4 len=4
+W (43970) usbHost: tx status=8 len=4
+W (44176) usbHost: tx status=4 len=4
+W (44382) usbHost: tx status=4 len=4
+W (44389) usbHost: tx status=8 len=4
+W (44389) cellular: ec800m process status=10
+W (44595) usbHost: tx status=4 len=4
+W (44801) usbHost: tx status=4 len=4
+W (44808) usbHost: tx status=8 len=4
+W (45014) usbHost: tx status=4 len=4
+W (45220) usbHost: tx status=4 len=4
+W (45227) usbHost: tx status=8 len=4
+W (45433) usbHost: tx status=4 len=4
+W (45639) usbHost: tx status=4 len=4
+W (45639) cellular: ec800m process status=10
+W (45646) usbHost: tx status=8 len=4
+W (45852) usbHost: tx status=4 len=4
+W (46058) usbHost: tx status=4 len=4

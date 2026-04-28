@@ -11,12 +11,29 @@
 
 #include "drvgpio_port.h"
 #include "drvusb_port.h"
+#include "tca9535_port.h"
 #include "../../rep/driver/drvgpio/drvgpio.h"
+#include "../../rep/service/log/log.h"
 #include "../../rep/service/rtos/rtos.h"
 #include "../bsp/bspusb_ec800.h"
 
 static eDrvStatus ec800mPortTransportInit(uint8_t linkId)
 {
+    eDrvStatus lStatus;
+
+    lStatus = tca9535PortInit();
+    if (lStatus != DRV_STATUS_OK) {
+        LOG_W("ec800mPort", "tca9535 init status=%d", (int)lStatus);
+        return lStatus;
+    }
+
+    lStatus = tca9535PortApplyCellularStartupOutput();
+    if (lStatus != DRV_STATUS_OK) {
+        LOG_W("ec800mPort", "cellular power route status=%d", (int)lStatus);
+        return lStatus;
+    }
+
+    LOG_I("ec800mPort", "cellular power on, usb routed to 4g");
     return bspUsbEc800Init(linkId);
 }
 
@@ -43,18 +60,27 @@ static uint32_t ec800mPortGetTickMs(void)
 static void ec800mPortControlInit(uint8_t pwrkeyPin, uint8_t resetPin)
 {
     drvGpioInit();
-    drvGpioWrite(resetPin, DRVGPIO_PIN_RESET);
     drvGpioWrite(pwrkeyPin, DRVGPIO_PIN_RESET);
+    drvGpioWrite(resetPin, DRVGPIO_PIN_SET);
+    (void)repRtosDelayMs(50U);
+    drvGpioWrite(pwrkeyPin, DRVGPIO_PIN_SET);
+    (void)repRtosDelayMs(30U);
+    drvGpioWrite(resetPin, DRVGPIO_PIN_RESET);
+    (void)repRtosDelayMs(2000U);
+    drvGpioWrite(pwrkeyPin, DRVGPIO_PIN_RESET);
+    LOG_I("ec800mPort", "board boot pulse done");
 }
 
 static void ec800mPortSetActiveLowLevel(uint8_t pin, bool isActive)
 {
-    drvGpioWrite(pin, isActive ? DRVGPIO_PIN_RESET : DRVGPIO_PIN_SET);
+    (void)pin;
+    (void)isActive;
 }
 
 static void ec800mPortSetResetLevel(uint8_t pin, bool isActive)
 {
-    drvGpioWrite(pin, isActive ? DRVGPIO_PIN_RESET : DRVGPIO_PIN_SET);
+    (void)pin;
+    (void)isActive;
 }
 
 static const stEc800mTransportInterface gEc800mTransportInterface = {
@@ -84,10 +110,10 @@ void ec800mLoadPlatformDefaultCfg(eEc800mMapType device, stEc800mCfg *cfg)
     cfg->resetPin = DRVGPIO_CELLULAR_RESET;
     cfg->rxPollChunkSize = EC800M_RX_POLL_CHUNK_SIZE;
     cfg->txTimeoutMs = EC800M_DEFAULT_TX_TIMEOUT_MS;
-    cfg->bootWaitMs = EC800M_DEFAULT_BOOT_WAIT_MS;
-    cfg->pwrkeyPulseMs = EC800M_DEFAULT_PWRKEY_PULSE_MS;
-    cfg->resetPulseMs = EC800M_DEFAULT_RESET_PULSE_MS;
-    cfg->resetWaitMs = EC800M_DEFAULT_RESET_WAIT_MS;
+    cfg->bootWaitMs = 3000U;
+    cfg->pwrkeyPulseMs = 1U;
+    cfg->resetPulseMs = 1U;
+    cfg->resetWaitMs = 1U;
     cfg->readyTimeoutMs = EC800M_DEFAULT_READY_TIMEOUT_MS;
     cfg->retryIntervalMs = EC800M_DEFAULT_RETRY_INTERVAL_MS;
 }

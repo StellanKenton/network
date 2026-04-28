@@ -12,6 +12,7 @@
 #include "../port/drvspi_port.h"
 
 #define BSP_SPI_TIMEOUT_LOOP_PER_MS    6000U
+#define BSP_SPI_FLASH_PERIPH           SPI5
 
 const stBspSpiCsPin gBspSpiFlashCsPin = {DRVGPIO_FLASH_CS, 1U};
 
@@ -25,7 +26,7 @@ static eDrvStatus bspSpiWaitFlag(uint16_t flag, FlagStatus expected, uint32_t ti
 	}
 
 	while (lLoops > 0U) {
-		if (SPI_I2S_GetFlagStatus(SPI2, flag) == expected) {
+		if (SPI_I2S_GetFlagStatus(BSP_SPI_FLASH_PERIPH, flag) == expected) {
 			return DRV_STATUS_OK;
 		}
 		lLoops--;
@@ -43,22 +44,22 @@ eDrvStatus bspSpiInit(uint8_t spi)
 		return DRV_STATUS_INVALID_PARAM;
 	}
 
-	RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOB, ENABLE);
-	RCC_APB1PeriphClockCmd(RCC_APB1Periph_SPI2, ENABLE);
+	RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOF, ENABLE);
+	RCC_APB2PeriphClockCmd(RCC_APB2Periph_SPI5, ENABLE);
 
-	GPIO_PinAFConfig(GPIOB, GPIO_PinSource10, GPIO_AF_SPI2);
-	GPIO_PinAFConfig(GPIOB, GPIO_PinSource14, GPIO_AF_SPI2);
-	GPIO_PinAFConfig(GPIOB, GPIO_PinSource15, GPIO_AF_SPI2);
+	GPIO_PinAFConfig(GPIOF, GPIO_PinSource7, GPIO_AF_SPI5);
+	GPIO_PinAFConfig(GPIOF, GPIO_PinSource8, GPIO_AF_SPI5);
+	GPIO_PinAFConfig(GPIOF, GPIO_PinSource9, GPIO_AF_SPI5);
 
 	GPIO_StructInit(&lGpioInit);
-	lGpioInit.GPIO_Pin = GPIO_Pin_10 | GPIO_Pin_14 | GPIO_Pin_15;
+	lGpioInit.GPIO_Pin = GPIO_Pin_7 | GPIO_Pin_8 | GPIO_Pin_9;
 	lGpioInit.GPIO_Mode = GPIO_Mode_AF;
 	lGpioInit.GPIO_OType = GPIO_OType_PP;
 	lGpioInit.GPIO_PuPd = GPIO_PuPd_UP;
 	lGpioInit.GPIO_Speed = GPIO_Speed_50MHz;
-	GPIO_Init(GPIOB, &lGpioInit);
+	GPIO_Init(GPIOF, &lGpioInit);
 
-	SPI_I2S_DeInit(SPI2);
+	SPI_I2S_DeInit(BSP_SPI_FLASH_PERIPH);
 	SPI_StructInit(&lSpiInit);
 	lSpiInit.SPI_Direction = SPI_Direction_2Lines_FullDuplex;
 	lSpiInit.SPI_Mode = SPI_Mode_Master;
@@ -69,8 +70,8 @@ eDrvStatus bspSpiInit(uint8_t spi)
 	lSpiInit.SPI_BaudRatePrescaler = SPI_BaudRatePrescaler_8;
 	lSpiInit.SPI_FirstBit = SPI_FirstBit_MSB;
 	lSpiInit.SPI_CRCPolynomial = 7U;
-	SPI_Init(SPI2, &lSpiInit);
-	SPI_Cmd(SPI2, ENABLE);
+	SPI_Init(BSP_SPI_FLASH_PERIPH, &lSpiInit);
+	SPI_Cmd(BSP_SPI_FLASH_PERIPH, ENABLE);
 	return DRV_STATUS_OK;
 }
 
@@ -90,13 +91,13 @@ eDrvStatus bspSpiTransfer(uint8_t spi, const uint8_t *txBuffer, uint8_t *rxBuffe
 		if (lStatus != DRV_STATUS_OK) {
 			return lStatus;
 		}
-		SPI_I2S_SendData(SPI2, lTxData);
+		SPI_I2S_SendData(BSP_SPI_FLASH_PERIPH, lTxData);
 
 		lStatus = bspSpiWaitFlag(SPI_I2S_FLAG_RXNE, SET, timeoutMs);
 		if (lStatus != DRV_STATUS_OK) {
 			return lStatus;
 		}
-		lTxData = (uint8_t)SPI_I2S_ReceiveData(SPI2);
+		lTxData = (uint8_t)SPI_I2S_ReceiveData(BSP_SPI_FLASH_PERIPH);
 		if (rxBuffer != NULL) {
 			rxBuffer[lIndex] = lTxData;
 		}

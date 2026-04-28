@@ -85,7 +85,7 @@ void usart_init(u32 baud)
 }
 
 
-void USART1_IRQHandler(void)                	//串口1中断服务程序
+void USART0_IRQHandler(void)                	//串口1中断服务程序
 {
 	//进入中断
 	OSIntEnter();    

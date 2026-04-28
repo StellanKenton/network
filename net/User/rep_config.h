@@ -7,7 +7,8 @@
 
 #include "../rep/rep.h"
 
-#define DRVGPIO_MAX                     9U
+#define DRVGPIO_MAX                     12U
+#define DRVIIC_MAX                      1U
 #define DRVUART_MAX                     2U
 #define CONSOLE_MAX_LINE_LENGTH         160U
 

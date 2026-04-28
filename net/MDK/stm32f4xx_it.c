@@ -109,49 +109,56 @@ void DebugMon_Handler(void)
 {
 }*/
 
-void USART2_IRQHandler(void)
+void USART1_IRQHandler(void)
 {
   OSIntEnter();
   bspUartHandleIrq(DRVUART_WIFI);
   OSIntExit();
 }
 
-void DMA1_Stream5_IRQHandler(void)
+void DMA0_Channel5_IRQHandler(void)
 {
   OSIntEnter();
   bspUartHandleDmaRxIrq(DRVUART_WIFI);
   OSIntExit();
 }
 
-void DMA1_Stream6_IRQHandler(void)
+void DMA0_Channel6_IRQHandler(void)
 {
   OSIntEnter();
   bspUartHandleDmaTxIrq(DRVUART_WIFI);
   OSIntExit();
 }
 
-void USART3_IRQHandler(void)
+void USART2_IRQHandler(void)
 {
   OSIntEnter();
   bspUartHandleIrq(DRVUART_CELLULAR);
   OSIntExit();
 }
 
-void DMA1_Stream1_IRQHandler(void)
+void DMA0_Channel1_IRQHandler(void)
 {
   OSIntEnter();
   bspUartHandleDmaRxIrq(DRVUART_CELLULAR);
   OSIntExit();
 }
 
-void DMA1_Stream3_IRQHandler(void)
+void DMA0_Channel3_IRQHandler(void)
 {
   OSIntEnter();
   bspUartHandleDmaTxIrq(DRVUART_CELLULAR);
   OSIntExit();
 }
 
-void OTG_FS_IRQHandler(void)
+void USBFS_IRQHandler(void)
+{
+  OSIntEnter();
+  bspUsbHandleIrq();
+  OSIntExit();
+}
+
+void USBHS_IRQHandler(void)
 {
   OSIntEnter();
   bspUsbHandleIrq();
