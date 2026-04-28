@@ -10,6 +10,7 @@
 #include "usb_hcd.h"
 #include "usbh_hcs.h"
 #include "usbh_ioreq.h"
+#include "usbh_stdreq.h"
 
 #include "../../../rep/service/log/log.h"
 #include "../../../rep/service/rtos/rtos.h"
@@ -19,6 +20,7 @@
 #define USBH_CDC_REQ_SET_LINE_CODING_CODE        0x20U
 #define USBH_CDC_REQ_SET_CONTROL_LINE_STATE_CODE 0x22U
 #define USBH_CDC_CONTROL_LINE_DTR_RTS            0x0003U
+#define USBH_CDC_DEFAULT_ALT_SETTING             0U
 #define USBH_CDC_DEFAULT_TIMEOUT_MS              100U
 #define USBH_CDC_BULK_ATTR_MASK                  0x03U
 
@@ -28,28 +30,35 @@ static USBH_Status usbhCdcClassRequest(USB_OTG_CORE_HANDLE *pdev, void *phost);
 static USBH_Status usbhCdcHandle(USB_OTG_CORE_HANDLE *pdev, void *phost);
 static bool usbhCdcFindBulkEndpoints(USBH_HOST *host);
 static bool usbhCdcCaptureCandidate(USBH_HOST *host, uint8_t interfaceIndex, stUsbhCdcHostContext *candidate);
+static bool usbhCdcOpenBulkChannels(USB_OTG_CORE_HANDLE *pdev, uint8_t devAddr, uint8_t speed);
+static void usbhCdcCloseBulkChannels(USB_OTG_CORE_HANDLE *pdev);
 static bool usbhCdcSwitchToNextFixedEndpoint(USB_OTG_CORE_HANDLE *pdev);
 static USBH_Status usbhCdcSetLineCoding(USB_OTG_CORE_HANDLE *pdev, USBH_HOST *host);
 static USBH_Status usbhCdcSetControlLineState(USB_OTG_CORE_HANDLE *pdev, USBH_HOST *host);
+static USBH_Status usbhCdcSetInterface(USB_OTG_CORE_HANDLE *pdev, USBH_HOST *host);
+static bool usbhCdcFinishClassRequest(USB_OTG_CORE_HANDLE *pdev, USBH_HOST *host);
+static void usbhCdcLogTxState(USB_OTG_CORE_HANDLE *pdev, URB_STATE urbState, const char *reason);
+static void usbhCdcProbeInEndpoint(USB_OTG_CORE_HANDLE *pdev);
 static uint32_t usbhCdcGetTimeout(uint32_t timeoutMs);
 static bool usbhCdcIsTimeout(uint32_t startMs, uint32_t timeoutMs);
 static void usbhCdcWaitOneMs(void);
 
 static stUsbhCdcHostContext gUsbhCdcContext;
 static uint8_t gUsbhCdcLineCodingBuffer[7];
+static uint8_t gUsbhCdcTxBuffer[USBH_CDC_QUECTEL_EC800M_AT_BULK_MPS];
 static uint32_t gUsbhCdcReadyTickMs;
 static uint8_t gUsbhCdcFixedEndpointIndex;
 static const uint8_t gUsbhCdcFixedBulkInEp[USBH_CDC_QUECTEL_EC800M_EP_PAIR_COUNT] = {
-    USBH_CDC_QUECTEL_EC800M_ALT0_BULK_IN,
     USBH_CDC_QUECTEL_EC800M_AT_BULK_IN,
     USBH_CDC_QUECTEL_EC800M_ALT1_BULK_IN,
+    USBH_CDC_QUECTEL_EC800M_ALT0_BULK_IN,
     USBH_CDC_QUECTEL_EC800M_ALT2_BULK_IN,
     USBH_CDC_QUECTEL_EC800M_ALT3_BULK_IN,
 };
 static const uint8_t gUsbhCdcFixedBulkOutEp[USBH_CDC_QUECTEL_EC800M_EP_PAIR_COUNT] = {
-    USBH_CDC_QUECTEL_EC800M_ALT0_BULK_OUT,
     USBH_CDC_QUECTEL_EC800M_AT_BULK_OUT,
     USBH_CDC_QUECTEL_EC800M_ALT1_BULK_OUT,
+    USBH_CDC_QUECTEL_EC800M_ALT0_BULK_OUT,
     USBH_CDC_QUECTEL_EC800M_ALT2_BULK_OUT,
     USBH_CDC_QUECTEL_EC800M_ALT3_BULK_OUT,
 };
@@ -71,6 +80,7 @@ void usbhCdcHostReset(void)
     gUsbhCdcContext.lineCoding.stopBits = 0U;
     gUsbhCdcContext.lineCoding.parity = 0U;
     gUsbhCdcContext.lineCoding.dataBits = 8U;
+    gUsbhCdcFixedEndpointIndex = 0U;
 }
 
 bool usbhCdcHostIsReady(void)
@@ -96,13 +106,19 @@ eUsbhCdcHostStatus usbhCdcHostTransmit(USB_OTG_CORE_HANDLE *pdev, const uint8_t 
         return USBH_CDC_HOST_INVALID_PARAM;
     }
 
+    if (length > sizeof(gUsbhCdcTxBuffer)) {
+        return USBH_CDC_HOST_INVALID_PARAM;
+    }
+
     if (!gUsbhCdcContext.isReady || (gUsbhCdcContext.bulkOutChannel == USBH_CDC_INVALID_CHANNEL)) {
         return USBH_CDC_HOST_NOT_READY;
     }
 
     timeoutMs = usbhCdcGetTimeout(timeoutMs);
+    usbhCdcProbeInEndpoint(pdev);
+    memcpy(gUsbhCdcTxBuffer, buffer, length);
     startMs = repRtosGetTickMs();
-    (void)USBH_BulkSendData(pdev, (uint8_t *)buffer, length, gUsbhCdcContext.bulkOutChannel);
+    (void)USBH_BulkSendData(pdev, gUsbhCdcTxBuffer, length, gUsbhCdcContext.bulkOutChannel);
 
     for (;;) {
         urbState = HCD_GetURB_State(pdev, gUsbhCdcContext.bulkOutChannel);
@@ -110,12 +126,14 @@ eUsbhCdcHostStatus usbhCdcHostTransmit(USB_OTG_CORE_HANDLE *pdev, const uint8_t 
             return USBH_CDC_HOST_OK;
         }
         if (urbState == URB_NOTREADY) {
-            (void)USBH_BulkSendData(pdev, (uint8_t *)buffer, length, gUsbhCdcContext.bulkOutChannel);
+            (void)USBH_BulkSendData(pdev, gUsbhCdcTxBuffer, length, gUsbhCdcContext.bulkOutChannel);
         } else if ((urbState == URB_ERROR) || (urbState == URB_STALL)) {
+            usbhCdcLogTxState(pdev, urbState, "error");
             (void)usbhCdcSwitchToNextFixedEndpoint(pdev);
             return USBH_CDC_HOST_ERROR;
         }
         if (usbhCdcIsTimeout(startMs, timeoutMs)) {
+            usbhCdcLogTxState(pdev, urbState, "timeout");
             (void)usbhCdcSwitchToNextFixedEndpoint(pdev);
             return USBH_CDC_HOST_TIMEOUT;
         }
@@ -187,25 +205,11 @@ static USBH_Status usbhCdcInterfaceInit(USB_OTG_CORE_HANDLE *pdev, void *phost)
         return USBH_NOT_SUPPORTED;
     }
 
-    gUsbhCdcContext.bulkOutChannel = USBH_Alloc_Channel(pdev, gUsbhCdcContext.bulkOutEp);
-    gUsbhCdcContext.bulkInChannel = USBH_Alloc_Channel(pdev, gUsbhCdcContext.bulkInEp);
-    if ((gUsbhCdcContext.bulkOutChannel == USBH_CDC_INVALID_CHANNEL) ||
-        (gUsbhCdcContext.bulkInChannel == USBH_CDC_INVALID_CHANNEL)) {
-        return USBH_FAIL;
+    if (gUsbhCdcContext.skipClassRequest) {
+        if (!usbhCdcOpenBulkChannels(pdev, host->device_prop.address, host->device_prop.speed)) {
+            return USBH_FAIL;
+        }
     }
-
-    (void)USBH_Open_Channel(pdev,
-                            gUsbhCdcContext.bulkOutChannel,
-                            host->device_prop.address,
-                            host->device_prop.speed,
-                            EP_TYPE_BULK,
-                            gUsbhCdcContext.bulkOutMps);
-    (void)USBH_Open_Channel(pdev,
-                            gUsbhCdcContext.bulkInChannel,
-                            host->device_prop.address,
-                            host->device_prop.speed,
-                            EP_TYPE_BULK,
-                            gUsbhCdcContext.bulkInMps);
 
     LOG_W(USBH_CDC_LOG_TAG,
           "cdc bulk endpoints in=0x%02x out=0x%02x if=%u fixed=%u",
@@ -261,9 +265,23 @@ static USBH_Status usbhCdcClassRequest(USB_OTG_CORE_HANDLE *pdev, void *phost)
             return status;
         case USBH_CDC_REQ_SET_CONTROL_LINE_STATE:
             status = usbhCdcSetControlLineState(pdev, host);
-            if ((status == USBH_OK) || (status == USBH_NOT_SUPPORTED)) {
-                gUsbhCdcContext.requestState = USBH_CDC_REQ_DONE;
-                gUsbhCdcContext.isReady = true;
+            if ((status == USBH_OK) || (status == USBH_NOT_SUPPORTED) ||
+                ((status == USBH_FAIL) &&
+                 (host->device_prop.Dev_Desc.idVendor == USBH_CDC_QUECTEL_EC800M_VID) &&
+                 (host->device_prop.Dev_Desc.idProduct == USBH_CDC_QUECTEL_EC800M_PID))) {
+                gUsbhCdcContext.requestState = USBH_CDC_REQ_SET_INTERFACE;
+                return USBH_BUSY;
+            }
+            return status;
+        case USBH_CDC_REQ_SET_INTERFACE:
+            status = usbhCdcSetInterface(pdev, host);
+            if ((status == USBH_OK) || (status == USBH_NOT_SUPPORTED) ||
+                ((status == USBH_FAIL) &&
+                 (host->device_prop.Dev_Desc.idVendor == USBH_CDC_QUECTEL_EC800M_VID) &&
+                 (host->device_prop.Dev_Desc.idProduct == USBH_CDC_QUECTEL_EC800M_PID))) {
+                if (!usbhCdcFinishClassRequest(pdev, host)) {
+                    return USBH_FAIL;
+                }
                 return USBH_OK;
             }
             return status;
@@ -351,7 +369,7 @@ static bool usbhCdcFindBulkEndpoints(USBH_HOST *host)
         gUsbhCdcContext.bulkInMps = USBH_CDC_QUECTEL_EC800M_AT_BULK_MPS;
         gUsbhCdcContext.bulkOutMps = USBH_CDC_QUECTEL_EC800M_AT_BULK_MPS;
         gUsbhCdcContext.dataInterface = (uint8_t)(USBH_CDC_QUECTEL_EC800M_AT_INTERFACE + gUsbhCdcFixedEndpointIndex);
-        gUsbhCdcContext.skipClassRequest = true;
+        gUsbhCdcContext.skipClassRequest = false;
         LOG_W(USBH_CDC_LOG_TAG,
               "use ec800m fixed endpoints idx=%u in=0x%02x out=0x%02x if=%u",
               gUsbhCdcFixedEndpointIndex,
@@ -382,6 +400,7 @@ static bool usbhCdcCaptureCandidate(USBH_HOST *host, uint8_t interfaceIndex, stU
     candidate->bulkOutChannel = USBH_CDC_INVALID_CHANNEL;
     candidate->lineCoding = gUsbhCdcContext.lineCoding;
     candidate->dataInterface = interfaceDesc->bInterfaceNumber;
+    candidate->skipClassRequest = false;
 
     for (endpointIndex = 0U;
          (endpointIndex < interfaceDesc->bNumEndpoints) && (endpointIndex < USBH_MAX_NUM_ENDPOINTS);
@@ -408,40 +427,14 @@ static bool usbhCdcCaptureCandidate(USBH_HOST *host, uint8_t interfaceIndex, stU
     return true;
 }
 
-static bool usbhCdcSwitchToNextFixedEndpoint(USB_OTG_CORE_HANDLE *pdev)
+static bool usbhCdcOpenBulkChannels(USB_OTG_CORE_HANDLE *pdev, uint8_t devAddr, uint8_t speed)
 {
-    uint8_t devAddr;
-    uint8_t speed;
-
-    if ((pdev == NULL) || !gUsbhCdcContext.skipClassRequest ||
-        (gUsbhCdcFixedEndpointIndex >= USBH_CDC_QUECTEL_EC800M_EP_PAIR_COUNT)) {
+    if (pdev == NULL) {
         return false;
     }
 
-    devAddr = (gUsbhCdcContext.bulkOutChannel != USBH_CDC_INVALID_CHANNEL) ?
-              pdev->host.hc[gUsbhCdcContext.bulkOutChannel].dev_addr : USBH_DEVICE_ADDRESS;
-    speed = (gUsbhCdcContext.bulkOutChannel != USBH_CDC_INVALID_CHANNEL) ?
-            pdev->host.hc[gUsbhCdcContext.bulkOutChannel].speed : HPRT0_PRTSPD_FULL_SPEED;
-
-    if (gUsbhCdcContext.bulkOutChannel != USBH_CDC_INVALID_CHANNEL) {
-        USB_OTG_HC_Halt(pdev, gUsbhCdcContext.bulkOutChannel);
-        (void)USBH_Free_Channel(pdev, gUsbhCdcContext.bulkOutChannel);
-        gUsbhCdcContext.bulkOutChannel = USBH_CDC_INVALID_CHANNEL;
-    }
-    if (gUsbhCdcContext.bulkInChannel != USBH_CDC_INVALID_CHANNEL) {
-        USB_OTG_HC_Halt(pdev, gUsbhCdcContext.bulkInChannel);
-        (void)USBH_Free_Channel(pdev, gUsbhCdcContext.bulkInChannel);
-        gUsbhCdcContext.bulkInChannel = USBH_CDC_INVALID_CHANNEL;
-    }
-
-    gUsbhCdcContext.bulkInEp = gUsbhCdcFixedBulkInEp[gUsbhCdcFixedEndpointIndex];
-    gUsbhCdcContext.bulkOutEp = gUsbhCdcFixedBulkOutEp[gUsbhCdcFixedEndpointIndex];
-    gUsbhCdcContext.bulkInMps = USBH_CDC_QUECTEL_EC800M_AT_BULK_MPS;
-    gUsbhCdcContext.bulkOutMps = USBH_CDC_QUECTEL_EC800M_AT_BULK_MPS;
-    gUsbhCdcContext.dataInterface = (uint8_t)(USBH_CDC_QUECTEL_EC800M_AT_INTERFACE + gUsbhCdcFixedEndpointIndex);
     gUsbhCdcContext.bulkOutChannel = USBH_Alloc_Channel(pdev, gUsbhCdcContext.bulkOutEp);
     gUsbhCdcContext.bulkInChannel = USBH_Alloc_Channel(pdev, gUsbhCdcContext.bulkInEp);
-
     if ((gUsbhCdcContext.bulkOutChannel == USBH_CDC_INVALID_CHANNEL) ||
         (gUsbhCdcContext.bulkInChannel == USBH_CDC_INVALID_CHANNEL)) {
         return false;
@@ -459,6 +452,52 @@ static bool usbhCdcSwitchToNextFixedEndpoint(USB_OTG_CORE_HANDLE *pdev)
                             speed,
                             EP_TYPE_BULK,
                             gUsbhCdcContext.bulkInMps);
+    return true;
+}
+
+static void usbhCdcCloseBulkChannels(USB_OTG_CORE_HANDLE *pdev)
+{
+    if (pdev == NULL) {
+        return;
+    }
+
+    if (gUsbhCdcContext.bulkOutChannel != USBH_CDC_INVALID_CHANNEL) {
+        USB_OTG_HC_Halt(pdev, gUsbhCdcContext.bulkOutChannel);
+        (void)USBH_Free_Channel(pdev, gUsbhCdcContext.bulkOutChannel);
+        gUsbhCdcContext.bulkOutChannel = USBH_CDC_INVALID_CHANNEL;
+    }
+    if (gUsbhCdcContext.bulkInChannel != USBH_CDC_INVALID_CHANNEL) {
+        USB_OTG_HC_Halt(pdev, gUsbhCdcContext.bulkInChannel);
+        (void)USBH_Free_Channel(pdev, gUsbhCdcContext.bulkInChannel);
+        gUsbhCdcContext.bulkInChannel = USBH_CDC_INVALID_CHANNEL;
+    }
+}
+
+static bool usbhCdcSwitchToNextFixedEndpoint(USB_OTG_CORE_HANDLE *pdev)
+{
+    uint8_t devAddr;
+    uint8_t speed;
+
+    if ((pdev == NULL) || !gUsbhCdcContext.skipClassRequest ||
+        (gUsbhCdcFixedEndpointIndex >= USBH_CDC_QUECTEL_EC800M_EP_PAIR_COUNT)) {
+        return false;
+    }
+
+    devAddr = (gUsbhCdcContext.bulkOutChannel != USBH_CDC_INVALID_CHANNEL) ?
+              pdev->host.hc[gUsbhCdcContext.bulkOutChannel].dev_addr : USBH_DEVICE_ADDRESS;
+    speed = (gUsbhCdcContext.bulkOutChannel != USBH_CDC_INVALID_CHANNEL) ?
+            pdev->host.hc[gUsbhCdcContext.bulkOutChannel].speed : HPRT0_PRTSPD_FULL_SPEED;
+
+    usbhCdcCloseBulkChannels(pdev);
+
+    gUsbhCdcContext.bulkInEp = gUsbhCdcFixedBulkInEp[gUsbhCdcFixedEndpointIndex];
+    gUsbhCdcContext.bulkOutEp = gUsbhCdcFixedBulkOutEp[gUsbhCdcFixedEndpointIndex];
+    gUsbhCdcContext.bulkInMps = USBH_CDC_QUECTEL_EC800M_AT_BULK_MPS;
+    gUsbhCdcContext.bulkOutMps = USBH_CDC_QUECTEL_EC800M_AT_BULK_MPS;
+    gUsbhCdcContext.dataInterface = (uint8_t)(USBH_CDC_QUECTEL_EC800M_AT_INTERFACE + gUsbhCdcFixedEndpointIndex);
+    if (!usbhCdcOpenBulkChannels(pdev, devAddr, speed)) {
+        return false;
+    }
 
     LOG_W(USBH_CDC_LOG_TAG,
           "switch ec800m endpoints idx=%u in=0x%02x out=0x%02x if=%u",
@@ -496,6 +535,106 @@ static USBH_Status usbhCdcSetControlLineState(USB_OTG_CORE_HANDLE *pdev, USBH_HO
     host->Control.setup.b.wIndex.w = gUsbhCdcContext.dataInterface;
     host->Control.setup.b.wLength.w = 0U;
     return USBH_CtlReq(pdev, host, NULL, 0U);
+}
+
+static USBH_Status usbhCdcSetInterface(USB_OTG_CORE_HANDLE *pdev, USBH_HOST *host)
+{
+    return USBH_SetInterface(pdev, host, gUsbhCdcContext.dataInterface, USBH_CDC_DEFAULT_ALT_SETTING);
+}
+
+static bool usbhCdcFinishClassRequest(USB_OTG_CORE_HANDLE *pdev, USBH_HOST *host)
+{
+    USB_OTG_HC_Halt(pdev, host->Control.hc_num_out);
+    USB_OTG_HC_Halt(pdev, host->Control.hc_num_in);
+    (void)USBH_Free_Channel(pdev, host->Control.hc_num_out);
+    (void)USBH_Free_Channel(pdev, host->Control.hc_num_in);
+    if (!usbhCdcOpenBulkChannels(pdev, host->device_prop.address, host->device_prop.speed)) {
+        return false;
+    }
+    gUsbhCdcContext.requestState = USBH_CDC_REQ_DONE;
+    gUsbhCdcContext.isReady = true;
+    return true;
+}
+
+static void usbhCdcLogTxState(USB_OTG_CORE_HANDLE *pdev, URB_STATE urbState, const char *reason)
+{
+    static uint8_t logCount;
+    uint8_t channel;
+    uint32_t hcint;
+    uint32_t hcintmsk;
+    uint32_t hcchar;
+    uint32_t hctsiz;
+    uint32_t hprt;
+    uint32_t gintsts;
+    uint32_t haint;
+
+    if ((pdev == NULL) || (logCount >= 12U)) {
+        return;
+    }
+
+    channel = gUsbhCdcContext.bulkOutChannel;
+    if (channel == USBH_CDC_INVALID_CHANNEL) {
+        return;
+    }
+
+    logCount++;
+    hcint = USB_OTG_READ_REG32(&pdev->regs.HC_REGS[channel]->HCINT);
+    hcintmsk = USB_OTG_READ_REG32(&pdev->regs.HC_REGS[channel]->HCINTMSK);
+    hcchar = USB_OTG_READ_REG32(&pdev->regs.HC_REGS[channel]->HCCHAR);
+    hctsiz = USB_OTG_READ_REG32(&pdev->regs.HC_REGS[channel]->HCTSIZ);
+    hprt = USB_OTG_READ_REG32(pdev->regs.HPRT0);
+    gintsts = USB_OTG_READ_REG32(&pdev->regs.GREGS->GINTSTS);
+    haint = USB_OTG_READ_REG32(&pdev->regs.HREGS->HAINT);
+
+    LOG_W(USBH_CDC_LOG_TAG,
+          "tx %s ch=%u ep=0x%02x urb=%u hc=%u err=%u cnt=%lu hcint=0x%08lx msk=0x%08lx hcchar=0x%08lx hctsiz=0x%08lx hprt=0x%08lx gint=0x%08lx haint=0x%08lx",
+          reason,
+          channel,
+          gUsbhCdcContext.bulkOutEp,
+          (unsigned int)urbState,
+          (unsigned int)HCD_GetHCState(pdev, channel),
+          (unsigned int)pdev->host.ErrCnt[channel],
+          (unsigned long)HCD_GetXferCnt(pdev, channel),
+          (unsigned long)hcint,
+          (unsigned long)hcintmsk,
+          (unsigned long)hcchar,
+          (unsigned long)hctsiz,
+          (unsigned long)hprt,
+          (unsigned long)gintsts,
+          (unsigned long)haint);
+}
+
+static void usbhCdcProbeInEndpoint(USB_OTG_CORE_HANDLE *pdev)
+{
+    static bool probed;
+    uint8_t probeByte;
+    uint32_t startMs;
+    URB_STATE urbState;
+
+    if (probed || (pdev == NULL) || (gUsbhCdcContext.bulkInChannel == USBH_CDC_INVALID_CHANNEL)) {
+        return;
+    }
+
+    probed = true;
+    probeByte = 0U;
+    startMs = repRtosGetTickMs();
+    (void)USBH_BulkReceiveData(pdev, &probeByte, 1U, gUsbhCdcContext.bulkInChannel);
+    do {
+        urbState = HCD_GetURB_State(pdev, gUsbhCdcContext.bulkInChannel);
+        if ((urbState == URB_DONE) || (urbState == URB_NOTREADY) ||
+            (urbState == URB_ERROR) || (urbState == URB_STALL)) {
+            break;
+        }
+        usbhCdcWaitOneMs();
+    } while (!usbhCdcIsTimeout(startMs, 20U));
+
+    LOG_W(USBH_CDC_LOG_TAG,
+          "probe in ch=%u ep=0x%02x urb=%u hc=%u cnt=%lu",
+          gUsbhCdcContext.bulkInChannel,
+          gUsbhCdcContext.bulkInEp,
+          (unsigned int)urbState,
+          (unsigned int)HCD_GetHCState(pdev, gUsbhCdcContext.bulkInChannel),
+          (unsigned long)HCD_GetXferCnt(pdev, gUsbhCdcContext.bulkInChannel));
 }
 
 static uint32_t usbhCdcGetTimeout(uint32_t timeoutMs)

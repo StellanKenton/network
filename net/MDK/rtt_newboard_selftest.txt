@@ -16,186 +16,418 @@ I (2726) cellular: ec800m init ok
 I (2726) ec800m: start service=1
 I (2726) cellular: ec800m start ok
 W (2726) usbHost: wait conn=0 enumDone=0 cdc=0 hprt=0x00021000 dp=0 dm=0 state=0 enum=0 in=0x00 out=0x00
-W (3276) usbHost: device attached
-W (3306) usbHost: device reset
-W (3306) usbHost: speed=1
-W (3316) usbCore: ctrl state=1 urb=0 hc=0 ch=0 hprt=0x00021405 setup=80 06 00 01 00 00 08 00
-W (3321) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 01 00 00 08 00
-W (3341) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 01 00 00 08 00
-W (3346) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 01 00 00 08 00
-W (3716) usbCore: disconnect hprt=0x00021000 state=7 enum=0 ctrl=4 req=2
-W (3716) usbHost: device disconnected
+W (3156) usbHost: device attached
+W (3186) usbHost: device reset
+W (3186) usbHost: speed=1
+W (3196) usbCore: ctrl state=1 urb=0 hc=0 ch=0 hprt=0x00021405 setup=80 06 00 01 00 00 08 00
+W (3201) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 01 00 00 08 00
+W (3221) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 01 00 00 08 00
+W (3226) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 01 00 00 08 00
+W (3591) usbCore: disconnect hprt=0x00021000 state=7 enum=0 ctrl=4 req=2
+W (3591) usbHost: device disconnected
 W (3726) usbHost: wait conn=0 enumDone=0 cdc=0 hprt=0x00021000 dp=0 dm=0 state=0 enum=0 in=0x00 out=0x00
 W (4726) usbHost: wait conn=0 enumDone=0 cdc=0 hprt=0x00021000 dp=0 dm=0 state=0 enum=0 in=0x00 out=0x00
-W (5021) usbHost: device attached
-W (5051) usbHost: device reset
-W (5051) usbHost: speed=1
-W (5061) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 01 00 00 08 00
-W (5066) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 01 00 00 08 00
-W (5086) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 01 00 00 08 00
-W (5091) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 01 00 00 08 00
-W (5121) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 01 00 00 08 00
-W (5126) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 01 00 00 08 00
-W (5186) usbCore: enum state=1 ctrl=0 req=1
-W (5191) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 01 00 00 12 00
-W (5196) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 01 00 00 12 00
-W (5226) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 01 00 00 12 00
-W (5231) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 01 00 00 12 00
-W (5256) usbHost: vid=0x2c7c pid=0x6002 class=0xef
-W (5261) usbCore: enum state=2 ctrl=0 req=1
-W (5266) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=00 05 01 00 00 00 00 00
-W (5271) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=00 05 01 00 00 00 00 00
-W (5276) usbCore: ctrl state=7 urb=1 hc=1 ch=1 hprt=0x00021405 setup=00 05 01 00 00 00 00 00
-W (5281) usbCore: ctrl state=8 urb=1 hc=1 ch=1 hprt=0x00021405 setup=00 05 01 00 00 00 00 00
-W (5391) usbCore: enum state=8 ctrl=0 req=1
-W (6726) usbHost: wait conn=1 enumDone=1 cdc=0 hprt=0x00021405 dp=0 dm=0 state=6 enum=9 in=0x82 out=0x02
+W (4901) usbHost: device attached
+W (4931) usbHost: device reset
+W (4931) usbHost: speed=1
+W (4941) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 01 00 00 08 00
+W (4946) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 01 00 00 08 00
+W (5006) usbCore: enum state=1 ctrl=0 req=1
+W (5011) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 01 00 00 12 00
+W (5016) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 01 00 00 12 00
+W (5036) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 01 00 00 12 00
+W (5041) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 01 00 00 12 00
+W (5066) usbHost: vid=0x2c7c pid=0x6002 class=0xef
+W (5071) usbCore: enum state=2 ctrl=0 req=1
+W (5076) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=00 05 01 00 00 00 00 00
+W (5081) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=00 05 01 00 00 00 00 00
+W (5086) usbCore: ctrl state=7 urb=1 hc=1 ch=1 hprt=0x00021405 setup=00 05 01 00 00 00 00 00
+W (5091) usbCore: ctrl state=8 urb=1 hc=1 ch=1 hprt=0x00021405 setup=00 05 01 00 00 00 00 00
+W (5201) usbCore: enum state=3 ctrl=0 req=1
+W (5206) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (5211) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (5241) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (5246) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (5276) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (5281) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (5311) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (5316) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (5346) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (5351) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (5381) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (5386) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (5416) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (5421) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (5451) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (5456) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (5486) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (5491) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (5521) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (5526) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (5556) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (5561) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (5591) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (5596) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (5626) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (5631) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (5661) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (5666) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (5696) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (5701) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (5726) usbHost: wait conn=1 enumDone=0 cdc=0 hprt=0x00021405 dp=0 dm=0 state=7 enum=3 in=0x00 out=0x00
+W (5731) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (5736) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (5746) cellular: ec800m process status=10
+W (5756) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (5756) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (5761) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (5776) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (5776) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (5781) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (5796) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (5796) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (5801) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (5816) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (5816) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (5821) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (5836) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (5836) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (5841) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (5856) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (5856) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (5861) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (5876) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (5876) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (5881) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (5896) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (5896) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (5901) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (5916) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (5916) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (5921) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (5936) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (5936) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (5941) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (5956) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (5956) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (5961) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (5976) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (5976) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (5981) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (5996) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (5996) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6001) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6016) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6016) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6021) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6036) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6036) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6041) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6056) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6056) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6061) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6076) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6076) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6081) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6096) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6096) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6101) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6116) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6116) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6121) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6136) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6136) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6141) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6156) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6156) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6161) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6176) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6176) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6181) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6196) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6196) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6201) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6216) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6216) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6221) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6236) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6236) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6241) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6256) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6256) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6261) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6276) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6276) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6281) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6296) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6296) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6301) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6316) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6316) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6321) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6336) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6336) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6341) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6356) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6356) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6361) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6376) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6376) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6381) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6396) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6396) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6401) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6416) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6416) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6421) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6436) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6436) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6441) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6456) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6456) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6461) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6476) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6476) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6481) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6496) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6496) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6501) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6516) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6516) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6521) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6536) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6536) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6541) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6556) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6556) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6561) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6576) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6576) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6581) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6596) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6596) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6601) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6616) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6616) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6621) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6636) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6636) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6641) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6656) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6656) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6661) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6676) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6676) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6681) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6696) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6696) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6701) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6716) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6716) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6721) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6726) usbHost: wait conn=1 enumDone=0 cdc=0 hprt=0x00021405 dp=0 dm=0 state=7 enum=3 in=0x00 out=0x00
+W (6736) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6736) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6741) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
 W (6746) cellular: ec800m process status=10
-W (7632) usbHost: tx status=4 len=4
-W (7838) usbHost: tx status=4 len=4
-W (7845) usbHost: tx status=8 len=4
-W (7845) cellular: ec800m process status=10
-W (8051) usbHost: tx status=4 len=4
-W (8257) usbHost: tx status=4 len=4
-W (8264) usbHost: tx status=8 len=4
-W (8470) usbHost: tx status=4 len=4
-W (8676) usbHost: tx status=4 len=4
-W (8683) usbHost: tx status=8 len=4
-W (8889) usbHost: tx status=4 len=4
-W (9095) usbHost: tx status=4 len=4
-W (9095) cellular: ec800m process status=10
-W (9102) usbHost: tx status=8 len=4
-W (9308) usbHost: tx status=4 len=4
-W (9514) usbHost: tx status=4 len=4
-W (9521) usbHost: tx status=8 len=4
-W (9727) usbHost: tx status=4 len=4
-W (9933) usbHost: tx status=4 len=4
-W (9940) usbHost: tx status=8 len=4
-W (9940) cellular: ec800m process status=10
-W (10146) usbHost: tx status=4 len=4
-W (10352) usbHost: tx status=4 len=4
-W (10359) usbHost: tx status=8 len=4
-W (10565) usbHost: tx status=4 len=4
-W (10771) usbHost: tx status=4 len=4
-W (10778) usbHost: tx status=8 len=4
-W (10984) usbHost: tx status=4 len=4
-W (11190) usbHost: tx status=4 len=4
-W (11190) cellular: ec800m process status=10
-W (11197) usbHost: tx status=8 len=4
-W (11403) usbHost: tx status=4 len=4
-W (11609) usbHost: tx status=4 len=4
-W (11616) usbHost: tx status=8 len=4
-W (11822) usbHost: tx status=4 len=4
-W (12028) usbHost: tx status=4 len=4
-W (12035) usbHost: tx status=8 len=4
-W (12035) cellular: ec800m process status=10
-W (12241) usbHost: tx status=4 len=4
-W (12447) usbHost: tx status=4 len=4
-W (12454) usbHost: tx status=8 len=4
-W (12660) usbHost: tx status=4 len=4
-W (12866) usbHost: tx status=4 len=4
-W (12873) usbHost: tx status=8 len=4
-W (13079) usbHost: tx status=4 len=4
-W (13285) usbHost: tx status=4 len=4
-W (13285) cellular: ec800m process status=10
-W (13292) usbHost: tx status=8 len=4
-W (13498) usbHost: tx status=4 len=4
-W (13704) usbHost: tx status=4 len=4
-W (13711) usbHost: tx status=8 len=4
-W (13917) usbHost: tx status=4 len=4
-W (14123) usbHost: tx status=4 len=4
-W (14130) usbHost: tx status=8 len=4
-W (14130) cellular: ec800m process status=10
-W (14336) usbHost: tx status=4 len=4
-W (14542) usbHost: tx status=4 len=4
-W (14549) usbHost: tx status=8 len=4
-W (14755) usbHost: tx status=4 len=4
-W (14961) usbHost: tx status=4 len=4
-W (14968) usbHost: tx status=8 len=4
-W (15174) usbHost: tx status=4 len=4
-W (15380) usbHost: tx status=4 len=4
-W (15380) cellular: ec800m process status=10
-W (15387) usbHost: tx status=8 len=4
-W (15593) usbHost: tx status=4 len=4
-W (15799) usbHost: tx status=4 len=4
-W (15806) usbHost: tx status=8 len=4
-W (16012) usbHost: tx status=4 len=4
-W (16218) usbHost: tx status=4 len=4
-W (16225) usbHost: tx status=8 len=4
-W (16225) cellular: ec800m process status=10
-W (16431) usbHost: tx status=4 len=4
-W (16637) usbHost: tx status=4 len=4
-W (16644) usbHost: tx status=8 len=4
-W (16850) usbHost: tx status=4 len=4
-W (17056) usbHost: tx status=4 len=4
-W (17063) usbHost: tx status=8 len=4
-W (17269) usbHost: tx status=4 len=4
-W (17475) usbHost: tx status=4 len=4
-W (17475) cellular: ec800m process status=10
-W (17482) usbHost: tx status=8 len=4
-W (17688) usbHost: tx status=4 len=4
-W (17894) usbHost: tx status=4 len=4
-W (17901) usbHost: tx status=8 len=4
-W (18107) usbHost: tx status=4 len=4
-W (18313) usbHost: tx status=4 len=4
-W (18320) usbHost: tx status=8 len=4
-W (18320) cellular: ec800m process status=10
-W (18526) usbHost: tx status=4 len=4
-W (18732) usbHost: tx status=4 len=4
-W (18739) usbHost: tx status=8 len=4
-W (18945) usbHost: tx status=4 len=4
-W (19151) usbHost: tx status=4 len=4
-W (19158) usbHost: tx status=8 len=4
-W (19364) usbHost: tx status=4 len=4
-W (19570) usbHost: tx status=4 len=4
-W (19570) cellular: ec800m process status=10
-W (19577) usbHost: tx status=8 len=4
-W (19783) usbHost: tx status=4 len=4
-W (19989) usbHost: tx status=4 len=4
-W (19996) usbHost: tx status=8 len=4
-W (20202) usbHost: tx status=4 len=4
-W (20408) usbHost: tx status=4 len=4
-W (20415) usbHost: tx status=8 len=4
-W (20415) cellular: ec800m process status=10
-W (20621) usbHost: tx status=4 len=4
-W (20827) usbHost: tx status=4 len=4
-W (20834) usbHost: tx status=8 len=4
-W (21040) usbHost: tx status=4 len=4
-W (21246) usbHost: tx status=4 len=4
-W (21253) usbHost: tx status=8 len=4
-W (21459) usbHost: tx status=4 len=4
-W (21665) usbHost: tx status=4 len=4
-W (21665) cellular: ec800m process status=10
-W (21672) usbHost: tx status=8 len=4
-W (21878) usbHost: tx status=4 len=4
-W (22084) usbHost: tx status=4 len=4
-W (22091) usbHost: tx status=8 len=4
-W (22297) usbHost: tx status=4 len=4
-W (22503) usbHost: tx status=4 len=4
-W (22510) usbHost: tx status=8 len=4
-W (22510) cellular: ec800m process status=10
-W (22716) usbHost: tx status=4 len=4
-W (22922) usbHost: tx status=4 len=4
-W (22929) usbHost: tx status=8 len=4
-W (23135) usbHost: tx status=4 len=4
-W (23341) usbHost: tx status=4 len=4
-W (23348) usbHost: tx status=8 len=4
-W (23554) usbHost: tx status=4 len=4
-W (23760) usbHost: tx status=4 len=4
-W (23760) cellular: ec800m process status=10
-W (23767) usbHost: tx status=8 len=4
-W (23973) usbHost: tx status=4 len=4
-W (24179) usbHost: tx status=4 len=4
-W (24186) usbHost: tx status=8 len=4
-W (24392) usbHost: tx status=4 len=4
-W (24598) usbHost: tx status=4 len=4
-W (24605) usbHost: tx status=8 len=4
-W (24605) cellular: ec800m process status=10
-W (24811) usbHost: tx status=4 len=4
-W (25017) usbHost: tx status=4 len=4
-W (25024) usbHost: tx status=8 len=4
-W (25230) usbHost: tx status=4 len=4
-W (25436) usbHost: tx status=4 len=4
-W (25443) usbHost: tx status=8 len=4
+W (6756) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6756) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021805 setup=80 06 00 02 00 00 09 00
+W (6761) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6776) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6776) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6781) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6796) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6796) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6801) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6816) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6816) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6821) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6836) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6836) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6841) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6856) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6856) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6861) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6876) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6876) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6881) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6896) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6896) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6901) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6916) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6916) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6921) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6936) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6936) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6941) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6956) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6956) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6961) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6976) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6976) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6981) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6996) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6996) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (7001) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (7016) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (7016) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (7021) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (7036) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (7036) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (7041) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (7056) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (7056) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (7061) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (7076) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (7076) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (7081) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (7096) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (7096) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (7101) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (7116) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (7116) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (7121) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (7136) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (7136) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (7141) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (7156) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (7156) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (7161) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (7176) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (7176) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021805 setup=80 06 00 02 00 00 09 00
+W (7196) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (7196) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (7201) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (7216) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (7216) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (7221) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (7236) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (7236) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (7241) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (7256) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (7256) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (7276) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (7276) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (7281) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (7296) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (7296) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (7301) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (7316) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (7316) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (7321) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (7336) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (7336) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (7356) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (7356) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (7361) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (7376) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (7376) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (7381) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (7396) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (7396) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (7401) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (7416) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (7416) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (7436) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (7436) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (7441) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (7456) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (7456) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021805 setup=80 06 00 02 00 00 09 00
+W (7461) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (7476) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (7476) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (7481) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (7496) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (7496) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (7516) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (7516) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (7521) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (7536) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (7536) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (7541) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (7556) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (7556) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (7561) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (7576) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (7576) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (7596) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (7596) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (7601) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (7616) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (7616) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (7621) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (7636) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (7636) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (7641) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (7656) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (7656) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (7676) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (7676) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021805 setup=80 06 00 02 00 00 09 00
+W (7681) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (7696) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (7696) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (7701) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (7716) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (7716) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (7721) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (7726) usbHost: wait conn=1 enumDone=0 cdc=0 hprt=0x00021405 dp=0 dm=0 state=7 enum=3 in=0x00 out=0x00
+W (7736) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (7746) cellular: ec800m process status=10
+W (7756) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (7756) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (7776) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (7776) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (7781) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (7796) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (7796) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (7801) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (7816) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (7816) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (7836) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (7836) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (7841) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (7856) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (7856) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (7861) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (7876) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (7876) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (7881) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (7896) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (7896) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (7901) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (7916) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (7916) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (7921) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (7936) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (7936) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (7956) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (7956) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (7961) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (7976) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (7976) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (7981) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (7996) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (7996) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (8001) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (8016) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (8016) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (8036) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (8036) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (8041) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (8726) usbHost: wait conn=1 enumDone=0 cdc=0 hprt=0x00021405 dp=0 dm=0 state=7 enum=3 in=0x00 out=0x00
+W (8746) cellular: ec800m process status=10
+W (9726) usbHost: wait conn=1 enumDone=0 cdc=0 hprt=0x00021405 dp=0 dm=0 state=7 enum=3 in=0x00 out=0x00
+W (9746) cellular: ec800m process status=10
+W (10726) usbHost: wait conn=1 enumDone=0 cdc=0 hprt=0x00021405 dp=0 dm=0 state=7 enum=3 in=0x00 out=0x00
+W (10746) cellular: ec800m process status=10
+W (11726) usbHost: wait conn=1 enumDone=0 cdc=0 hprt=0x00021405 dp=0 dm=0 state=7 enum=3 in=0x00 out=0x00
+W (11746) cellular: ec800m process status=10
+W (12726) usbHost: wait conn=1 enumDone=0 cdc=0 hprt=0x00021405 dp=0 dm=0 state=7 enum=3 in=0x00 out=0x00
+W (12746) cellular: ec800m process status=10
+W (12826) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (12826) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (13726) usbHost: wait conn=1 enumDone=0 cdc=0 hprt=0x00021405 dp=0 dm=0 state=7 enum=3 in=0x00 out=0x00
+W (13746) cellular: ec800m process status=10
 rebooting...
 I (0) sysmgr: USART2 PA2/PA3 reserved for wifi, debug logs use RTT
 I (0) sysmgr: rtt console ready
@@ -212,370 +444,480 @@ I (2726) cellular: ec800m init ok
 I (2726) ec800m: start service=1
 I (2726) cellular: ec800m start ok
 W (2726) usbHost: wait conn=0 enumDone=0 cdc=0 hprt=0x00021000 dp=0 dm=0 state=0 enum=0 in=0x00 out=0x00
-W (3791) usbHost: wait conn=1 enumDone=0 cdc=0 hprt=0x00021401 dp=0 dm=0 state=1 enum=0 in=0x00 out=0x00
-W (3796) usbHost: device attached
-W (3826) usbHost: device reset
-W (3826) usbHost: speed=1
-W (3836) usbCore: ctrl state=1 urb=0 hc=0 ch=0 hprt=0x00021405 setup=80 06 00 01 00 00 08 00
-W (3841) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 01 00 00 08 00
-W (3861) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 01 00 00 08 00
-W (3866) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 01 00 00 08 00
-W (4231) usbCore: disconnect hprt=0x00021000 state=7 enum=0 ctrl=4 req=2
-W (4231) usbHost: device disconnected
-W (4791) usbHost: wait conn=0 enumDone=0 cdc=0 hprt=0x00021000 dp=0 dm=0 state=0 enum=0 in=0x00 out=0x00
-W (5541) usbHost: device attached
-W (5571) usbHost: device reset
-W (5571) usbHost: speed=1
-W (5581) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 01 00 00 08 00
-W (5586) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 01 00 00 08 00
-W (5606) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 01 00 00 08 00
-W (5611) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 01 00 00 08 00
+W (3726) usbHost: wait conn=0 enumDone=0 cdc=0 hprt=0x00021400 dp=0 dm=0 state=0 enum=0 in=0x00 out=0x00
+W (3851) usbHost: device attached
+W (3881) usbHost: device reset
+W (3881) usbHost: speed=1
+W (3891) usbCore: ctrl state=1 urb=0 hc=0 ch=0 hprt=0x00021405 setup=80 06 00 01 00 00 08 00
+W (3896) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 01 00 00 08 00
+W (4291) usbCore: disconnect hprt=0x00021000 state=7 enum=0 ctrl=4 req=2
+W (4291) usbHost: device disconnected
+W (4726) usbHost: wait conn=0 enumDone=0 cdc=0 hprt=0x00021000 dp=0 dm=0 state=0 enum=0 in=0x00 out=0x00
+W (5601) usbHost: device attached
+W (5631) usbHost: device reset
+W (5631) usbHost: speed=1
 W (5641) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 01 00 00 08 00
 W (5646) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 01 00 00 08 00
 W (5706) usbCore: enum state=1 ctrl=0 req=1
 W (5711) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 01 00 00 12 00
 W (5716) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 01 00 00 12 00
-W (5746) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 01 00 00 12 00
-W (5746) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 01 00 00 12 00
+W (5726) usbHost: wait conn=1 enumDone=0 cdc=0 hprt=0x00021405 dp=0 dm=0 state=7 enum=1 in=0x00 out=0x00
+W (5736) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 01 00 00 12 00
+W (5741) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 01 00 00 12 00
 W (5746) cellular: ec800m process status=10
-W (5751) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 01 00 00 12 00
-W (5766) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 01 00 00 12 00
-W (5766) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 01 00 00 12 00
-W (5771) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 01 00 00 12 00
-W (5781) usbHost: vid=0x2c7c pid=0x6002 class=0xef
-W (5786) usbCore: enum state=2 ctrl=0 req=1
-W (5786) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=00 05 01 00 00 00 00 00
-W (5791) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=00 05 01 00 00 00 00 00
-W (5791) usbHost: wait conn=1 enumDone=0 cdc=0 hprt=0x00021405 dp=0 dm=0 state=7 enum=2 in=0x00 out=0x00
-W (5791) usbCore: ctrl state=7 urb=1 hc=1 ch=1 hprt=0x00021405 setup=00 05 01 00 00 00 00 00
-W (5796) usbCore: ctrl state=8 urb=1 hc=1 ch=1 hprt=0x00021405 setup=00 05 01 00 00 00 00 00
-W (5901) usbCore: enum state=8 ctrl=0 req=1
-W (5901) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=00 09 01 00 00 00 00 00
-W (5906) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=00 09 01 00 00 00 00 00
-W (5906) usbCore: ctrl state=7 urb=1 hc=1 ch=1 hprt=0x00021405 setup=00 09 01 00 00 00 00 00
-W (5911) usbCore: ctrl state=8 urb=3 hc=6 ch=1 hprt=0x00021405 setup=00 09 01 00 00 00 00 00
-W (5916) usbCore: set cfg status=2 val=1 hprt=0x00021405 ctrl=11 req=1
-W (5921) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=00 09 01 00 00 00 00 00
-W (5921) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=00 09 01 00 00 00 00 00
-W (5926) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=00 09 01 00 00 00 00 00
-W (5926) usbCore: ctrl state=7 urb=3 hc=6 ch=1 hprt=0x00021405 setup=00 09 01 00 00 00 00 00
-W (5931) usbCore: ctrl state=8 urb=1 hc=1 ch=1 hprt=0x00021405 setup=00 09 01 00 00 00 00 00
-W (5931) usbCore: set cfg status=0 val=1 hprt=0x00021405 ctrl=0 req=1
-W (5936) usbCore: enum state=9 ctrl=0 req=1
-W (5936) usbHost: enumeration done
-W (5936) usbCdc: no cdc bulk pair vid=0x2c7c pid=0x6002 ifs=0
-W (5936) usbCdc: use ec800m fixed endpoints idx=0 in=0x82 out=0x02 if=2
-W (5936) usbCdc: cdc bulk endpoints in=0x82 out=0x02 if=2 fixed=1
-W (5941) usbCdc: skip ec800m cdc class request, transport ready delay
+W (5756) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 01 00 00 12 00
+W (5756) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 01 00 00 12 00
+W (5761) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 01 00 00 12 00
+W (5771) usbHost: vid=0x2c7c pid=0x6002 class=0xef
+W (5776) usbCore: enum state=2 ctrl=0 req=1
+W (5776) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=00 05 01 00 00 00 00 00
+W (5781) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=00 05 01 00 00 00 00 00
+W (5781) usbCore: ctrl state=7 urb=1 hc=1 ch=1 hprt=0x00021405 setup=00 05 01 00 00 00 00 00
+W (5786) usbCore: ctrl state=8 urb=1 hc=1 ch=1 hprt=0x00021405 setup=00 05 01 00 00 00 00 00
+W (5891) usbCore: enum state=3 ctrl=0 req=1
+W (5891) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (5896) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (5911) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (5911) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (5916) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (5931) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (5931) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (5936) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (5951) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (5951) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (5956) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (5971) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (5971) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021805 setup=80 06 00 02 00 00 09 00
+W (5976) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (5991) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (5991) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (5996) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6011) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6011) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6016) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6031) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6031) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6036) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6051) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6051) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6056) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6071) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6071) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6076) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6091) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6091) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6096) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6111) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6111) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6116) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6131) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6131) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6136) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6151) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6151) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6156) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6171) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6171) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6176) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6191) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6191) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6196) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6211) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6211) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6216) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6231) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6231) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6236) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6251) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6251) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6256) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6271) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6271) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6276) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6291) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6291) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6296) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6311) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6311) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021805 setup=80 06 00 02 00 00 09 00
+W (6316) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6331) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6331) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6336) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6351) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6351) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021805 setup=80 06 00 02 00 00 09 00
+W (6356) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6371) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6371) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6376) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6391) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6391) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6396) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6411) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6411) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6416) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6431) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6431) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6436) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6451) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6451) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6456) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6471) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6471) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6476) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6491) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6491) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6496) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6511) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6511) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6516) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6531) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6531) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6536) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6551) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6551) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6556) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6571) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6571) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6576) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6591) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6591) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6596) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6611) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6611) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6616) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6631) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6631) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6636) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6651) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6651) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6656) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6671) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6671) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6676) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6691) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6691) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6696) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6711) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6711) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6716) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6726) usbHost: wait conn=1 enumDone=0 cdc=0 hprt=0x00021405 dp=0 dm=0 state=4 enum=3 in=0x00 out=0x00
+W (6731) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6731) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6736) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
 W (6746) cellular: ec800m process status=10
-W (6791) usbHost: wait conn=1 enumDone=1 cdc=0 hprt=0x00021405 dp=0 dm=0 state=6 enum=9 in=0x82 out=0x02
+W (6751) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6751) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (6756) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (7726) usbHost: wait conn=1 enumDone=0 cdc=0 hprt=0x00021405 dp=0 dm=0 state=7 enum=3 in=0x00 out=0x00
 W (7746) cellular: ec800m process status=10
-W (7791) usbHost: wait conn=1 enumDone=1 cdc=0 hprt=0x00021405 dp=0 dm=0 state=6 enum=9 in=0x82 out=0x02
-W (8142) usbHost: tx status=4 len=4
-W (8348) usbHost: tx status=4 len=4
-W (8355) usbHost: tx status=8 len=4
-W (8561) usbHost: tx status=4 len=4
-W (8767) usbHost: tx status=4 len=4
-W (8774) usbHost: tx status=8 len=4
-W (8774) cellular: ec800m process status=10
-W (8980) usbHost: tx status=4 len=4
-W (9186) usbHost: tx status=4 len=4
-W (9193) usbHost: tx status=8 len=4
-W (9399) usbHost: tx status=4 len=4
-W (9605) usbHost: tx status=4 len=4
-W (9612) usbHost: tx status=8 len=4
-W (9818) usbHost: tx status=4 len=4
-W (10024) usbHost: tx status=4 len=4
-W (10024) cellular: ec800m process status=10
-W (10031) usbHost: tx status=8 len=4
-W (10237) usbHost: tx status=4 len=4
-W (10443) usbHost: tx status=4 len=4
-W (10450) usbHost: tx status=8 len=4
-W (10656) usbHost: tx status=4 len=4
-W (10862) usbHost: tx status=4 len=4
-W (10869) usbHost: tx status=8 len=4
-W (10869) cellular: ec800m process status=10
-W (11075) usbHost: tx status=4 len=4
-W (11281) usbHost: tx status=4 len=4
-W (11288) usbHost: tx status=8 len=4
-W (11494) usbHost: tx status=4 len=4
-W (11700) usbHost: tx status=4 len=4
-W (11707) usbHost: tx status=8 len=4
-W (11913) usbHost: tx status=4 len=4
-W (12119) usbHost: tx status=4 len=4
-W (12119) cellular: ec800m process status=10
-W (12126) usbHost: tx status=8 len=4
-W (12332) usbHost: tx status=4 len=4
-W (12538) usbHost: tx status=4 len=4
-W (12545) usbHost: tx status=8 len=4
-W (12751) usbHost: tx status=4 len=4
-W (12957) usbHost: tx status=4 len=4
-W (12964) usbHost: tx status=8 len=4
-W (12964) cellular: ec800m process status=10
-W (13170) usbHost: tx status=4 len=4
-W (13376) usbHost: tx status=4 len=4
-W (13383) usbHost: tx status=8 len=4
-W (13589) usbHost: tx status=4 len=4
-W (13795) usbHost: tx status=4 len=4
-W (13802) usbHost: tx status=8 len=4
-W (14008) usbHost: tx status=4 len=4
-W (14214) usbHost: tx status=4 len=4
-W (14214) cellular: ec800m process status=10
-W (14221) usbHost: tx status=8 len=4
-W (14427) usbHost: tx status=4 len=4
-W (14633) usbHost: tx status=4 len=4
-W (14640) usbHost: tx status=8 len=4
-W (14846) usbHost: tx status=4 len=4
-W (15052) usbHost: tx status=4 len=4
-W (15059) usbHost: tx status=8 len=4
-W (15059) cellular: ec800m process status=10
-W (15265) usbHost: tx status=4 len=4
-W (15471) usbHost: tx status=4 len=4
-W (15478) usbHost: tx status=8 len=4
-W (15684) usbHost: tx status=4 len=4
-W (15890) usbHost: tx status=4 len=4
-W (15897) usbHost: tx status=8 len=4
-W (16103) usbHost: tx status=4 len=4
-W (16309) usbHost: tx status=4 len=4
-W (16309) cellular: ec800m process status=10
-W (16316) usbHost: tx status=8 len=4
-W (16522) usbHost: tx status=4 len=4
-W (16728) usbHost: tx status=4 len=4
-W (16735) usbHost: tx status=8 len=4
-W (16941) usbHost: tx status=4 len=4
-W (17147) usbHost: tx status=4 len=4
-W (17154) usbHost: tx status=8 len=4
-W (17154) cellular: ec800m process status=10
-W (17360) usbHost: tx status=4 len=4
-W (17566) usbHost: tx status=4 len=4
-W (17573) usbHost: tx status=8 len=4
-W (17779) usbHost: tx status=4 len=4
-W (17985) usbHost: tx status=4 len=4
-W (17992) usbHost: tx status=8 len=4
-W (18198) usbHost: tx status=4 len=4
-W (18404) usbHost: tx status=4 len=4
-W (18404) cellular: ec800m process status=10
-W (18411) usbHost: tx status=8 len=4
-W (18617) usbHost: tx status=4 len=4
-W (18823) usbHost: tx status=4 len=4
-W (18830) usbHost: tx status=8 len=4
-W (19036) usbHost: tx status=4 len=4
-W (19242) usbHost: tx status=4 len=4
-W (19249) usbHost: tx status=8 len=4
-W (19249) cellular: ec800m process status=10
-W (19455) usbHost: tx status=4 len=4
-W (19661) usbHost: tx status=4 len=4
-W (19668) usbHost: tx status=8 len=4
-W (19874) usbHost: tx status=4 len=4
-W (20080) usbHost: tx status=4 len=4
-W (20087) usbHost: tx status=8 len=4
-W (20293) usbHost: tx status=4 len=4
-W (20499) usbHost: tx status=4 len=4
-W (20499) cellular: ec800m process status=10
-W (20506) usbHost: tx status=8 len=4
-W (20712) usbHost: tx status=4 len=4
-W (20918) usbHost: tx status=4 len=4
-W (20925) usbHost: tx status=8 len=4
-W (21131) usbHost: tx status=4 len=4
-W (21337) usbHost: tx status=4 len=4
-W (21344) usbHost: tx status=8 len=4
-W (21344) cellular: ec800m process status=10
-W (21550) usbHost: tx status=4 len=4
-W (21756) usbHost: tx status=4 len=4
-W (21763) usbHost: tx status=8 len=4
-W (21969) usbHost: tx status=4 len=4
-W (22175) usbHost: tx status=4 len=4
-W (22182) usbHost: tx status=8 len=4
-W (22388) usbHost: tx status=4 len=4
-W (22594) usbHost: tx status=4 len=4
-W (22594) cellular: ec800m process status=10
-W (22601) usbHost: tx status=8 len=4
-W (22807) usbHost: tx status=4 len=4
-W (23013) usbHost: tx status=4 len=4
-W (23020) usbHost: tx status=8 len=4
-W (23226) usbHost: tx status=4 len=4
-W (23432) usbHost: tx status=4 len=4
-W (23439) usbHost: tx status=8 len=4
-W (23439) cellular: ec800m process status=10
-W (23645) usbHost: tx status=4 len=4
-W (23851) usbHost: tx status=4 len=4
-W (23858) usbHost: tx status=8 len=4
-W (24064) usbHost: tx status=4 len=4
-W (24270) usbHost: tx status=4 len=4
-W (24277) usbHost: tx status=8 len=4
-W (24483) usbHost: tx status=4 len=4
-W (24689) usbHost: tx status=4 len=4
-W (24689) cellular: ec800m process status=10
-W (24696) usbHost: tx status=8 len=4
-W (24902) usbHost: tx status=4 len=4
-W (25108) usbHost: tx status=4 len=4
-W (25115) usbHost: tx status=8 len=4
-W (25321) usbHost: tx status=4 len=4
-W (25527) usbHost: tx status=4 len=4
-W (25534) usbHost: tx status=8 len=4
-W (25534) cellular: ec800m process status=10
-W (25740) usbHost: tx status=4 len=4
-W (25946) usbHost: tx status=4 len=4
-W (25953) usbHost: tx status=8 len=4
-W (26159) usbHost: tx status=4 len=4
-W (26365) usbHost: tx status=4 len=4
-W (26372) usbHost: tx status=8 len=4
-W (26578) usbHost: tx status=4 len=4
-W (26784) usbHost: tx status=4 len=4
-W (26784) cellular: ec800m process status=10
-W (26791) usbHost: tx status=8 len=4
-W (26997) usbHost: tx status=4 len=4
-W (27203) usbHost: tx status=4 len=4
-W (27210) usbHost: tx status=8 len=4
-W (27416) usbHost: tx status=4 len=4
-W (27622) usbHost: tx status=4 len=4
-W (27629) usbHost: tx status=8 len=4
-W (27629) cellular: ec800m process status=10
-W (27835) usbHost: tx status=4 len=4
-W (28041) usbHost: tx status=4 len=4
-W (28048) usbHost: tx status=8 len=4
-W (28254) usbHost: tx status=4 len=4
-W (28460) usbHost: tx status=4 len=4
-W (28467) usbHost: tx status=8 len=4
-W (28673) usbHost: tx status=4 len=4
-W (28879) usbHost: tx status=4 len=4
-W (28879) cellular: ec800m process status=10
-W (28886) usbHost: tx status=8 len=4
-W (29092) usbHost: tx status=4 len=4
-W (29298) usbHost: tx status=4 len=4
-W (29305) usbHost: tx status=8 len=4
-W (29511) usbHost: tx status=4 len=4
-W (29717) usbHost: tx status=4 len=4
-W (29724) usbHost: tx status=8 len=4
-W (29724) cellular: ec800m process status=10
-W (29930) usbHost: tx status=4 len=4
-W (30136) usbHost: tx status=4 len=4
-W (30143) usbHost: tx status=8 len=4
-W (30349) usbHost: tx status=4 len=4
-W (30555) usbHost: tx status=4 len=4
-W (30562) usbHost: tx status=8 len=4
-W (30768) usbHost: tx status=4 len=4
-W (30974) usbHost: tx status=4 len=4
-W (30974) cellular: ec800m process status=10
-W (30981) usbHost: tx status=8 len=4
-W (31187) usbHost: tx status=4 len=4
-W (31393) usbHost: tx status=4 len=4
-W (31400) usbHost: tx status=8 len=4
-W (31606) usbHost: tx status=4 len=4
-W (31812) usbHost: tx status=4 len=4
-W (31819) usbHost: tx status=8 len=4
-W (31819) cellular: ec800m process status=10
-W (32025) usbHost: tx status=4 len=4
-W (32231) usbHost: tx status=4 len=4
-W (32238) usbHost: tx status=8 len=4
-W (32444) usbHost: tx status=4 len=4
-W (32650) usbHost: tx status=4 len=4
-W (32657) usbHost: tx status=8 len=4
-W (32863) usbHost: tx status=4 len=4
-W (33069) usbHost: tx status=4 len=4
-W (33069) cellular: ec800m process status=10
-W (33076) usbHost: tx status=8 len=4
-W (33282) usbHost: tx status=4 len=4
-W (33488) usbHost: tx status=4 len=4
-W (33495) usbHost: tx status=8 len=4
-W (33701) usbHost: tx status=4 len=4
-W (33907) usbHost: tx status=4 len=4
-W (33914) usbHost: tx status=8 len=4
-W (33914) cellular: ec800m process status=10
-W (34120) usbHost: tx status=4 len=4
-W (34326) usbHost: tx status=4 len=4
-W (34333) usbHost: tx status=8 len=4
-W (34539) usbHost: tx status=4 len=4
-W (34745) usbHost: tx status=4 len=4
-W (34752) usbHost: tx status=8 len=4
-W (34958) usbHost: tx status=4 len=4
-W (35164) usbHost: tx status=4 len=4
-W (35164) cellular: ec800m process status=10
-W (35171) usbHost: tx status=8 len=4
-W (35377) usbHost: tx status=4 len=4
-W (35583) usbHost: tx status=4 len=4
-W (35590) usbHost: tx status=8 len=4
-W (35796) usbHost: tx status=4 len=4
-W (36002) usbHost: tx status=4 len=4
-W (36009) usbHost: tx status=8 len=4
-W (36009) cellular: ec800m process status=10
-W (36215) usbHost: tx status=4 len=4
-W (36421) usbHost: tx status=4 len=4
-W (36428) usbHost: tx status=8 len=4
-W (36634) usbHost: tx status=4 len=4
-W (36840) usbHost: tx status=4 len=4
-W (36847) usbHost: tx status=8 len=4
-W (37053) usbHost: tx status=4 len=4
-W (37259) usbHost: tx status=4 len=4
-W (37259) cellular: ec800m process status=10
-W (37266) usbHost: tx status=8 len=4
-W (37472) usbHost: tx status=4 len=4
-W (37678) usbHost: tx status=4 len=4
-W (37685) usbHost: tx status=8 len=4
-W (37891) usbHost: tx status=4 len=4
-W (38097) usbHost: tx status=4 len=4
-W (38104) usbHost: tx status=8 len=4
-W (38104) cellular: ec800m process status=10
-W (38310) usbHost: tx status=4 len=4
-W (38516) usbHost: tx status=4 len=4
-W (38523) usbHost: tx status=8 len=4
-W (38729) usbHost: tx status=4 len=4
-W (38935) usbHost: tx status=4 len=4
-W (38942) usbHost: tx status=8 len=4
-W (39148) usbHost: tx status=4 len=4
-W (39354) usbHost: tx status=4 len=4
-W (39354) cellular: ec800m process status=10
-W (39361) usbHost: tx status=8 len=4
-W (39567) usbHost: tx status=4 len=4
-W (39773) usbHost: tx status=4 len=4
-W (39780) usbHost: tx status=8 len=4
-W (39986) usbHost: tx status=4 len=4
-W (40192) usbHost: tx status=4 len=4
-W (40199) usbHost: tx status=8 len=4
-W (40199) cellular: ec800m process status=10
-W (40405) usbHost: tx status=4 len=4
-W (40611) usbHost: tx status=4 len=4
-W (40618) usbHost: tx status=8 len=4
-W (40824) usbHost: tx status=4 len=4
-W (41030) usbHost: tx status=4 len=4
-W (41037) usbHost: tx status=8 len=4
-W (41243) usbHost: tx status=4 len=4
-W (41449) usbHost: tx status=4 len=4
-W (41449) cellular: ec800m process status=10
-W (41456) usbHost: tx status=8 len=4
-W (41662) usbHost: tx status=4 len=4
-W (41868) usbHost: tx status=4 len=4
-W (41875) usbHost: tx status=8 len=4
-W (42081) usbHost: tx status=4 len=4
-W (42287) usbHost: tx status=4 len=4
-W (42294) usbHost: tx status=8 len=4
-W (42294) cellular: ec800m process status=10
-W (42500) usbHost: tx status=4 len=4
-W (42706) usbHost: tx status=4 len=4
-W (42713) usbHost: tx status=8 len=4
-W (42919) usbHost: tx status=4 len=4
-W (43125) usbHost: tx status=4 len=4
-W (43132) usbHost: tx status=8 len=4
-W (43338) usbHost: tx status=4 len=4
-W (43544) usbHost: tx status=4 len=4
-W (43544) cellular: ec800m process status=10
-W (43551) usbHost: tx status=8 len=4
-W (43757) usbHost: tx status=4 len=4
-W (43963) usbHost: tx status=4 len=4
-W (43970) usbHost: tx status=8 len=4
-W (44176) usbHost: tx status=4 len=4
-W (44382) usbHost: tx status=4 len=4
-W (44389) usbHost: tx status=8 len=4
-W (44389) cellular: ec800m process status=10
-W (44595) usbHost: tx status=4 len=4
-W (44801) usbHost: tx status=4 len=4
-W (44808) usbHost: tx status=8 len=4
-W (45014) usbHost: tx status=4 len=4
-W (45220) usbHost: tx status=4 len=4
-W (45227) usbHost: tx status=8 len=4
-W (45433) usbHost: tx status=4 len=4
-W (45639) usbHost: tx status=4 len=4
-W (45639) cellular: ec800m process status=10
-W (45646) usbHost: tx status=8 len=4
-W (45852) usbHost: tx status=4 len=4
-W (46058) usbHost: tx status=4 len=4
+W (8726) usbHost: wait conn=1 enumDone=0 cdc=0 hprt=0x00021405 dp=0 dm=0 state=7 enum=3 in=0x00 out=0x00
+W (8746) cellular: ec800m process status=10
+W (9726) usbHost: wait conn=1 enumDone=0 cdc=0 hprt=0x00021405 dp=0 dm=0 state=7 enum=3 in=0x00 out=0x00
+W (9746) cellular: ec800m process status=10
+W (10726) usbHost: wait conn=1 enumDone=0 cdc=0 hprt=0x00021405 dp=0 dm=0 state=7 enum=3 in=0x00 out=0x00
+W (10746) cellular: ec800m process status=10
+W (11541) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (11541) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (11546) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (11561) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (11561) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (11566) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (11581) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (11581) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (11586) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (11601) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (11601) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (11606) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (11621) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (11621) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (11626) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (11641) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (11641) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (11646) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (11661) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (11661) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021805 setup=80 06 00 02 00 00 09 00
+W (11666) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (11681) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (11681) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (11686) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (11701) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (11701) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (11706) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (11721) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (11721) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (11726) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (11726) usbHost: wait conn=1 enumDone=0 cdc=0 hprt=0x00021405 dp=0 dm=0 state=7 enum=3 in=0x00 out=0x00
+W (11741) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (11741) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (11746) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (11746) cellular: ec800m process status=10
+W (11761) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (11761) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (11766) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (11781) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (11781) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (11786) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (11801) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (11801) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (11806) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (11821) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (11821) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (11826) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (11841) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (11841) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (11846) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (11861) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (11861) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (11866) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (11881) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (11881) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (11886) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (11901) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (11901) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (11906) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (11921) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (11921) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (11926) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (11941) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (11941) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (11946) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (11961) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (11961) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (11966) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (11981) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (11981) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (11986) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (12001) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (12001) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (12006) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (12021) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (12021) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (12026) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (12041) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (12041) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (12046) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (12061) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (12061) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (12066) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (12081) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (12081) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (12086) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (12101) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (12101) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (12106) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (12121) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (12121) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (12126) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (12141) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (12141) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (12146) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (12161) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (12161) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (12166) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (12181) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (12181) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (12186) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (12201) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (12201) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (12206) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (12221) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (12221) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021805 setup=80 06 00 02 00 00 09 00
+W (12226) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (12241) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (12241) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (12246) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (12261) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (12261) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (12266) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (12281) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (12281) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (12286) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (12301) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (12301) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (12306) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (12321) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (12321) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (12326) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (12341) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (12341) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (12346) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (12361) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (12361) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (12366) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (12381) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (12381) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (12386) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (12401) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (12401) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (12406) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (12421) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (12421) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (12426) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (12441) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (12441) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (12446) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (12461) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (12461) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (12466) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (12481) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (12481) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (12486) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (12501) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (12501) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (12506) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (12521) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (12521) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (12526) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (12541) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (12541) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (12546) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (12561) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (12561) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (12566) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (12581) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (12581) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (12586) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (12601) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (12601) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (12606) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (12621) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (12621) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (12626) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (12641) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (12641) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (12646) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (12661) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (12661) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (12666) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (12681) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (12681) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (12686) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (12701) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (12701) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (12706) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (12721) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (12721) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (12726) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (12726) usbHost: wait conn=1 enumDone=0 cdc=0 hprt=0x00021405 dp=0 dm=0 state=7 enum=3 in=0x00 out=0x00
+W (12741) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (12741) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (12746) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (12746) cellular: ec800m process status=10
+W (12761) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (12766) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (12781) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (12781) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (12786) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (12801) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (12806) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (12821) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (12821) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (12826) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (12841) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (12841) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (12846) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (12861) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (12861) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (12866) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (12881) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (12886) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (12901) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (12901) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (12906) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (12921) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (12921) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (12926) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (12941) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (12941) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (12946) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (12961) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (12961) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (12966) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (12981) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (12986) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (13001) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (13001) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (13006) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (13021) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (13021) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (13026) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (13041) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (13041) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (13046) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (13061) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (13066) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (13081) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (13081) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (13086) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (13101) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (13101) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (13106) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (13121) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (13126) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (13141) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (13141) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (13146) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (13161) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (13161) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (13166) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (13181) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (13181) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (13186) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (13201) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (13206) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (13221) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (13221) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (13226) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (13241) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (13241) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (13246) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (13261) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (13266) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (13281) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (13281) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (13286) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (13301) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (13301) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (13306) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (13321) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (13321) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (13326) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (13341) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (13346) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (13361) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (13361) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (13366) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (13381) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (13381) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (13386) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (13401) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (13401) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (13406) usbCore: ctrl state=2 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (13726) usbHost: wait conn=1 enumDone=0 cdc=0 hprt=0x00021405 dp=0 dm=0 state=7 enum=3 in=0x00 out=0x00
+W (13746) cellular: ec800m process status=10
+W (14726) usbHost: wait conn=1 enumDone=0 cdc=0 hprt=0x00021405 dp=0 dm=0 state=7 enum=3 in=0x00 out=0x00
+W (14746) cellular: ec800m process status=10
+W (15726) usbHost: wait conn=1 enumDone=0 cdc=0 hprt=0x00021405 dp=0 dm=0 state=7 enum=3 in=0x00 out=0x00
+W (15746) cellular: ec800m process status=10
+W (16726) usbHost: wait conn=1 enumDone=0 cdc=0 hprt=0x00021405 dp=0 dm=0 state=7 enum=3 in=0x00 out=0x00
+W (16746) cellular: ec800m process status=10
+W (17726) usbHost: wait conn=1 enumDone=0 cdc=0 hprt=0x00021405 dp=0 dm=0 state=7 enum=3 in=0x00 out=0x00
+W (17746) cellular: ec800m process status=10
+W (18191) usbCore: ctrl state=1 urb=1 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (18191) usbCore: ctrl state=2 urb=0 hc=1 ch=0 hprt=0x00021405 setup=80 06 00 02 00 00 09 00
+W (18726) usbHost: wait conn=1 enumDone=0 cdc=0 hprt=0x00021405 dp=0 dm=0 state=7 enum=3 in=0x00 out=0x00
+W (18746) cellular: ec800m process status=10
+W (19726) usbHost: wait conn=1 enumDone=0 cdc=0 hprt=0x00021405 dp=0 dm=0 state=7 enum=3 in=0x00 out=0x00
+W (19746) cellular: ec800m process status=10
+W (20726) usbHost: wait conn=1 enumDone=0 cdc=0 hprt=0x00021405 dp=0 dm=0 state=7 enum=3 in=0x00 out=0x00
+W (20746) cellular: ec800m process status=10
+W (21726) usbHost: wait conn=1 enumDone=0 cdc=0 hprt=0x00021405 dp=0 dm=0 state=7 enum=3 in=0x00 out=0x00
+W (21746) cellular: ec800m process status=10
+W (22726) usbHost: wait conn=1 enumDone=0 cdc=0 hprt=0x00021405 dp=0 dm=0 state=7 enum=3 in=0x00 out=0x00
+W (22746) cellular: ec800m process status=10
+W (23726) usbHost: wait conn=1 enumDone=0 cdc=0 hprt=0x00021405 dp=0 dm=0 state=7 enum=3 in=0x00 out=0x00
+W (23746) cellular: ec800m process status=10
+W (24726) usbHost: wait conn=1 enumDone=0 cdc=0 hprt=0x00021405 dp=0 dm=0 state=7 enum=3 in=0x00 out=0x00
+W (24746) cellular: ec800m process status=10
+W (25726) usbHost: wait conn=1 enumDone=0 cdc=0 hprt=0x00021405 dp=0 dm=0 state=7 enum=3 in=0x00 out=0x00
+W (25746) cellular: ec800m process status=10

@@ -19,9 +19,9 @@
 #include "../../../rep/tools/md5/md5.h"
 
 static const char gProtcolMgrLogTag[] = "ptclmgr";
-static const uint16_t gProtcolMgrRxBufferSize = 640U;
-static const uint8_t gProtcolMgrRxQueueDepth = 32U;
-static const uint8_t gProtcolMgrTxQueueDepth = 64U;
+static const uint16_t gProtcolMgrRxBufferSize = 128U;
+static const uint8_t gProtcolMgrRxQueueDepth = 4U;
+static const uint8_t gProtcolMgrTxQueueDepth = 16U;
 static const uint16_t gProtcolMgrTxFrameBufferSize = 128U;
 static const uint8_t gProtcolMgrDeviceType = 0x01U;
 static const uint8_t gProtcolMgrProtocolFlag = 0x01U;
@@ -35,14 +35,14 @@ static const uint8_t gProtcolMgrDefaultChargeState = 0U;
 static bool gProtcolMgrInitialized;
 static uint8_t gProtcolMgrRxHead;
 static uint8_t gProtcolMgrRxCount;
-static uint16_t gProtcolMgrRxLength[32];
-static eIotManagerLinkId gProtcolMgrRxLink[32];
-static uint8_t gProtcolMgrRxBuffer[32][640];
+static uint16_t gProtcolMgrRxLength[4];
+static eIotManagerLinkId gProtcolMgrRxLink[4];
+static uint8_t gProtcolMgrRxBuffer[4][128];
 static eIotManagerLinkId gProtcolMgrTxLink;
 static uint8_t gProtcolMgrTxHead;
 static uint8_t gProtcolMgrTxCount;
-static eIotManagerLinkId gProtcolMgrTxLinkQueue[64];
-static eCprsensorProtocolCmd gProtcolMgrTxCmdQueue[64];
+static eIotManagerLinkId gProtcolMgrTxLinkQueue[16];
+static eCprsensorProtocolCmd gProtcolMgrTxCmdQueue[16];
 static bool gProtcolMgrCipherReady;
 static uint8_t gProtcolMgrAesKey[MD5_DIGEST_SIZE];
 static stCprsensorProtocolHandshakePayload gProtcolMgrHandshakePayload;
@@ -925,8 +925,8 @@ static void protcolMgrFlushPendingReplies(void)
 
 static void protcolMgrConsumeReceivedData(void)
 {
-	uint8_t lRxBuffer[640];
-	uint8_t lPayloadBuffer[640];
+	uint8_t lRxBuffer[128];
+	uint8_t lPayloadBuffer[128];
 	uint16_t lRxLength;
 	eIotManagerLinkId lLinkId;
 	uint8_t lSlot;

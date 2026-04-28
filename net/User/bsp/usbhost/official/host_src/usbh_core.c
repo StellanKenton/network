@@ -33,10 +33,8 @@
 #include "usbh_stdreq.h"
 #include "usbh_core.h"
 #include "usb_hcd_int.h"
+#include "usbh_cdc_host.h"
 #include "../../../../../rep/service/log/log.h"
-
-#define USBH_EC800M_VID 0x2C7CU
-#define USBH_EC800M_PID 0x6002U
 
 
 /** @addtogroup USBH_LIB
@@ -456,8 +454,8 @@ static USBH_Status USBH_HandleEnum(USB_OTG_CORE_HANDLE *pdev, USBH_HOST *phost)
       
       /* user callback for device address assigned */
       phost->usr_cb->DeviceAddressAssigned();
-      if ((phost->device_prop.Dev_Desc.idVendor == USBH_EC800M_VID) &&
-          (phost->device_prop.Dev_Desc.idProduct == USBH_EC800M_PID)) {
+      if ((phost->device_prop.Dev_Desc.idVendor == USBH_CDC_QUECTEL_EC800M_VID) &&
+          (phost->device_prop.Dev_Desc.idProduct == USBH_CDC_QUECTEL_EC800M_PID)) {
         phost->device_prop.Cfg_Desc.bConfigurationValue = 1U;
         phost->device_prop.Cfg_Desc.bNumInterfaces = 0U;
         phost->EnumState = ENUM_SET_CONFIGURATION;

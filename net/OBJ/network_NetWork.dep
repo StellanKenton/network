@@ -411,7 +411,7 @@ I (..\User\manager\iotmanager\../cellular/../../../rep/module/ec800m/../../comm/
 I (..\User\manager\iotmanager\../ethernet/ethernet.h)(0x69EB0649)
 I (..\User\manager\iotmanager\../wireless/wireless.h)(0x69EC5BBE)
 I (..\User\manager\iotmanager\../../../rep/service/rtos/rtos.h)(0x69E88FEF)
-F (..\User\manager\iotmanager\protcolmgr.c)(0x69F00E9A)(--c99 -c --cpu Cortex-M4.fp.sp -g -O0 --apcs=interwork -I . -I ..\CORE -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\FWLIB\STM32F4xx_StdPeriph_Driver\inc -I ..\User -I ..\User\port -I ..\User\bsp\usbhost\inc -I ..\User\bsp\usbhost\official\host_inc -I ..\User\bsp\usbhost\official\otg_inc -I ..\HARDWARE\LED -I ..\rep\driver\drvanlogiic -I ..\rep\tools\ringbuffer -I ..\UCOSIII\uC-CPU -I ..\UCOSIII\uC-LIB -I ..\UCOSIII\uCOS-III -I ..\UCOSIII\UCOS_BSP -I ..\UCOSIII\uCOS_CONFIG -I ..\UCOSIII\uCOS-III\Source -I ..\UCOSIII\uC-CPU\ARM-Cortex-M4\RealView -I ..\UCOSIII\uC-LIB\Ports\ARM-Cortex-M4\RealView -I ..\UCOSIII\uCOS-III\Ports\ARM-Cortex-M4\Generic\RealView-IC:\Users\senki\AppData\Local\Arm\Packs\GigaDevice\GD32F4xx_DFP\3.0.3\Device\F4XX\Include-D__UVISION_VERSION="541" -DGD32F470 -DSTM32F427_437xx -DUSE_STDPERIPH_DRIVER -D__FPU_USED="1"-o ..\obj\protcolmgr.o --omf_browse ..\obj\protcolmgr.crf --depend ..\obj\protcolmgr.d)
+F (..\User\manager\iotmanager\protcolmgr.c)(0x69F08505)(--c99 -c --cpu Cortex-M4.fp.sp -g -O0 --apcs=interwork -I . -I ..\CORE -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\FWLIB\STM32F4xx_StdPeriph_Driver\inc -I ..\User -I ..\User\port -I ..\User\bsp\usbhost\inc -I ..\User\bsp\usbhost\official\host_inc -I ..\User\bsp\usbhost\official\otg_inc -I ..\HARDWARE\LED -I ..\rep\driver\drvanlogiic -I ..\rep\tools\ringbuffer -I ..\UCOSIII\uC-CPU -I ..\UCOSIII\uC-LIB -I ..\UCOSIII\uCOS-III -I ..\UCOSIII\UCOS_BSP -I ..\UCOSIII\uCOS_CONFIG -I ..\UCOSIII\uCOS-III\Source -I ..\UCOSIII\uC-CPU\ARM-Cortex-M4\RealView -I ..\UCOSIII\uC-LIB\Ports\ARM-Cortex-M4\RealView -I ..\UCOSIII\uCOS-III\Ports\ARM-Cortex-M4\Generic\RealView-IC:\Users\senki\AppData\Local\Arm\Packs\GigaDevice\GD32F4xx_DFP\3.0.3\Device\F4XX\Include-D__UVISION_VERSION="541" -DGD32F470 -DSTM32F427_437xx -DUSE_STDPERIPH_DRIVER -D__FPU_USED="1"-o ..\obj\protcolmgr.o --omf_browse ..\obj\protcolmgr.crf --depend ..\obj\protcolmgr.d)
 I (..\User\manager\iotmanager\protcolmgr.h)(0x69EC1E43)
 I (..\User\manager\iotmanager\iotmanager.h)(0x69EC1E5C)
 I (C:\Users\senki\AppData\Local\Keil_v5\ARM\ACC5\include\stdbool.h)(0x5E8E3CC2)
@@ -1005,7 +1005,7 @@ I (..\rep\driver\drvusb\../../service/log/log.h)(0x69E99BC5)
 I (C:\Users\senki\AppData\Local\Keil_v5\ARM\ACC5\include\stdarg.h)(0x5E8E3CC2)
 I (..\rep\tools\ringbuffer\ringbuffer.h)(0x69DF36B3)
 I (..\rep\driver\drvusb\../../service/rtos/rtos.h)(0x69E88FEF)
-F (..\User\bsp\usbhost\src\usbhost_ec800.c)(0x69F07B7C)(--c99 -c --cpu Cortex-M4.fp.sp -g -O0 --apcs=interwork -I . -I ..\CORE -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\FWLIB\STM32F4xx_StdPeriph_Driver\inc -I ..\User -I ..\User\port -I ..\User\bsp\usbhost\inc -I ..\User\bsp\usbhost\official\host_inc -I ..\User\bsp\usbhost\official\otg_inc -I ..\HARDWARE\LED -I ..\rep\driver\drvanlogiic -I ..\rep\tools\ringbuffer -I ..\UCOSIII\uC-CPU -I ..\UCOSIII\uC-LIB -I ..\UCOSIII\uCOS-III -I ..\UCOSIII\UCOS_BSP -I ..\UCOSIII\uCOS_CONFIG -I ..\UCOSIII\uCOS-III\Source -I ..\UCOSIII\uC-CPU\ARM-Cortex-M4\RealView -I ..\UCOSIII\uC-LIB\Ports\ARM-Cortex-M4\RealView -I ..\UCOSIII\uCOS-III\Ports\ARM-Cortex-M4\Generic\RealView-IC:\Users\senki\AppData\Local\Arm\Packs\GigaDevice\GD32F4xx_DFP\3.0.3\Device\F4XX\Include-D__UVISION_VERSION="541" -DGD32F470 -DSTM32F427_437xx -DUSE_STDPERIPH_DRIVER -D__FPU_USED="1"-o ..\obj\usbhost_ec800.o --omf_browse ..\obj\usbhost_ec800.crf --depend ..\obj\usbhost_ec800.d)
+F (..\User\bsp\usbhost\src\usbhost_ec800.c)(0x69F0850B)(--c99 -c --cpu Cortex-M4.fp.sp -g -O0 --apcs=interwork -I . -I ..\CORE -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\FWLIB\STM32F4xx_StdPeriph_Driver\inc -I ..\User -I ..\User\port -I ..\User\bsp\usbhost\inc -I ..\User\bsp\usbhost\official\host_inc -I ..\User\bsp\usbhost\official\otg_inc -I ..\HARDWARE\LED -I ..\rep\driver\drvanlogiic -I ..\rep\tools\ringbuffer -I ..\UCOSIII\uC-CPU -I ..\UCOSIII\uC-LIB -I ..\UCOSIII\uCOS-III -I ..\UCOSIII\UCOS_BSP -I ..\UCOSIII\uCOS_CONFIG -I ..\UCOSIII\uCOS-III\Source -I ..\UCOSIII\uC-CPU\ARM-Cortex-M4\RealView -I ..\UCOSIII\uC-LIB\Ports\ARM-Cortex-M4\RealView -I ..\UCOSIII\uCOS-III\Ports\ARM-Cortex-M4\Generic\RealView-IC:\Users\senki\AppData\Local\Arm\Packs\GigaDevice\GD32F4xx_DFP\3.0.3\Device\F4XX\Include-D__UVISION_VERSION="541" -DGD32F470 -DSTM32F427_437xx -DUSE_STDPERIPH_DRIVER -D__FPU_USED="1"-o ..\obj\usbhost_ec800.o --omf_browse ..\obj\usbhost_ec800.crf --depend ..\obj\usbhost_ec800.d)
 I (..\User\bsp\usbhost\inc\usbhost_ec800.h)(0x69EECA14)
 I (C:\Users\senki\AppData\Local\Keil_v5\ARM\ACC5\include\stdbool.h)(0x5E8E3CC2)
 I (C:\Users\senki\AppData\Local\Keil_v5\ARM\ACC5\include\stdint.h)(0x5E8E3CC2)
@@ -1056,7 +1056,7 @@ I (..\User\bsp\usbhost\official\otg_inc\usb_regs.h)(0x4F6B3AC6)
 I (..\User\bsp\usbhost\official\otg_inc\usb_defines.h)(0x4F6B3AC6)
 I (..\User\bsp\usbhost\official\otg_inc\usb_hcd.h)(0x4F6B3AC6)
 I (..\User\bsp\usbhost\official\otg_inc\usb_hcd_int.h)(0x4F6B3AC6)
-I (..\User\bsp\usbhost\inc\usbh_cdc_host.h)(0x69EF01FA)
+I (..\User\bsp\usbhost\inc\usbh_cdc_host.h)(0x69F093B7)
 I (..\User\bsp\usbhost\official\host_inc\usbh_core.h)(0x4F6B3AC6)
 I (..\User\bsp\usbhost\official\host_inc\usbh_def.h)(0x4F6B3AC6)
 I (..\User\bsp\usbhost\inc\usbh_conf.h)(0x69EECA14)
@@ -1064,8 +1064,8 @@ I (..\FWLIB\STM32F4xx_StdPeriph_Driver\inc\../../../rep/service/log/log.h)(0x69E
 I (C:\Users\senki\AppData\Local\Keil_v5\ARM\ACC5\include\stdarg.h)(0x5E8E3CC2)
 I (..\rep\tools\ringbuffer\ringbuffer.h)(0x69DF36B3)
 I (..\FWLIB\STM32F4xx_StdPeriph_Driver\inc\../../../rep/service/rtos/rtos.h)(0x69E88FEF)
-F (..\User\bsp\usbhost\src\usbh_cdc_host.c)(0x69F08142)(--c99 -c --cpu Cortex-M4.fp.sp -g -O0 --apcs=interwork -I . -I ..\CORE -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\FWLIB\STM32F4xx_StdPeriph_Driver\inc -I ..\User -I ..\User\port -I ..\User\bsp\usbhost\inc -I ..\User\bsp\usbhost\official\host_inc -I ..\User\bsp\usbhost\official\otg_inc -I ..\HARDWARE\LED -I ..\rep\driver\drvanlogiic -I ..\rep\tools\ringbuffer -I ..\UCOSIII\uC-CPU -I ..\UCOSIII\uC-LIB -I ..\UCOSIII\uCOS-III -I ..\UCOSIII\UCOS_BSP -I ..\UCOSIII\uCOS_CONFIG -I ..\UCOSIII\uCOS-III\Source -I ..\UCOSIII\uC-CPU\ARM-Cortex-M4\RealView -I ..\UCOSIII\uC-LIB\Ports\ARM-Cortex-M4\RealView -I ..\UCOSIII\uCOS-III\Ports\ARM-Cortex-M4\Generic\RealView-IC:\Users\senki\AppData\Local\Arm\Packs\GigaDevice\GD32F4xx_DFP\3.0.3\Device\F4XX\Include-D__UVISION_VERSION="541" -DGD32F470 -DSTM32F427_437xx -DUSE_STDPERIPH_DRIVER -D__FPU_USED="1"-o ..\obj\usbh_cdc_host.o --omf_browse ..\obj\usbh_cdc_host.crf --depend ..\obj\usbh_cdc_host.d)
-I (..\User\bsp\usbhost\inc\usbh_cdc_host.h)(0x69EF01FA)
+F (..\User\bsp\usbhost\src\usbh_cdc_host.c)(0x69F093B7)(--c99 -c --cpu Cortex-M4.fp.sp -g -O0 --apcs=interwork -I . -I ..\CORE -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\FWLIB\STM32F4xx_StdPeriph_Driver\inc -I ..\User -I ..\User\port -I ..\User\bsp\usbhost\inc -I ..\User\bsp\usbhost\official\host_inc -I ..\User\bsp\usbhost\official\otg_inc -I ..\HARDWARE\LED -I ..\rep\driver\drvanlogiic -I ..\rep\tools\ringbuffer -I ..\UCOSIII\uC-CPU -I ..\UCOSIII\uC-LIB -I ..\UCOSIII\uCOS-III -I ..\UCOSIII\UCOS_BSP -I ..\UCOSIII\uCOS_CONFIG -I ..\UCOSIII\uCOS-III\Source -I ..\UCOSIII\uC-CPU\ARM-Cortex-M4\RealView -I ..\UCOSIII\uC-LIB\Ports\ARM-Cortex-M4\RealView -I ..\UCOSIII\uCOS-III\Ports\ARM-Cortex-M4\Generic\RealView-IC:\Users\senki\AppData\Local\Arm\Packs\GigaDevice\GD32F4xx_DFP\3.0.3\Device\F4XX\Include-D__UVISION_VERSION="541" -DGD32F470 -DSTM32F427_437xx -DUSE_STDPERIPH_DRIVER -D__FPU_USED="1"-o ..\obj\usbh_cdc_host.o --omf_browse ..\obj\usbh_cdc_host.crf --depend ..\obj\usbh_cdc_host.d)
+I (..\User\bsp\usbhost\inc\usbh_cdc_host.h)(0x69F093B7)
 I (C:\Users\senki\AppData\Local\Keil_v5\ARM\ACC5\include\stdbool.h)(0x5E8E3CC2)
 I (C:\Users\senki\AppData\Local\Keil_v5\ARM\ACC5\include\stdint.h)(0x5E8E3CC2)
 I (..\User\bsp\usbhost\official\host_inc\usbh_core.h)(0x4F6B3AC6)
@@ -1115,6 +1115,7 @@ I (C:\Users\senki\AppData\Local\Keil_v5\ARM\ACC5\include\string.h)(0x5E8E3CC2)
 I (..\User\bsp\usbhost\official\otg_inc\usb_bsp.h)(0x4F6B3AC6)
 I (..\User\bsp\usbhost\official\host_inc\usbh_hcs.h)(0x4F6B3AC6)
 I (..\User\bsp\usbhost\official\host_inc\usbh_ioreq.h)(0x4F6B3AC6)
+I (..\User\bsp\usbhost\official\host_inc\usbh_stdreq.h)(0x4F6B3AC6)
 I (..\FWLIB\STM32F4xx_StdPeriph_Driver\inc\../../../rep/service/log/log.h)(0x69E99BC5)
 I (C:\Users\senki\AppData\Local\Keil_v5\ARM\ACC5\include\stdarg.h)(0x5E8E3CC2)
 I (..\User\rep_config.h)(0x69F07824)
@@ -1122,7 +1123,7 @@ I (..\User\../rep/rep.h)(0x69DF36B3)
 I (C:\Users\senki\AppData\Local\Keil_v5\ARM\ACC5\include\stddef.h)(0x5E8E3CC2)
 I (..\rep\tools\ringbuffer\ringbuffer.h)(0x69DF36B3)
 I (..\FWLIB\STM32F4xx_StdPeriph_Driver\inc\../../../rep/service/rtos/rtos.h)(0x69E88FEF)
-F (..\User\bsp\usbhost\official\host_src\usbh_core.c)(0x69F07F8F)(--c99 -c --cpu Cortex-M4.fp.sp -g -O0 --apcs=interwork -I . -I ..\CORE -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\FWLIB\STM32F4xx_StdPeriph_Driver\inc -I ..\User -I ..\User\port -I ..\User\bsp\usbhost\inc -I ..\User\bsp\usbhost\official\host_inc -I ..\User\bsp\usbhost\official\otg_inc -I ..\HARDWARE\LED -I ..\rep\driver\drvanlogiic -I ..\rep\tools\ringbuffer -I ..\UCOSIII\uC-CPU -I ..\UCOSIII\uC-LIB -I ..\UCOSIII\uCOS-III -I ..\UCOSIII\UCOS_BSP -I ..\UCOSIII\uCOS_CONFIG -I ..\UCOSIII\uCOS-III\Source -I ..\UCOSIII\uC-CPU\ARM-Cortex-M4\RealView -I ..\UCOSIII\uC-LIB\Ports\ARM-Cortex-M4\RealView -I ..\UCOSIII\uCOS-III\Ports\ARM-Cortex-M4\Generic\RealView-IC:\Users\senki\AppData\Local\Arm\Packs\GigaDevice\GD32F4xx_DFP\3.0.3\Device\F4XX\Include-D__UVISION_VERSION="541" -DGD32F470 -DSTM32F427_437xx -DUSE_STDPERIPH_DRIVER -D__FPU_USED="1"-o ..\obj\usbh_core.o --omf_browse ..\obj\usbh_core.crf --depend ..\obj\usbh_core.d)
+F (..\User\bsp\usbhost\official\host_src\usbh_core.c)(0x69F094FE)(--c99 -c --cpu Cortex-M4.fp.sp -g -O0 --apcs=interwork -I . -I ..\CORE -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\FWLIB\STM32F4xx_StdPeriph_Driver\inc -I ..\User -I ..\User\port -I ..\User\bsp\usbhost\inc -I ..\User\bsp\usbhost\official\host_inc -I ..\User\bsp\usbhost\official\otg_inc -I ..\HARDWARE\LED -I ..\rep\driver\drvanlogiic -I ..\rep\tools\ringbuffer -I ..\UCOSIII\uC-CPU -I ..\UCOSIII\uC-LIB -I ..\UCOSIII\uCOS-III -I ..\UCOSIII\UCOS_BSP -I ..\UCOSIII\uCOS_CONFIG -I ..\UCOSIII\uCOS-III\Source -I ..\UCOSIII\uC-CPU\ARM-Cortex-M4\RealView -I ..\UCOSIII\uC-LIB\Ports\ARM-Cortex-M4\RealView -I ..\UCOSIII\uCOS-III\Ports\ARM-Cortex-M4\Generic\RealView-IC:\Users\senki\AppData\Local\Arm\Packs\GigaDevice\GD32F4xx_DFP\3.0.3\Device\F4XX\Include-D__UVISION_VERSION="541" -DGD32F470 -DSTM32F427_437xx -DUSE_STDPERIPH_DRIVER -D__FPU_USED="1"-o ..\obj\usbh_core.o --omf_browse ..\obj\usbh_core.crf --depend ..\obj\usbh_core.d)
 I (..\User\bsp\usbhost\official\host_inc\usbh_ioreq.h)(0x4F6B3AC6)
 I (..\User\bsp\usbhost\inc\usb_conf.h)(0x69F07DB4)
 I (.\stm32f4xx.h)(0x69E86E0F)
@@ -1172,9 +1173,10 @@ I (..\User\bsp\usbhost\official\otg_inc\usb_bsp.h)(0x4F6B3AC6)
 I (..\User\bsp\usbhost\official\host_inc\usbh_hcs.h)(0x4F6B3AC6)
 I (..\User\bsp\usbhost\official\host_inc\usbh_stdreq.h)(0x4F6B3AC6)
 I (..\User\bsp\usbhost\official\otg_inc\usb_hcd_int.h)(0x4F6B3AC6)
+I (..\User\bsp\usbhost\inc\usbh_cdc_host.h)(0x69F093B7)
+I (C:\Users\senki\AppData\Local\Keil_v5\ARM\ACC5\include\stdbool.h)(0x5E8E3CC2)
 I (..\User\bsp\usbhost\official\host_src\../../../../../rep/service/log/log.h)(0x69E99BC5)
 I (C:\Users\senki\AppData\Local\Keil_v5\ARM\ACC5\include\stdarg.h)(0x5E8E3CC2)
-I (C:\Users\senki\AppData\Local\Keil_v5\ARM\ACC5\include\stdbool.h)(0x5E8E3CC2)
 I (..\User\rep_config.h)(0x69F07824)
 I (..\User\../rep/rep.h)(0x69DF36B3)
 I (C:\Users\senki\AppData\Local\Keil_v5\ARM\ACC5\include\stddef.h)(0x5E8E3CC2)
@@ -1453,7 +1455,7 @@ I (C:\Users\senki\AppData\Local\Keil_v5\ARM\ACC5\include\stdbool.h)(0x5E8E3CC2)
 I (C:\Users\senki\AppData\Local\Keil_v5\ARM\ACC5\include\stdint.h)(0x5E8E3CC2)
 I (C:\Users\senki\AppData\Local\Keil_v5\ARM\ACC5\include\stddef.h)(0x5E8E3CC2)
 I (C:\Users\senki\AppData\Local\Keil_v5\ARM\ACC5\include\string.h)(0x5E8E3CC2)
-F (..\rep\comm\flowparser\flowparser_stream.c)(0x69E86966)(--c99 -c --cpu Cortex-M4.fp.sp -g -O0 --apcs=interwork -I . -I ..\CORE -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\FWLIB\STM32F4xx_StdPeriph_Driver\inc -I ..\User -I ..\User\port -I ..\User\bsp\usbhost\inc -I ..\User\bsp\usbhost\official\host_inc -I ..\User\bsp\usbhost\official\otg_inc -I ..\HARDWARE\LED -I ..\rep\driver\drvanlogiic -I ..\rep\tools\ringbuffer -I ..\UCOSIII\uC-CPU -I ..\UCOSIII\uC-LIB -I ..\UCOSIII\uCOS-III -I ..\UCOSIII\UCOS_BSP -I ..\UCOSIII\uCOS_CONFIG -I ..\UCOSIII\uCOS-III\Source -I ..\UCOSIII\uC-CPU\ARM-Cortex-M4\RealView -I ..\UCOSIII\uC-LIB\Ports\ARM-Cortex-M4\RealView -I ..\UCOSIII\uCOS-III\Ports\ARM-Cortex-M4\Generic\RealView-IC:\Users\senki\AppData\Local\Arm\Packs\GigaDevice\GD32F4xx_DFP\3.0.3\Device\F4XX\Include-D__UVISION_VERSION="541" -DGD32F470 -DSTM32F427_437xx -DUSE_STDPERIPH_DRIVER -D__FPU_USED="1"-o ..\obj\flowparser_stream.o --omf_browse ..\obj\flowparser_stream.crf --depend ..\obj\flowparser_stream.d)
+F (..\rep\comm\flowparser\flowparser_stream.c)(0x69F081A8)(--c99 -c --cpu Cortex-M4.fp.sp -g -O0 --apcs=interwork -I . -I ..\CORE -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\FWLIB\STM32F4xx_StdPeriph_Driver\inc -I ..\User -I ..\User\port -I ..\User\bsp\usbhost\inc -I ..\User\bsp\usbhost\official\host_inc -I ..\User\bsp\usbhost\official\otg_inc -I ..\HARDWARE\LED -I ..\rep\driver\drvanlogiic -I ..\rep\tools\ringbuffer -I ..\UCOSIII\uC-CPU -I ..\UCOSIII\uC-LIB -I ..\UCOSIII\uCOS-III -I ..\UCOSIII\UCOS_BSP -I ..\UCOSIII\uCOS_CONFIG -I ..\UCOSIII\uCOS-III\Source -I ..\UCOSIII\uC-CPU\ARM-Cortex-M4\RealView -I ..\UCOSIII\uC-LIB\Ports\ARM-Cortex-M4\RealView -I ..\UCOSIII\uCOS-III\Ports\ARM-Cortex-M4\Generic\RealView-IC:\Users\senki\AppData\Local\Arm\Packs\GigaDevice\GD32F4xx_DFP\3.0.3\Device\F4XX\Include-D__UVISION_VERSION="541" -DGD32F470 -DSTM32F427_437xx -DUSE_STDPERIPH_DRIVER -D__FPU_USED="1"-o ..\obj\flowparser_stream.o --omf_browse ..\obj\flowparser_stream.crf --depend ..\obj\flowparser_stream.d)
 I (..\rep\comm\flowparser\flowparser_stream.h)(0x69E86966)
 I (C:\Users\senki\AppData\Local\Keil_v5\ARM\ACC5\include\stdbool.h)(0x5E8E3CC2)
 I (C:\Users\senki\AppData\Local\Keil_v5\ARM\ACC5\include\stdint.h)(0x5E8E3CC2)

@@ -46,6 +46,7 @@ typedef enum eUsbhCdcHostStatus {
 typedef enum eUsbhCdcRequestState {
     USBH_CDC_REQ_SET_LINE_CODING = 0,
     USBH_CDC_REQ_SET_CONTROL_LINE_STATE,
+    USBH_CDC_REQ_SET_INTERFACE,
     USBH_CDC_REQ_DONE,
 } eUsbhCdcRequestState;
 
